@@ -3,6 +3,7 @@ import json
 import os
 import re
 import sys
+import time
 import unicodedata
 from pathlib import Path
 import requests
@@ -28,13 +29,19 @@ LAST_NAME_TO_DISTRICT = {
 }
 
 def district_by_person_id():
-    """PersonId -> district, from the council.nyc.gov/district-N/ link on each member's record.
-    Members whose link is a name slug are covered by data/district_overrides.json."""
-    out = {}
-    for p in api_get("persons", {"$filter": "PersonActiveFlag eq 1"}):
-        m = re.search(r"/district-(\d{1,2})", p.get("PersonWWW") or "")
-        if m and 1 <= int(m.group(1)) <= 51:
-            out[p["PersonId"]] = int(m.group(1))
+    """PersonId -> district, from the council.nyc.gov/district-N/ (or legacy /dN/) link on each
+    person's record, including former members so past votes map correctly. People whose link is
+    a name slug are covered by data/district_overrides.json."""
+    out, skip = {}, 0
+    while True:
+        page = api_get("persons", {"$top": 1000, "$skip": skip})
+        for p in page:
+            m = re.search(r"council\.nyc\.gov/(?:district-|d)(\d{1,2})(?:/|$)", p.get("PersonWWW") or "")
+            if m and 1 <= int(m.group(1)) <= 51:
+                out[p["PersonId"]] = int(m.group(1))
+        if len(page) < 1000:
+            break
+        skip += 1000
     overrides = Path("data/district_overrides.json")
     if overrides.exists():
         out.update({int(k): v for k, v in json.loads(overrides.read_text()).items() if not k.startswith("_")})
@@ -53,9 +60,17 @@ def api_get(endpoint, params=None):
     params = params or {}
     if TOKEN:
         params["token"] = TOKEN
-    resp = requests.get(f"{BASE_URL}/{endpoint}", params=params, timeout=30)
-    resp.raise_for_status()
-    return resp.json()
+    for attempt in range(5):  # the API occasionally resets connections or returns 5xx
+        try:
+            resp = requests.get(f"{BASE_URL}/{endpoint}", params=params, timeout=60)
+            if resp.status_code >= 500 or resp.status_code == 429:
+                raise requests.HTTPError(f"{resp.status_code} for {endpoint}")
+            resp.raise_for_status()
+            return resp.json()
+        except (requests.ConnectionError, requests.Timeout, requests.HTTPError) as e:
+            if attempt == 4 or (isinstance(e, requests.HTTPError) and "for " not in str(e)):
+                raise
+            time.sleep(2 ** attempt)
 
 def _fold(text):
     """Lowercase and strip accents so 'Farías' == 'farias'."""
@@ -89,6 +104,78 @@ def map_vote_value(val_str):
         return "no"
     return "excused"
 
+# Shared state, set in main()
+MEMBERS_OUT = {}      # district -> {name, party}, collected from vote records (latest wins)
+REPUBLICANS = set()
+PARTY_OVERRIDES = {}
+
+def votes_for_item(event_item_id):
+    """District -> yes/no/excused for one agenda item; also records member names/parties."""
+    out = {}
+    for v in api_get(f"eventitems/{event_item_id}/votes"):
+        person_name = v.get("VotePersonName", "")
+        dist_id = match_district(person_name, v.get("VotePersonId"))
+        if dist_id:
+            party = PARTY_OVERRIDES.get(str(dist_id)) or ("R" if v.get("VotePersonId") in REPUBLICANS else "D")
+            MEMBERS_OUT[str(dist_id)] = {"name": person_name.strip(), "party": party}
+            out[str(dist_id)] = map_vote_value(v.get("VoteValueName"))
+    return out
+
+def _is_council_approval(h):
+    name = (h.get("MatterHistoryActionName") or "").lower()
+    return "approved" in name and "by council" in name and h.get("MatterHistoryEventId")
+
+def build_vetoed(events):
+    """Bills the Mayor vetoed: still-vetoed matters plus Council overrides in `events`.
+    date = veto date; votes = the Council vote the Mayor vetoed; overrideVotes = override vote if any."""
+    found = {}  # matter_id -> {"override_item": item | None}
+    for m in api_get("matters", {"$filter": "MatterStatusName eq 'Vetoed'"}):
+        found[m["MatterId"]] = {"override_item": None}
+    for ev in events:
+        for item in api_get(f"events/{ev['EventId']}/eventitems"):
+            if (item.get("EventItemActionName") or "").lower().startswith("overridden") and item.get("EventItemMatterId"):
+                found[item["EventItemMatterId"]] = {"override_item": item, "override_date": ev["EventDate"][:10]}
+
+    out = []
+    for mid, info in found.items():
+        matter = api_get(f"matters/{mid}")
+        hist = api_get(f"matters/{mid}/histories")
+        vetoes = sorted(h["MatterHistoryActionDate"][:10] for h in hist
+                        if (h.get("MatterHistoryActionName") or "").lower().startswith("vetoed"))
+        if not vetoes:
+            continue
+        veto_date = vetoes[-1]
+        approvals = sorted((h for h in hist if _is_council_approval(h) and h["MatterHistoryActionDate"][:10] <= veto_date),
+                           key=lambda h: h["MatterHistoryActionDate"])
+        votes = {}
+        for h in reversed(approvals):  # latest Council approval before the veto
+            for it in api_get(f"events/{h['MatterHistoryEventId']}/eventitems"):
+                if it.get("EventItemMatterId") == mid and it.get("EventItemPassedFlag") == 1:
+                    votes = votes_for_item(it["EventItemId"])
+                    break
+            if votes:
+                break
+        if not votes:
+            print(f"skip {matter.get('MatterFile')}: no Council vote records found", file=sys.stderr)
+            continue
+        entry = {
+            "id": matter["MatterFile"],
+            "date": veto_date,
+            "title": matter.get("MatterName") or matter.get("MatterTitle") or matter["MatterFile"],
+            "category": matter.get("MatterTypeName") or "Legislation",
+            "summary": matter.get("MatterTitle") or "",
+            "legistarUrl": f"https://legistar.council.nyc.gov/gateway.aspx?M=L&ID={mid}",
+            "status": "Overridden" if info["override_item"] else "Vetoed",
+            "votes": votes,
+        }
+        if info["override_item"]:
+            ov = votes_for_item(info["override_item"]["EventItemId"])
+            if ov:
+                entry["overrideDate"] = info["override_date"]
+                entry["overrideVotes"] = ov
+        out.append(entry)
+    return sorted(out, key=lambda b: (b["date"], b["id"]))
+
 def main():
     # 1. Fetch City Council Stated Meetings (BodyId 1 is City Council) for the target year
     odata_filter = (
@@ -99,13 +186,12 @@ def main():
     events = api_get("events", {"$filter": odata_filter, "$orderby": "EventDate asc"})
     
     bills_output = []
-    members = {}  # district -> member name, collected from the vote records (latest wins)
+    members = MEMBERS_OUT
     PERSON_DISTRICTS.update(district_by_person_id())
-    republicans = republican_person_ids()
-    party_overrides = {}
+    REPUBLICANS.update(republican_person_ids())
     po = Path("data/party_overrides.json")  # {"<district>": "I"} for members who are neither R nor D
     if po.exists():
-        party_overrides = {k: v for k, v in json.loads(po.read_text()).items() if not k.startswith("_")}
+        PARTY_OVERRIDES.update({k: v for k, v in json.loads(po.read_text()).items() if not k.startswith("_")})
     
     for ev in events:
         event_id = ev["EventId"]
@@ -121,18 +207,7 @@ def main():
                     continue
                 
                 event_item_id = item["EventItemId"]
-                raw_votes = api_get(f"eventitems/{event_item_id}/votes")
-                if not raw_votes:
-                    continue
-                
-                district_votes = {}
-                for v in raw_votes:
-                    person_name = v.get("VotePersonName", "")
-                    dist_id = match_district(person_name, v.get("VotePersonId"))
-                    if dist_id:
-                        party = party_overrides.get(str(dist_id)) or ("R" if v.get("VotePersonId") in republicans else "D")
-                        members[str(dist_id)] = {"name": person_name.strip(), "party": party}
-                        district_votes[str(dist_id)] = map_vote_value(v.get("VoteValueName"))
+                district_votes = votes_for_item(event_item_id)
                 
                 if district_votes:
                     bills_output.append({
@@ -145,6 +220,9 @@ def main():
                         "votes": district_votes
                     })
 
+    members = dict(MEMBERS_OUT)  # snapshot: current members only, before older vetoed-bill votes are read
+    vetoed = build_vetoed(events)
+
     out_dir = Path("data")
     (out_dir).mkdir(exist_ok=True)
     with open(out_dir / "members.json", "w", encoding="utf-8") as f:
@@ -152,6 +230,9 @@ def main():
     out_dir.mkdir(exist_ok=True)
     with open(out_dir / "votes.json", "w", encoding="utf-8") as f:
         json.dump(bills_output, f, indent=2, ensure_ascii=False)
+    with open(out_dir / "vetoed.json", "w", encoding="utf-8") as f:
+        json.dump(vetoed, f, indent=2, ensure_ascii=False)
+    print(f"Saved {len(vetoed)} vetoed bills to data/vetoed.json")
     if UNMATCHED:
         print("WARNING: no district for:", ", ".join(sorted(UNMATCHED)), file=sys.stderr)
     print(f"Saved {len(bills_output)} approved bills to data/votes.json")
