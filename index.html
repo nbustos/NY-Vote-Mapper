@@ -101,6 +101,36 @@
   .badge.no { background: #fdeaea; color: var(--no-ink); border-color: var(--no-edge); }
   .badge.other { background: #faf4dc; color: #7a6420; border-color: var(--other-edge); }
   .empty { color: var(--muted); padding: 16px; font-size: 13px; }
+  .row { cursor: pointer; }
+  .row:focus-visible, .district:focus-visible { outline: 2px solid var(--accent); }
+
+  /* Member profile card */
+  #profile { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; }
+  #profile[hidden] { display: none; }
+  #pf-backdrop { position: absolute; inset: 0; background: rgba(20, 28, 44, .45); }
+  #pf-card { position: relative; width: min(440px, 94vw); max-height: 88vh; overflow-y: auto; background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,.28); padding: 20px 20px 16px; }
+  #pf-close { position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; border: 0; background: transparent; font-size: 26px; line-height: 1; cursor: pointer; color: var(--muted); border-radius: 50%; }
+  #pf-close:hover { background: #eef2f8; }
+  .pf-head { display: flex; gap: 16px; align-items: center; padding-right: 28px; }
+  .pf-photo { width: 104px; height: 104px; border-radius: 14px; object-fit: cover; object-position: top; background: #dfe7ef; flex: none; }
+  .pf-initials { width: 104px; height: 104px; border-radius: 14px; background: #dce7f7; color: var(--accent); font-size: 34px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex: none; }
+  .pf-head h2 { margin: 0 0 2px; font-size: 20px; line-height: 1.2; }
+  .pf-sub { color: var(--muted); font-size: 13px; }
+  .pf-role { display: inline-block; margin-top: 6px; background: #fff4d6; color: #7a5a00; border: 1px solid #e3c870; border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600; margin-right: 4px; }
+  .pf-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0 6px; }
+  .pf-facts div { background: var(--bg); border-radius: 10px; padding: 8px 10px; }
+  .pf-facts small { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  .pf-facts b { font-size: 15px; }
+  .pf-vote { margin: 10px 0 0; font-size: 13px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  #pf-card h3 { margin: 16px 0 6px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .pf-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pf-chips span { background: #eef2f8; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
+  #pf-card ul { margin: 0; padding: 0; list-style: none; font-size: 13px; }
+  #pf-card li { padding: 5px 0; border-bottom: 1px solid #eef1f5; display: flex; justify-content: space-between; gap: 10px; }
+  #pf-card li em { font-style: normal; font-size: 11px; font-weight: 700; color: #7a5a00; background: #fff4d6; border-radius: 999px; padding: 1px 8px; white-space: nowrap; align-self: center; }
+  .pf-none { color: var(--muted); font-size: 13px; }
+  .pf-foot { margin-top: 14px; font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .pf-foot a { color: var(--accent); }
 
   /* Mobile */
   @media (max-width: 700px) {
@@ -130,6 +160,9 @@
     .row { padding: 10px 6px; font-size: 14px; }
     .row .d { width: 76px; }
     #tooltip { max-width: 200px; }
+    #profile { align-items: flex-end; }
+    #pf-card { width: 100%; max-height: 86vh; border-radius: 18px 18px 0 0; padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+    .pf-photo, .pf-initials { width: 84px; height: 84px; }
   }
 </style>
 </head>
@@ -167,12 +200,17 @@
   </aside>
 </main>
 <div id="tooltip"></div>
+<div id="profile" hidden role="dialog" aria-modal="true" aria-labelledby="pf-name">
+  <div id="pf-backdrop"></div>
+  <div id="pf-card"><button id="pf-close" aria-label="Close">×</button><div id="pf-body"></div></div>
+</div>
 
 <script>
   const APPROVED_BILLS = [];   // filled from data/votes.json (see loadLiveLegistarVotes)
   const VETOED_BILLS = [];     // filled from data/vetoed.json
   const BILLS_BY_DATE = {};    // index of the bills for the active mode (approved or vetoed)
   let MEMBERS = {};            // district -> {name, party} (data/members.json)
+  let PROFILES = {};           // district -> profile (data/profiles.json)
   let GEO = null;              // district boundaries (data/districts.geojson)
 
   const BOROUGHS = {
@@ -300,7 +338,8 @@
       .attr("d", pathGen)
       .on("mousemove", (ev, f) => showTip(ev, tipFor(f.properties.district)))
       .on("mouseleave", () => { hideTip(); highlightRow(null); })
-      .on("mouseenter", (_, f) => highlightRow(f.properties.district));
+      .on("mouseenter", (_, f) => highlightRow(f.properties.district))
+      .on("click", (_, f) => { hideTip(); openProfile(f.properties.district); });
     gMap.selectAll("text").data(GEO.features).join("text").attr("class", "dlabel")
       .attr("transform", f => `translate(${pathGen.centroid(f)})`).attr("dy", "0.35em").text(f => f.properties.district);
     zoomBehavior = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
@@ -430,12 +469,14 @@
     }).map(d => {
       const v = voteOf(d);
       const badge = v ? `<span class="badge ${voteClass(v)}">${v === "yes" ? "YES" : v === "no" ? "NO" : "EXCUSED"}</span>` : "";
-      return `<div class="row" data-d="${d}"><div class="d">District ${d}<small>${boroughOf(d)}</small></div><div class="n">${esc(memberLabel(d) || "—")}</div>${badge}</div>`;
+      return `<div class="row" data-d="${d}" tabindex="0" role="button" aria-label="Show profile for District ${d}"><div class="d">District ${d}<small>${boroughOf(d)}</small></div><div class="n">${esc(memberLabel(d) || "—")}</div>${badge}</div>`;
     });
     $("roster").innerHTML = rows.join("") || `<div class="empty">No matches.</div>`;
     $("roster").querySelectorAll(".row").forEach(r => {
       r.onmouseenter = () => { const d = +r.dataset.d; if (districtSel) districtSel.classed("hl", f => f.properties.district === d); };
       r.onmouseleave = () => { if (districtSel) districtSel.classed("hl", false); };
+      r.onclick = () => openProfile(+r.dataset.d);
+      r.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProfile(+r.dataset.d); } };
     });
   }
   $("search").addEventListener("input", renderRoster);
@@ -445,6 +486,58 @@
     const r = d != null && document.querySelector(`#roster .row[data-d="${d}"]`);
     if (r) r.scrollIntoView({ block: "nearest" });
   }
+
+  /* ----------------------------- Member profile ------------------------- */
+  const PARTY_NAMES = { D: "Democrat", R: "Republican", I: "Independent" };
+  function ageText(birth) {
+    if (!birth) return "Not available";
+    const [y, m, d] = birth.date.split("-").map(Number), now = new Date();
+    if (birth.precision < 11) return "~" + (now.getFullYear() - y);   // only the year is known
+    let age = now.getFullYear() - y;
+    if (now.getMonth() + 1 < m || (now.getMonth() + 1 === m && now.getDate() < d)) age--;
+    return String(age);
+  }
+  function openProfile(d) {
+    const p = PROFILES[d] || {}, mem = MEMBERS[d] || {};
+    const name = p.name || mem.name || "Council Member", party = p.party || mem.party || "";
+    const initials = name.replace(/[^A-Za-z\u00C0-\u024F ]/g, "").split(" ").filter(Boolean);
+    const ini = ((initials[0] || "")[0] || "") + ((initials[initials.length - 1] || "")[0] || "");
+    const photo = p.photo
+      ? `<img class="pf-photo" src="${esc(p.photo)}" alt="Photo of ${esc(name)}" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=&quot;pf-initials&quot;>${esc(ini)}</div>'">`
+      : `<div class="pf-initials">${esc(ini)}</div>`;
+    const v = state.bill ? voteOf(d) : null;
+    const vote = state.bill && v ? `<div class="pf-vote"><span class="badge ${voteClass(v)}">${v === "yes" ? "YES" : v === "no" ? "NO" : "EXCUSED"}</span> on ${esc(state.bill.id)}</div>` : "";
+    const chips = a => a && a.length ? `<div class="pf-chips">${a.map(x => `<span>${esc(x)}</span>`).join("")}</div>` : `<div class="pf-none">None listed</div>`;
+    const committees = p.committees && p.committees.length
+      ? `<ul>${p.committees.map(c => `<li><span>${esc(c.name)}</span>${c.role ? `<em>${esc(c.role)}</em>` : ""}</li>`).join("")}</ul>`
+      : `<div class="pf-none">None listed</div>`;
+    const credit = [];
+    if (p.photoPage) credit.push(`Photo: <a href="${esc(p.photoPage)}" target="_blank" rel="noopener">Wikimedia Commons</a>`);
+    if (p.birth) credit.push("Birth date: Wikidata");
+    credit.push(`Committees, caucuses and start year: <a href="https://legistar.council.nyc.gov/" target="_blank" rel="noopener">NYC Council Legistar</a>`);
+    $("pf-body").innerHTML = `
+      <div class="pf-head">${photo}<div>
+        <h2 id="pf-name">${esc(name)}${party ? " - " + esc(party) : ""}</h2>
+        <div class="pf-sub">Council District ${d} · ${esc(boroughOf(d))}</div>
+        ${(p.roles || []).map(r => `<span class="pf-role">${esc(r.replace(/^The /, ""))}</span>`).join("")}
+      </div></div>
+      <div class="pf-facts">
+        <div><small>Age</small><b>${ageText(p.birth)}</b></div>
+        <div><small>Took office</small><b>${p.tookOffice || "Not available"}</b></div>
+        <div><small>Party</small><b>${esc(PARTY_NAMES[party] || party || "—")}</b></div>
+      </div>${vote}
+      <h3>Caucuses</h3>${chips(p.caucuses)}
+      <h3>Committees</h3>${committees}
+      <div class="pf-foot">${credit.join(" · ")}. Party is inferred from Republican Conference membership; “Not available” means these sources have no entry.</div>`;
+    $("profile").hidden = false;
+    document.body.style.overflow = "hidden";
+    $("pf-card").scrollTop = 0;
+    $("pf-close").focus();
+  }
+  function closeProfile() { $("profile").hidden = true; document.body.style.overflow = ""; }
+  $("pf-close").onclick = closeProfile;
+  $("pf-backdrop").onclick = closeProfile;
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("profile").hidden) closeProfile(); });
 
   /* ------------------------------ Bootstrap ----------------------------- */
   function initYears() {
@@ -482,14 +575,16 @@
 
   async function loadLiveLegistarVotes() {
     try {
-      const [res, mem, geo, vet] = await Promise.all([
+      const [res, mem, geo, vet, pro] = await Promise.all([
         fetch('./data/votes.json', { cache: 'no-store' }),
         fetch('./data/members.json', { cache: 'no-store' }),
         fetch('./data/districts.geojson'),
-        fetch('./data/vetoed.json', { cache: 'no-store' })
+        fetch('./data/vetoed.json', { cache: 'no-store' }),
+        fetch('./data/profiles.json', { cache: 'no-store' })
       ]);
       if (mem.ok) MEMBERS = await mem.json();
       if (geo.ok) GEO = await geo.json();
+      if (pro.ok) PROFILES = await pro.json();
       if (vet.ok) { const v = await vet.json(); if (Array.isArray(v)) VETOED_BILLS.push(...v); }
       if (res.ok) {
         const liveBills = await res.json();

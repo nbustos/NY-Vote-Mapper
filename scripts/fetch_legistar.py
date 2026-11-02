@@ -117,7 +117,7 @@ def votes_for_item(event_item_id):
         dist_id = match_district(person_name, v.get("VotePersonId"))
         if dist_id:
             party = PARTY_OVERRIDES.get(str(dist_id)) or ("R" if v.get("VotePersonId") in REPUBLICANS else "D")
-            MEMBERS_OUT[str(dist_id)] = {"name": person_name.strip(), "party": party}
+            MEMBERS_OUT[str(dist_id)] = {"name": person_name.strip(), "party": party, "personId": v.get("VotePersonId")}
             out[str(dist_id)] = map_vote_value(v.get("VoteValueName"))
     return out
 

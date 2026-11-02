@@ -1,0 +1,2173 @@
+{
+  "1": {
+    "name": "Christopher Marte",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Irish Caucus",
+      "Progressive Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Subcommittee on Landmarks, Public Sitings, Resiliency and Dispositions",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Health",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Housing",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1989-04-26",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Christopher%20Marte%2C%202023.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Christopher%20Marte%2C%202023.jpg"
+  },
+  "2": {
+    "name": "Harvey D. Epstein",
+    "party": "D",
+    "tookOffice": 2025,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus (Chair)",
+      "Jewish Caucus",
+      "Progressive Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Disabilities",
+        "role": ""
+      },
+      {
+        "name": "Committee on Environmental Protection and Waterfronts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Health",
+        "role": ""
+      },
+      {
+        "name": "Committee on Higher Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Hospitals",
+        "role": ""
+      },
+      {
+        "name": "Committee on Workforce Development",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Insecurity",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Security",
+        "role": ""
+      },
+      {
+        "name": "Task Force to Combat Antisemitism",
+        "role": ""
+      }
+    ]
+  },
+  "3": {
+    "name": "Carl Wilson",
+    "party": "D",
+    "tookOffice": 2026,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Irish Caucus",
+      "Lesbian, Gay, Bi-sexual, Transgender, Queer, Intersex, Asexual Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on General Welfare",
+        "role": ""
+      },
+      {
+        "name": "Committee on Governmental Operations, State & Federal Legislation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Health",
+        "role": ""
+      },
+      {
+        "name": "Committee on Higher Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Committee on Mental Health and Substance Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      },
+      {
+        "name": "Committee to Combat Hate",
+        "role": ""
+      }
+    ]
+  },
+  "4": {
+    "name": "Virginia Maloney",
+    "party": "D",
+    "tookOffice": 2026,
+    "roles": [],
+    "caucuses": [
+      "Irish Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Economic Development",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Intergroup Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Fire and Emergency Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Higher Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Small Business",
+        "role": ""
+      },
+      {
+        "name": "Task Force to Combat Antisemitism",
+        "role": ""
+      }
+    ]
+  },
+  "5": {
+    "name": "Julie Menin",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [
+      "The Speaker"
+    ],
+    "caucuses": [],
+    "committees": [],
+    "birth": {
+      "date": "1967-11-06",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Julie%20Menin%202023.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Julie%20Menin%202023.jpg"
+  },
+  "6": {
+    "name": "Gale A. Brewer",
+    "party": "D",
+    "tookOffice": 2002,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Governmental Operations, State & Federal Legislation",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Aging",
+        "role": ""
+      },
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Contracts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Criminal Justice",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Immigration",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Early Childhood Education",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Insecurity",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Security",
+        "role": ""
+      },
+      {
+        "name": "Task Force to Combat Antisemitism",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1951-09-06",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Gale%20Brewer.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Gale%20Brewer.jpg"
+  },
+  "7": {
+    "name": "Shaun Abreu",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [
+      "Majority Leader"
+    ],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil and Human Rights",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1991-01-08",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/FWNY25%20U.S.%20Marines%20and%20Sailors%20hold%20wreath%20laying%20ceremony%20%28Abreu%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:FWNY25%20U.S.%20Marines%20and%20Sailors%20hold%20wreath%20laying%20ceremony%20%28Abreu%29.jpg"
+  },
+  "8": {
+    "name": "Elsie Encarnación",
+    "party": "D",
+    "tookOffice": null,
+    "roles": [
+      "Deputy Whip"
+    ],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Immigration",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Housing",
+        "role": ""
+      },
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": ""
+      }
+    ]
+  },
+  "9": {
+    "name": "Yusef Salaam",
+    "party": "D",
+    "tookOffice": 2024,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee to Combat Hate",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Criminal Justice",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Small Business",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1974-01-01",
+      "precision": 9
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Yusef%20Salaam%202009%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Yusef%20Salaam%202009%20%28cropped%29.jpg"
+  },
+  "10": {
+    "name": "Carmen N. De La Rosa",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Technology",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Fire and Emergency Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Health",
+        "role": ""
+      },
+      {
+        "name": "Committee on Veterans",
+        "role": ""
+      }
+    ]
+  },
+  "11": {
+    "name": "Eric Dinowitz",
+    "party": "D",
+    "tookOffice": 2021,
+    "roles": [],
+    "caucuses": [
+      "Jewish Caucus (Chair)"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Education",
+        "role": "Chair"
+      },
+      {
+        "name": "Task Force to Combat Antisemitism",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Aging",
+        "role": ""
+      },
+      {
+        "name": "Committee on Governmental Operations, State & Federal Legislation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Higher Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1985-11-21",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Eric%20Dinowitz%2C%202021.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Eric%20Dinowitz%2C%202021.jpg"
+  },
+  "12": {
+    "name": "Kevin C. Riley",
+    "party": "D",
+    "tookOffice": 2021,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Land Use",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Economic Development",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Committee on Oversight and Investigations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": ""
+      },
+      {
+        "name": "Committee on Technology",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Early Childhood Education",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1987-11-16",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Kevin%20Riley%20in%202021.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Kevin%20Riley%20in%202021.jpg"
+  },
+  "13": {
+    "name": "Shirley Aldebol",
+    "party": "D",
+    "tookOffice": 2026,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Civil Service and Labor",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Aging",
+        "role": ""
+      },
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Hospitals",
+        "role": ""
+      },
+      {
+        "name": "Committee on Mental Health and Substance Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Women and Gender Equity",
+        "role": ""
+      }
+    ]
+  },
+  "14": {
+    "name": "Pierina Ana Sanchez",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Fire and Emergency Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Hospitals",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      },
+      {
+        "name": "Committee to Combat Hate",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1988-06-10",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Pierina%20Sanchez.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Pierina%20Sanchez.jpg"
+  },
+  "15": {
+    "name": "Oswald J. Feliz",
+    "party": "D",
+    "tookOffice": 2021,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Public Safety",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil and Human Rights",
+        "role": ""
+      },
+      {
+        "name": "Committee on Criminal Justice",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Governmental Operations, State & Federal Legislation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Landmarks, Public Sitings, Resiliency and Dispositions",
+        "role": ""
+      }
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Oswald%20Feliz%2C%202022.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Oswald%20Feliz%2C%202022.jpg"
+  },
+  "16": {
+    "name": "Althea V.  Stevens",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Children and Youth",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil and Human Rights",
+        "role": ""
+      },
+      {
+        "name": "Committee on Contracts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Intergroup Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Governmental Operations, State & Federal Legislation",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1983-01-02",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Althea%20Stevens.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Althea%20Stevens.jpg"
+  },
+  "17": {
+    "name": "Justin E. Sanchez",
+    "party": "D",
+    "tookOffice": 2026,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Lesbian, Gay, Bi-sexual, Transgender, Queer, Intersex, Asexual Caucus",
+      "Progressive Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Environmental Protection and Waterfronts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Safety",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": ""
+      }
+    ]
+  },
+  "18": {
+    "name": "Amanda C. Farías",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Women and Gender Equity",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Economic Development",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Hospitals",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1989-07-09",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Amanda%20Farias%20Parkchester%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Amanda%20Farias%20Parkchester%20%28cropped%29.jpg"
+  },
+  "19": {
+    "name": "Vickie Paladino",
+    "party": "R",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Italian Caucus",
+      "Republican Conference",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Fire and Emergency Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Veterans",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1954-10-28",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Vickie%20Paladino%20%282-5-2024%29.png?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Vickie%20Paladino%20%282-5-2024%29.png"
+  },
+  "20": {
+    "name": "Sandra Ung",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [
+      "Deputy Leader"
+    ],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Intergroup Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on General Welfare",
+        "role": ""
+      },
+      {
+        "name": "Committee on Oversight and Investigations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1974-01-01",
+      "precision": 9
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Sandra%20Ung%20MTA%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Sandra%20Ung%20MTA%20%28cropped%29.jpg"
+  },
+  "21": {
+    "name": "Shanel Thomas-Henry",
+    "party": "D",
+    "tookOffice": 2026,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Irish Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Small Business",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Economic Development",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Landmarks, Public Sitings, Resiliency and Dispositions",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Insecurity",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Security",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": ""
+      }
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/MTA%20Service%20to%202026%20US%20Open%20%28Shanel%20Thomas-Henry%29%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:MTA%20Service%20to%202026%20US%20Open%20%28Shanel%20Thomas-Henry%29%20%28cropped%29.jpg"
+  },
+  "22": {
+    "name": "Tiffany L. Cabán",
+    "party": "D",
+    "tookOffice": 2021,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Lesbian, Gay, Bi-sexual, Transgender, Queer, Intersex, Asexual Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Mental Health and Substance Use",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil Service and Labor",
+        "role": ""
+      },
+      {
+        "name": "Committee on Criminal Justice",
+        "role": ""
+      },
+      {
+        "name": "Committee on Disabilities",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Workforce Development",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1988-01-01",
+      "precision": 9
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/015%20Tiffany%20Caban%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:015%20Tiffany%20Caban%20%28cropped%29.jpg"
+  },
+  "23": {
+    "name": "Linda Lee",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Finance",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Mental Health and Substance Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Oversight and Investigations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": ""
+      }
+    ]
+  },
+  "24": {
+    "name": "James F. Gennaro",
+    "party": "D",
+    "tookOffice": 2002,
+    "roles": [],
+    "caucuses": [],
+    "committees": [
+      {
+        "name": "Committee on Environmental Protection and Waterfronts",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil Service and Labor",
+        "role": ""
+      },
+      {
+        "name": "Committee on Contracts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Health",
+        "role": ""
+      },
+      {
+        "name": "Committee on Veterans",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Insecurity",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Security",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1957-05-03",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Jim%20Gennaro.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Jim%20Gennaro.jpg"
+  },
+  "25": {
+    "name": "Shekar Krishnan",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Oversight and Investigations",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      },
+      {
+        "name": "Committee to Combat Hate",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1985-01-01",
+      "precision": 9
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Shekar%20Krishnan.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Shekar%20Krishnan.jpg"
+  },
+  "26": {
+    "name": "Julie Won",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Irish Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Workforce Development",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Contracts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Housing",
+        "role": ""
+      },
+      {
+        "name": "Committee on Technology",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      },
+      {
+        "name": "Committee to Combat Hate",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Early Childhood Education",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1990-04-17",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Julie%20Won%20MTA%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Julie%20Won%20MTA%20%28cropped%29.jpg"
+  },
+  "27": {
+    "name": "Nantasha M. Williams",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [
+      "Deputy Speaker"
+    ],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Intergroup Relations",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Relations",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Children and Youth",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Committee on Oversight and Investigations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1988-01-01",
+      "precision": 9
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/CM%20Williams%20Support%20Cambria%20Library%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:CM%20Williams%20Support%20Cambria%20Library%20%28cropped%29.jpg"
+  },
+  "28": {
+    "name": "Ty Hankerson",
+    "party": "D",
+    "tookOffice": 2026,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil Service and Labor",
+        "role": ""
+      },
+      {
+        "name": "Committee on Mental Health and Substance Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Safety",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1994-01-01",
+      "precision": 9
+    }
+  },
+  "29": {
+    "name": "Lynn C. Schulman",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Jewish Caucus",
+      "Lesbian, Gay, Bi-sexual, Transgender, Queer, Intersex, Asexual Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Health",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Aging",
+        "role": ""
+      },
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Fire and Emergency Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Women and Gender Equity",
+        "role": ""
+      },
+      {
+        "name": "Committee to Combat Hate",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1957-11-04",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Lynn%20Schulman%20speaks%20at%20MTA%20%22Welcome%20to%20Little%20Guyana%22%20Plaque%20unveiling.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Lynn%20Schulman%20speaks%20at%20MTA%20%22Welcome%20to%20Little%20Guyana%22%20Plaque%20unveiling.jpg"
+  },
+  "30": {
+    "name": "Phil Wong",
+    "party": "D",
+    "tookOffice": 2026,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Common-Sense Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Fire and Emergency Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Safety",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      },
+      {
+        "name": "Committee on Veterans",
+        "role": ""
+      },
+      {
+        "name": "Committee on Workforce Development",
+        "role": ""
+      }
+    ]
+  },
+  "31": {
+    "name": "Selvena N. Brooks-Powers",
+    "party": "D",
+    "tookOffice": 2021,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Criminal Justice",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Hospitals",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Small Business",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      }
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Selvena%20Brooks-Powers%202023.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Selvena%20Brooks-Powers%202023.jpg"
+  },
+  "32": {
+    "name": "Joann Ariola",
+    "party": "R",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Irish Caucus",
+      "Italian Caucus",
+      "Republican Conference",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Fire and Emergency Management",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Health",
+        "role": ""
+      },
+      {
+        "name": "Committee on Higher Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Mental Health and Substance Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Safety",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1958-08-22",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/MTA%20Announces%20Opening%20of%20Fully%20Accessible%20Woodhaven%20Blvd%20JZ%20Station%20%2854285552374%29%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:MTA%20Announces%20Opening%20of%20Fully%20Accessible%20Woodhaven%20Blvd%20JZ%20Station%20%2854285552374%29%20%28cropped%29.jpg"
+  },
+  "33": {
+    "name": "Lincoln Restler",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Jewish Caucus",
+      "Progressive Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Contracts",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Environmental Protection and Waterfronts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Higher Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Housing",
+        "role": ""
+      }
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Lincoln%20Restler%202023.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Lincoln%20Restler%202023.jpg"
+  },
+  "34": {
+    "name": "Jennifer Gutiérrez",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Subcommittee on Early Childhood Education",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Economic Development",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Hospitals",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Safety",
+        "role": ""
+      },
+      {
+        "name": "Committee on Technology",
+        "role": ""
+      },
+      {
+        "name": "Committee on Women and Gender Equity",
+        "role": ""
+      }
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/04222023%20Earth%20Day%202023%20WMNYC%20SWC%20Jennifer%20Gutierrez%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:04222023%20Earth%20Day%202023%20WMNYC%20SWC%20Jennifer%20Gutierrez%20%28cropped%29.jpg"
+  },
+  "35": {
+    "name": "Crystal Hudson",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Lesbian, Gay, Bi-sexual, Transgender, Queer, Intersex, Asexual Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on General Welfare",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Aging",
+        "role": ""
+      },
+      {
+        "name": "Committee on Civil Service and Labor",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Intergroup Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1983-04-14",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Crystal%20Hudson%20at%20Classon%20Av%20Accessibility%20Groundbreaking.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Crystal%20Hudson%20at%20Classon%20Av%20Accessibility%20Groundbreaking.jpg"
+  },
+  "36": {
+    "name": "Chi A. Ossé",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Lesbian, Gay, Bi-sexual, Transgender, Queer, Intersex, Asexual Caucus",
+      "Progressive Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Children and Youth",
+        "role": ""
+      },
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Intergroup Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Housing",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Landmarks, Public Sitings, Resiliency and Dispositions",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1998-03-18",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Chi%20Oss%C3%A9%2C%20Brower%20Park%20Library%20opening%2C%20July%202023.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Chi%20Oss%C3%A9%2C%20Brower%20Park%20Library%20opening%2C%20July%202023.jpg"
+  },
+  "37": {
+    "name": "Sandy Nurse",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Irish Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Civil and Human Rights",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Disabilities",
+        "role": ""
+      },
+      {
+        "name": "Committee on General Welfare",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Safety",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Landmarks, Public Sitings, Resiliency and Dispositions",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1984-04-03",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/04%2022%202022%20New%20York%20City%20Council%20Member%20Sandy%20Nurse%20with%20Sure%20We%20Can%20board%20members%20Chris%20Hartmann%2C%20Rhonda%20Keyser%2C%20and%20Chicago%20Crosby%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:04%2022%202022%20New%20York%20City%20Council%20Member%20Sandy%20Nurse%20with%20Sure%20We%20Can%20board%20members%20Chris%20Hartmann%2C%20Rhonda%20Keyser%2C%20and%20Chicago%20Crosby%20%28cropped%29.jpg"
+  },
+  "38": {
+    "name": "Alexa Avilés",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Economic Development",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on General Welfare",
+        "role": ""
+      },
+      {
+        "name": "Committee on Immigration",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Landmarks, Public Sitings, Resiliency and Dispositions",
+        "role": ""
+      }
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Alexa%20Avil%C3%A9s%2C%202021.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Alexa%20Avil%C3%A9s%2C%202021.jpg"
+  },
+  "39": {
+    "name": "Shahana K. Hanif",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Disabilities",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil and Human Rights",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Small Business",
+        "role": ""
+      },
+      {
+        "name": "Committee on Technology",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      },
+      {
+        "name": "Committee on Workforce Development",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1991-02-05",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Shahana%20Hanif%2C%202019.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Shahana%20Hanif%2C%202019.jpg"
+  },
+  "40": {
+    "name": "Rita C. Joseph",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Higher Education",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Children and Youth",
+        "role": ""
+      },
+      {
+        "name": "Committee on Disabilities",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Committee on Immigration",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Early Childhood Education",
+        "role": ""
+      }
+    ]
+  },
+  "41": {
+    "name": "Darlene Mealy",
+    "party": "D",
+    "tookOffice": 2006,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Subcommittee on Senior Centers and Food Insecurity",
+        "role": "Chair"
+      },
+      {
+        "name": "Subcommittee on Senior Centers and Food Security",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Aging",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on General Welfare",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Housing",
+        "role": ""
+      },
+      {
+        "name": "Committee to Combat Hate",
+        "role": ""
+      }
+    ]
+  },
+  "42": {
+    "name": "Chris Banks",
+    "party": "D",
+    "tookOffice": 2024,
+    "roles": [
+      "Deputy Leader"
+    ],
+    "caucuses": [
+      "Black, Latino and Asian Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Public Housing",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Economic Development",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Safety",
+        "role": ""
+      },
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": ""
+      }
+    ]
+  },
+  "43": {
+    "name": "Susan Zhuang",
+    "party": "D",
+    "tookOffice": 2024,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Common-Sense Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Aging",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Governmental Operations, State & Federal Legislation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Housing and Buildings",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Oversight and Investigations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      }
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Interborough%20Express%20Advancing%20from%20Planning%20to%20Active%20Phase%20%2854693464068%29%20%28Susan%20Zhuang%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Interborough%20Express%20Advancing%20from%20Planning%20to%20Active%20Phase%20%2854693464068%29%20%28Susan%20Zhuang%29.jpg"
+  },
+  "44": {
+    "name": "Simcha Felder",
+    "party": "D",
+    "tookOffice": 2002,
+    "roles": [],
+    "caucuses": [
+      "Jewish Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Children and Youth",
+        "role": ""
+      },
+      {
+        "name": "Committee on Health",
+        "role": ""
+      },
+      {
+        "name": "Committee on Mental Health and Substance Use",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Early Childhood Education",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1958-12-30",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2803-20-19%29%20NY%20State%20Senator%20Simcha%20Felder%20during%20Senate%20Session%20at%20the%20NY%20State%20Capitol%2C%20Albany%20NY%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:%2803-20-19%29%20NY%20State%20Senator%20Simcha%20Felder%20during%20Senate%20Session%20at%20the%20NY%20State%20Capitol%2C%20Albany%20NY%20%28cropped%29.jpg"
+  },
+  "45": {
+    "name": "Farah N. Louis",
+    "party": "D",
+    "tookOffice": 2019,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Black, Latino and Asian Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Intergroup Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Cultural Affairs, Libraries and International Relations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Transportation and Infrastructure",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1983-09-25",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Farah%20Louis%2C%202022.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Farah%20Louis%2C%202022.jpg"
+  },
+  "46": {
+    "name": "Mercedes Narcisse",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Common-Sense Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Hospitals",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil Service and Labor",
+        "role": ""
+      },
+      {
+        "name": "Committee on Criminal Justice",
+        "role": ""
+      },
+      {
+        "name": "Committee on Education",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on Health",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Task Force to Combat Antisemitism",
+        "role": ""
+      }
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Mercedes%20Narcisse%2C%202016.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Mercedes%20Narcisse%2C%202016.jpg"
+  },
+  "47": {
+    "name": "Kayla Santosuosso",
+    "party": "D",
+    "tookOffice": 2026,
+    "roles": [],
+    "caucuses": [
+      "Progressive Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      },
+      {
+        "name": "Committee on Small Business",
+        "role": ""
+      },
+      {
+        "name": "Committee on Women and Gender Equity",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Early Childhood Education",
+        "role": ""
+      }
+    ]
+  },
+  "48": {
+    "name": "Inna Vernikov",
+    "party": "R",
+    "tookOffice": 2021,
+    "roles": [
+      "Minority Whip"
+    ],
+    "caucuses": [
+      "Common-Sense Caucus",
+      "Jewish Caucus",
+      "Republican Conference"
+    ],
+    "committees": [
+      {
+        "name": "Task Force to Combat Antisemitism",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Contracts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Sanitation and Solid Waste Management",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1984-08-30",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Inna%20Vernikov%20House%20Committee%20on%20Energy%20and%20Commerce.png?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Inna%20Vernikov%20House%20Committee%20on%20Energy%20and%20Commerce.png"
+  },
+  "49": {
+    "name": "Kamillah Hanks",
+    "party": "D",
+    "tookOffice": 2022,
+    "roles": [
+      "Majority Whip"
+    ],
+    "caucuses": [
+      "Black, Latino and Asian Caucus",
+      "Irish Caucus",
+      "Women's Caucus"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Consumer and Worker Protection",
+        "role": ""
+      },
+      {
+        "name": "Committee on Contracts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Environmental Protection and Waterfronts",
+        "role": ""
+      },
+      {
+        "name": "Committee on Immigration",
+        "role": ""
+      },
+      {
+        "name": "Committee on Public Safety",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Landmarks, Public Sitings, Resiliency and Dispositions",
+        "role": ""
+      },
+      {
+        "name": "Task Force to Combat Antisemitism",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1972-09-04",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Kamillah%20Hanks%20on%20Mem%20Day%20SI%202021%20jeh%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Kamillah%20Hanks%20on%20Mem%20Day%20SI%202021%20jeh%20%28cropped%29.jpg"
+  },
+  "50": {
+    "name": "David M. Carr",
+    "party": "R",
+    "tookOffice": 2021,
+    "roles": [
+      "Minority Leader"
+    ],
+    "caucuses": [
+      "Common-Sense Caucus",
+      "Italian Caucus",
+      "Lesbian, Gay, Bi-sexual, Transgender, Queer, Intersex, Asexual Caucus",
+      "Republican Conference"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Land Use",
+        "role": ""
+      },
+      {
+        "name": "Committee on Oversight and Investigations",
+        "role": ""
+      },
+      {
+        "name": "Committee on Rules, Privileges, Elections, Standards and Ethics",
+        "role": ""
+      },
+      {
+        "name": "Subcommittee on Zoning and Franchises",
+        "role": ""
+      }
+    ]
+  },
+  "51": {
+    "name": "Frank Morano",
+    "party": "R",
+    "tookOffice": 2025,
+    "roles": [],
+    "caucuses": [
+      "Animal Welfare Caucus",
+      "Common-Sense Caucus",
+      "Italian Caucus",
+      "Republican Conference"
+    ],
+    "committees": [
+      {
+        "name": "Committee on Veterans",
+        "role": "Chair"
+      },
+      {
+        "name": "Committee on Civil Service and Labor",
+        "role": ""
+      },
+      {
+        "name": "Committee on Criminal Justice",
+        "role": ""
+      },
+      {
+        "name": "Committee on Finance",
+        "role": ""
+      },
+      {
+        "name": "Committee on General Welfare",
+        "role": ""
+      },
+      {
+        "name": "Committee on Governmental Operations, State & Federal Legislation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Parks and Recreation",
+        "role": ""
+      },
+      {
+        "name": "Committee on Small Business",
+        "role": ""
+      }
+    ],
+    "birth": {
+      "date": "1984-01-01",
+      "precision": 9
+    }
+  }
+}

@@ -1,206 +1,257 @@
 {
   "1": {
     "name": "Christopher Marte",
-    "party": "D"
+    "party": "D",
+    "personId": 7801
   },
   "2": {
     "name": "Harvey D. Epstein",
-    "party": "D"
+    "party": "D",
+    "personId": 7893
   },
   "3": {
     "name": "Carl Wilson",
-    "party": "D"
+    "party": "D",
+    "personId": 7874
   },
   "4": {
     "name": "Virginia Maloney",
-    "party": "D"
+    "party": "D",
+    "personId": 7894
   },
   "5": {
     "name": "Julie Menin",
-    "party": "D"
+    "party": "D",
+    "personId": 7803
   },
   "6": {
     "name": "Gale A. Brewer",
-    "party": "D"
+    "party": "D",
+    "personId": 5259
   },
   "7": {
     "name": "Shaun Abreu",
-    "party": "D"
+    "party": "D",
+    "personId": 7804
   },
   "8": {
     "name": "Elsie Encarnación",
-    "party": "D"
+    "party": "D",
+    "personId": 7895
   },
   "9": {
     "name": "Yusef Salaam",
-    "party": "D"
+    "party": "D",
+    "personId": 7866
   },
   "10": {
     "name": "Carmen N. De La Rosa",
-    "party": "D"
+    "party": "D",
+    "personId": 7806
   },
   "11": {
     "name": "Eric Dinowitz",
-    "party": "D"
+    "party": "D",
+    "personId": 7799
   },
   "12": {
     "name": "Kevin C. Riley",
-    "party": "D"
+    "party": "D",
+    "personId": 7794
   },
   "13": {
     "name": "Shirley Aldebol",
-    "party": "D"
+    "party": "D",
+    "personId": 7896
   },
   "14": {
     "name": "Pierina Ana Sanchez",
-    "party": "D"
+    "party": "D",
+    "personId": 7808
   },
   "15": {
     "name": "Oswald J. Feliz",
-    "party": "D"
+    "party": "D",
+    "personId": 7798
   },
   "16": {
     "name": "Althea V.  Stevens",
-    "party": "D"
+    "party": "D",
+    "personId": 7809
   },
   "17": {
     "name": "Justin E. Sanchez",
-    "party": "D"
+    "party": "D",
+    "personId": 7897
   },
   "18": {
     "name": "Amanda C. Farías",
-    "party": "D"
+    "party": "D",
+    "personId": 7810
   },
   "19": {
     "name": "Vickie Paladino",
-    "party": "R"
+    "party": "R",
+    "personId": 7811
   },
   "20": {
     "name": "Sandra Ung",
-    "party": "D"
+    "party": "D",
+    "personId": 7812
   },
   "21": {
     "name": "Shanel Thomas-Henry",
-    "party": "D"
+    "party": "D",
+    "personId": 7898
   },
   "22": {
     "name": "Tiffany L. Cabán",
-    "party": "D"
+    "party": "D",
+    "personId": 7813
   },
   "23": {
     "name": "Linda Lee",
-    "party": "D"
+    "party": "D",
+    "personId": 7814
   },
   "24": {
     "name": "James F. Gennaro",
-    "party": "D"
+    "party": "D",
+    "personId": 5273
   },
   "25": {
     "name": "Shekar Krishnan",
-    "party": "D"
+    "party": "D",
+    "personId": 7815
   },
   "26": {
     "name": "Julie Won",
-    "party": "D"
+    "party": "D",
+    "personId": 7816
   },
   "27": {
     "name": "Nantasha M. Williams",
-    "party": "D"
+    "party": "D",
+    "personId": 7817
   },
   "28": {
     "name": "Ty Hankerson",
-    "party": "D"
+    "party": "D",
+    "personId": 7899
   },
   "29": {
     "name": "Lynn C. Schulman",
-    "party": "D"
+    "party": "D",
+    "personId": 7818
   },
   "30": {
     "name": "Phil Wong",
-    "party": "D"
+    "party": "D",
+    "personId": 7900
   },
   "31": {
     "name": "Selvena N. Brooks-Powers",
-    "party": "D"
+    "party": "D",
+    "personId": 7796
   },
   "32": {
     "name": "Joann Ariola",
-    "party": "R"
+    "party": "R",
+    "personId": 7819
   },
   "33": {
     "name": "Lincoln Restler",
-    "party": "D"
+    "party": "D",
+    "personId": 7820
   },
   "34": {
     "name": "Jennifer Gutiérrez",
-    "party": "D"
+    "party": "D",
+    "personId": 7821
   },
   "35": {
     "name": "Crystal Hudson",
-    "party": "D"
+    "party": "D",
+    "personId": 7822
   },
   "36": {
     "name": "Chi A. Ossé",
-    "party": "D"
+    "party": "D",
+    "personId": 7823
   },
   "37": {
     "name": "Sandy Nurse",
-    "party": "D"
+    "party": "D",
+    "personId": 7824
   },
   "38": {
     "name": "Alexa Avilés",
-    "party": "D"
+    "party": "D",
+    "personId": 7825
   },
   "39": {
     "name": "Shahana K. Hanif",
-    "party": "D"
+    "party": "D",
+    "personId": 7826
   },
   "40": {
     "name": "Rita C. Joseph",
-    "party": "D"
+    "party": "D",
+    "personId": 7827
   },
   "41": {
     "name": "Darlene Mealy",
-    "party": "D"
+    "party": "D",
+    "personId": 6272
   },
   "42": {
     "name": "Chris Banks",
-    "party": "D"
+    "party": "D",
+    "personId": 7864
   },
   "43": {
     "name": "Susan Zhuang",
-    "party": "D"
+    "party": "D",
+    "personId": 7867
   },
   "44": {
     "name": "Simcha Felder",
-    "party": "D"
+    "party": "D",
+    "personId": 5289
   },
   "45": {
     "name": "Farah N. Louis",
-    "party": "D"
+    "party": "D",
+    "personId": 7785
   },
   "46": {
     "name": "Mercedes Narcisse",
-    "party": "D"
+    "party": "D",
+    "personId": 7829
   },
   "47": {
     "name": "Kayla Santosuosso",
-    "party": "D"
+    "party": "D",
+    "personId": 7901
   },
   "48": {
     "name": "Inna Vernikov",
-    "party": "R"
+    "party": "R",
+    "personId": 7831
   },
   "49": {
     "name": "Kamillah Hanks",
-    "party": "D"
+    "party": "D",
+    "personId": 7832
   },
   "50": {
     "name": "David M. Carr",
-    "party": "R"
+    "party": "R",
+    "personId": 7833
   },
   "51": {
     "name": "Frank Morano",
-    "party": "R"
+    "party": "R",
+    "personId": 7887
   }
 }
