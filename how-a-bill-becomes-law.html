@@ -72,6 +72,34 @@
   .box { background: var(--panel); border-radius: 14px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(30,50,90,.09); font-size: 14px; }
   .box h3 { margin: 0 0 6px; font-size: 17px; }
 
+
+  /* Committees */
+  .committees { margin: 44px 0 0; }
+  .committees > h2 { text-align: center; margin: 0 0 4px; font-size: 26px; }
+  .committees > p.sub { text-align: center; color: var(--muted); margin: 0 auto 22px; max-width: 640px; font-size: 14px; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub svg { width: 100%; max-width: 560px; height: auto; }
+  .cat { margin: 0 0 26px; }
+  .cat h3 { margin: 0 0 10px; font-size: 15px; display: flex; align-items: center; gap: 8px; color: var(--c); }
+  .cat h3::after { content: ""; flex: 1; height: 3px; border-radius: 2px; background: var(--c); opacity: .25; }
+  .cgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .ctile { background: var(--panel); border-radius: 14px; padding: 12px 14px; box-shadow: 0 2px 8px rgba(30,50,90,.09); border-left: 6px solid var(--c); cursor: pointer; text-align: left; font: inherit; color: inherit; border-top: 0; border-right: 0; border-bottom: 0; transition: transform .15s, box-shadow .15s; }
+  .ctile:hover, .ctile:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30,50,90,.16); outline: none; }
+  .ctile .top { display: flex; gap: 10px; align-items: flex-start; }
+  .ctile .ic { font-size: 28px; line-height: 1; flex: none; }
+  .ctile .nm { font-weight: 700; font-size: 14px; line-height: 1.25; }
+  .ctile .ch { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .dots { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 9px; align-items: center; }
+  .dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--c); opacity: .55; }
+  .dots i.chair { background: var(--gold); opacity: 1; box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--gold); margin-right: 3px; }
+  .dots span { font-size: 11px; color: var(--muted); margin-left: 6px; }
+  .ctile .roster { display: none; margin: 10px 0 0; padding: 8px 0 0; border-top: 1px solid #e6eaf0; font-size: 12.5px; list-style: none; }
+  .ctile.open .roster { display: block; }
+  .roster li { padding: 1px 0; }
+  .roster li.chair { font-weight: 700; }
+  .roster .d { display: inline-block; min-width: 26px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .cnote { text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px; }
+
   .finish { text-align: center; margin-top: 36px; }
   .finish a.btn { display: inline-block; text-decoration: none; background: var(--accent); color: #fff; font-weight: 700; padding: 12px 24px; border-radius: 10px; }
   .finish a.btn:hover { background: #1f3a6e; }
@@ -312,6 +340,27 @@
     </div>
   </div>
 
+  <section class="committees" id="committees">
+    <h2>The committees</h2>
+    <p class="sub">Every bill starts its journey in one of these. The Speaker refers it to the committee that covers the topic. Tap a committee to see who sits on it.</p>
+    <div class="hub">
+      <svg viewBox="0 0 560 120" aria-hidden="true">
+        <g stroke="#b7c4da" stroke-width="3" stroke-dasharray="6 6" fill="none"><path d="M280 60H110M280 60H450M280 60L190 18M280 60L370 18M280 60L190 102M280 60L370 102"/></g>
+        <circle cx="280" cy="60" r="38" fill="#2a4d8f"/>
+        <text x="280" y="56" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">The</text>
+        <text x="280" y="72" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Speaker</text>
+        <g font-size="22" text-anchor="middle"><circle cx="90" cy="60" r="22" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="90" y="68">&#127970;</text>
+        <circle cx="470" cy="60" r="22" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="470" y="68">&#127973;</text>
+        <circle cx="170" cy="16" r="20" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="170" y="24">&#128214;</text>
+        <circle cx="390" cy="16" r="20" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="390" y="24">&#128658;</text>
+        <circle cx="170" cy="104" r="20" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="170" y="112">&#127795;</text>
+        <circle cx="390" cy="104" r="20" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="390" y="112">&#128188;</text></g>
+      </svg>
+    </div>
+    <div id="cat-list"><p class="cnote">Loading committees&hellip;</p></div>
+    <p class="cnote">Gold dot = Chair. Membership is as listed in Legistar and can change; some committees also have subcommittees or task forces.</p>
+  </section>
+
   <div class="finish"><a class="btn" href="./">See how your Council Member voted &rarr;</a></div>
 </main>
 
@@ -338,6 +387,56 @@
   }
   document.getElementById('thresh').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setThreshold(+b.dataset.n); });
   setThreshold(26);
+
+  // Committees (from data/profiles.json)
+  (function () {
+    const CATS = [
+      { t: 'Money & government', c: '#2a4d8f', re: /finance|rules|governmental|contracts|oversight|technology|civil service/i },
+      { t: 'Safety & justice', c: '#c9483f', re: /public safety|criminal|fire|hate|antisemitism|civil and human|immigration/i },
+      { t: 'Health & people', c: '#2c9a8a', re: /health|hospitals|mental|aging|senior|general welfare|disabilities|women|veterans|children/i },
+      { t: 'Housing & land', c: '#d9822b', re: /housing|land use|zoning|landmarks/i },
+      { t: 'Streets & environment', c: '#4da875', re: /transportation|sanitation|environmental|parks/i },
+      { t: 'Education, culture & economy', c: '#6a4fb3', re: /./ }
+    ];
+    const ICONS = [
+      [/finance/i, '\u{1F4B0}'], [/rules/i, '\u{1F4DC}'], [/governmental/i, '\u{1F3DB}\uFE0F'], [/contracts/i, '\u{1F4DD}'], [/oversight/i, '\u{1F50D}'], [/technology/i, '\u{1F4BB}'], [/civil service/i, '\u{1F477}'],
+      [/public safety/i, '\u{1F6E1}\uFE0F'], [/criminal/i, '\u2696\uFE0F'], [/fire/i, '\u{1F692}'], [/hate|antisemitism/i, '\u{1F54A}\uFE0F'], [/civil and human/i, '\u270A'], [/immigration/i, '\u{1F30D}'],
+      [/mental/i, '\u{1F9E0}'], [/hospitals/i, '\u{1F3E5}'], [/health/i, '\u2695\uFE0F'], [/senior|aging/i, '\u{1F9D3}'], [/welfare/i, '\u{1F91D}'], [/disabilit/i, '\u267F'], [/women/i, '\u{1F469}'], [/veterans/i, '\u{1F396}\uFE0F'], [/children/i, '\u{1F9D2}'],
+      [/public housing/i, '\u{1F3D8}\uFE0F'], [/housing/i, '\u{1F3E2}'], [/land use/i, '\u{1F5FA}\uFE0F'], [/zoning/i, '\u{1F3D7}\uFE0F'], [/landmarks/i, '\u{1F3DB}\uFE0F'],
+      [/transportation/i, '\u{1F687}'], [/sanitation/i, '\u{1F5D1}\uFE0F'], [/environmental/i, '\u{1F30A}'], [/parks/i, '\u{1F333}'],
+      [/early childhood|education/i, '\u{1F393}'], [/higher/i, '\u{1F3EB}'], [/cultural/i, '\u{1F3AD}'], [/consumer/i, '\u{1F6D2}'], [/small business/i, '\u{1F3EA}'], [/economic/i, '\u{1F4C8}'], [/workforce/i, '\u{1F6E0}\uFE0F']
+    ];
+    const clean = n => n.replace(/^Committee (on|to) /, '').replace(/^(Sub)committee on /i, '').replace(/^Subcommittee on /, '').replace('International Intergroup Relations', 'International Relations').replace('Food Insecurity', 'Food Security');
+    const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    fetch('data/profiles.json').then(r => r.json()).then(P => {
+      const by = {};
+      Object.entries(P).forEach(([d, m]) => (m.committees || []).forEach(c => {
+        const key = clean(c.name), isSub = /^Subcommittee/.test(c.name), isTF = /^Task Force/.test(c.name);
+        const e = by[key] || (by[key] = { name: key, kind: isTF ? 'Task force' : isSub ? 'Subcommittee' : 'Committee', full: c.name, m: {} });
+        e.m[d] = Object.assign({}, m, { chair: e.m[d] && e.m[d].chair || c.role === 'Chair' });
+      }));
+      const list = Object.values(by);
+      const host = document.getElementById('cat-list'); host.innerHTML = '';
+      CATS.forEach(cat => {
+        const mine = list.filter(e => !e.cat && cat.re.test(e.name) && (e.cat = cat.t)).sort((a, b) => a.name.localeCompare(b.name));
+        if (!mine.length) return;
+        const sec = document.createElement('div'); sec.className = 'cat'; sec.style.setProperty('--c', cat.c);
+        sec.innerHTML = '<h3>' + esc(cat.t) + '</h3><div class="cgrid"></div>';
+        const grid = sec.querySelector('.cgrid');
+        mine.forEach(e => {
+          const ms = Object.entries(e.m).sort((a, b) => (b[1].chair - a[1].chair) || (a[0] - b[0]));
+          const chair = ms.find(x => x[1].chair), ic = (ICONS.find(i => i[0].test(e.name)) || [0, '\u{1F4CB}'])[1];
+          const b = document.createElement('button'); b.className = 'ctile'; b.type = 'button';
+          b.innerHTML = '<div class="top"><span class="ic">' + ic + '</span><div><div class="nm">' + esc(e.name) + (e.kind !== 'Committee' ? ' <small style="font-weight:400;color:var(--muted)">(' + e.kind.toLowerCase() + ')</small>' : '') + '</div><div class="ch">' + (chair ? 'Chair: ' + esc(chair[1].name) + ' (D' + chair[0] + ')' : 'No chair listed') + '</div></div></div>' +
+            '<div class="dots">' + ms.map(x => '<i' + (x[1].chair ? ' class="chair"' : '') + '></i>').join('') + '<span>' + ms.length + ' members</span></div>' +
+            '<ul class="roster">' + ms.map(x => '<li' + (x[1].chair ? ' class="chair"' : '') + '><span class="d">' + x[0] + '</span>' + esc(x[1].name) + (x[1].party ? ' - ' + esc(x[1].party) : '') + (x[1].chair ? ' (Chair)' : '') + '</li>').join('') + '</ul>';
+          b.addEventListener('click', () => b.classList.toggle('open'));
+          grid.appendChild(b);
+        });
+        host.appendChild(sec);
+      });
+    }).catch(() => { document.getElementById('cat-list').innerHTML = '<p class="cnote">Committee data could not be loaded.</p>'; });
+  })();
 </script>
 </body>
 </html>
