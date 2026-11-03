@@ -1,4 +1,4 @@
-# NYC Council Vote Mapper
+# NY Vote Mapper
 
 **Live site:** https://nbustos.github.io/NYC-CVM/
 
