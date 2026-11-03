@@ -1,6 +1,6 @@
 # NY Vote Mapper
 
-**Live site:** https://nbustos.github.io/NYC-Vote-Mapper/
+**Live site:** https://nbustos.github.io/NY-Vote-Mapper/
 
 An interactive map of New York City's 51 City Council districts that shows how each Council Member voted on legislation approved by the Council. It covers only bills that passed at Stated Council Meetings.
 
