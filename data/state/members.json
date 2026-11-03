@@ -1,0 +1,312 @@
+{
+ "1": {
+  "name": "Anthony H. Palumbo",
+  "party": "R",
+  "personId": 1489
+ },
+ "2": {
+  "name": "Mario Mattera",
+  "party": "R",
+  "personId": 1492
+ },
+ "3": {
+  "name": "Dean Murray",
+  "party": "R",
+  "personId": 1521
+ },
+ "4": {
+  "name": "Monica Martinez",
+  "party": "D",
+  "personId": 1221
+ },
+ "5": {
+  "name": "Steve Rhoads",
+  "party": "R",
+  "personId": 1516
+ },
+ "6": {
+  "name": "Siela Bynoe",
+  "party": "D",
+  "personId": 1549
+ },
+ "7": {
+  "name": "Jack M. Martins",
+  "party": "R",
+  "personId": 397
+ },
+ "8": {
+  "name": "Alexis Weik",
+  "party": "R",
+  "personId": 1493
+ },
+ "9": {
+  "name": "Patricia Canzoneri-Fitzpatrick",
+  "party": "R",
+  "personId": 1517
+ },
+ "10": {
+  "name": "James Sanders Jr.",
+  "party": "D",
+  "personId": 432
+ },
+ "11": {
+  "name": "Toby Ann Stavisky",
+  "party": "D",
+  "personId": 400
+ },
+ "13": {
+  "name": "Jessica Ramos",
+  "party": "D",
+  "personId": 1226
+ },
+ "14": {
+  "name": "Leroy Comrie",
+  "party": "D",
+  "personId": 888
+ },
+ "15": {
+  "name": "Joseph P. Addabbo Jr.",
+  "party": "D",
+  "personId": 384
+ },
+ "16": {
+  "name": "John Liu",
+  "party": "D",
+  "personId": 1225
+ },
+ "17": {
+  "name": "Stephen T. Chan",
+  "party": "R",
+  "personId": 1550
+ },
+ "18": {
+  "name": "Julia Salazar",
+  "party": "D",
+  "personId": 1227
+ },
+ "19": {
+  "name": "Roxanne J. Persaud",
+  "party": "D",
+  "personId": 914
+ },
+ "20": {
+  "name": "Zellnor Myrie",
+  "party": "D",
+  "personId": 1228
+ },
+ "21": {
+  "name": "Kevin S. Parker",
+  "party": "D",
+  "personId": 416
+ },
+ "22": {
+  "name": "Sam Sutton",
+  "party": "D",
+  "personId": 1572
+ },
+ "23": {
+  "name": "Jessica Scarcella-Spanton",
+  "party": "D",
+  "personId": 1512
+ },
+ "24": {
+  "name": "Andrew J. Lanza",
+  "party": "R",
+  "personId": 409
+ },
+ "25": {
+  "name": "Jabari Brisport",
+  "party": "D",
+  "personId": 1494
+ },
+ "26": {
+  "name": "Andrew Gounardes",
+  "party": "D",
+  "personId": 1229
+ },
+ "27": {
+  "name": "Brian Kavanagh",
+  "party": "D",
+  "personId": 1140
+ },
+ "28": {
+  "name": "Liz Krueger",
+  "party": "D",
+  "personId": 401
+ },
+ "29": {
+  "name": "Jos\u00e9 M. Serrano",
+  "party": "D",
+  "personId": 373
+ },
+ "30": {
+  "name": "Cordell Cleare",
+  "party": "D",
+  "personId": 1504
+ },
+ "31": {
+  "name": "Robert Jackson",
+  "party": "D",
+  "personId": 1230
+ },
+ "32": {
+  "name": "Luis R. Sep\u00falveda",
+  "party": "D",
+  "personId": 1142
+ },
+ "33": {
+  "name": "Gustavo Rivera",
+  "party": "D",
+  "personId": 377
+ },
+ "34": {
+  "name": "Nathalia Fernandez",
+  "party": "D",
+  "personId": 1520
+ },
+ "35": {
+  "name": "Andrea Stewart-Cousins",
+  "party": "D",
+  "personId": 396
+ },
+ "36": {
+  "name": "Jamaal Bailey",
+  "party": "D",
+  "personId": 1102
+ },
+ "37": {
+  "name": "Shelley Mayer",
+  "party": "D",
+  "personId": 1143
+ },
+ "38": {
+  "name": "William Weber",
+  "party": "R",
+  "personId": 1518
+ },
+ "39": {
+  "name": "Robert Rolison",
+  "party": "R",
+  "personId": 1519
+ },
+ "40": {
+  "name": "Pete Harckham",
+  "party": "D",
+  "personId": 1233
+ },
+ "41": {
+  "name": "Michelle Hinchey",
+  "party": "D",
+  "personId": 1497
+ },
+ "42": {
+  "name": "James Skoufis",
+  "party": "D",
+  "personId": 1232
+ },
+ "43": {
+  "name": "Jake Ashby",
+  "party": "R",
+  "personId": 1522
+ },
+ "44": {
+  "name": "James Tedisco",
+  "party": "R",
+  "personId": 1103
+ },
+ "45": {
+  "name": "Dan Stec",
+  "party": "R",
+  "personId": 1490
+ },
+ "46": {
+  "name": "Patricia Fahy",
+  "party": "D",
+  "personId": 1571
+ },
+ "47": {
+  "name": "Erik Bottcher",
+  "party": "D",
+  "personId": 1574
+ },
+ "48": {
+  "name": "Rachel May",
+  "party": "D",
+  "personId": 1237
+ },
+ "49": {
+  "name": "Mark Walczyk",
+  "party": "R",
+  "personId": 1523
+ },
+ "50": {
+  "name": "Christopher Ryan",
+  "party": "D",
+  "personId": 1551
+ },
+ "51": {
+  "name": "Peter Oberacker",
+  "party": "R",
+  "personId": 1499
+ },
+ "52": {
+  "name": "Lea Webb",
+  "party": "D",
+  "personId": 1515
+ },
+ "53": {
+  "name": "Joseph A. Griffo",
+  "party": "R",
+  "personId": 393
+ },
+ "54": {
+  "name": "Pamela Helming",
+  "party": "R",
+  "personId": 951
+ },
+ "55": {
+  "name": "Samra Brouk",
+  "party": "D",
+  "personId": 1500
+ },
+ "56": {
+  "name": "Jeremy Cooney",
+  "party": "D",
+  "personId": 1501
+ },
+ "57": {
+  "name": "George Borrello",
+  "party": "R",
+  "personId": 1370
+ },
+ "58": {
+  "name": "Thomas F. O'Mara",
+  "party": "R",
+  "personId": 415
+ },
+ "59": {
+  "name": "Kristen Gonzalez",
+  "party": "D",
+  "personId": 1513
+ },
+ "60": {
+  "name": "Patrick M. Gallivan",
+  "party": "R",
+  "personId": 427
+ },
+ "61": {
+  "name": "Jeremy Zellner",
+  "party": "D",
+  "personId": 1575
+ },
+ "62": {
+  "name": "Robert Ortt",
+  "party": "R",
+  "personId": 885
+ },
+ "63": {
+  "name": "April Baskin",
+  "party": "D",
+  "personId": 1552
+ }
+}

@@ -1,0 +1,622 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NY State Senate Vote Mapper</title>
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<style>
+  :root {
+    --yes: #9bd8b0; --yes-edge: #4da875; --yes-ink: #17603a;
+    --no: #f3a9a9; --no-edge: #cf5c5c; --no-ink: #8c2626;
+    --other: #ead9a2; --other-edge: #bfa24e;
+    --idle: #e3e8ee; --idle-edge: #9aa6b4;
+    --ink: #1c2433; --muted: #5d6b7e; --panel: #fff; --bg: #f3f5f8; --accent: #2a4d8f;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); }
+  header { padding: 14px 24px 4px; display: flex; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  h1 { margin: 0; font-size: 22px; }
+  #status { color: var(--muted); font-size: 13px; }
+  select { font: inherit; padding: 2px 6px; }
+  .switch { display: inline-flex; border: 1px solid #c9d1dc; border-radius: 10px; overflow: hidden; background: #fff; }
+  .switch a { padding: 6px 14px; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--accent); }
+  .switch a.active { background: var(--accent); color: #fff; }
+  .switch a:not(.active):hover { background: #eef2f8; }
+  .howlink { margin-left: auto; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--accent); background: #fff; border: 1px solid #c9d1dc; border-radius: 8px; padding: 5px 12px; }
+  .howlink:hover { background: #eef2f8; }
+
+  /* Timeline */
+  #timeline-wrap { margin: 8px 24px 0; background: var(--panel); border-radius: 12px; padding: 10px 14px 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  #timeline-hint { font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  #timeline { width: 100%; height: 92px; display: block; touch-action: pan-y; user-select: none; -webkit-user-select: none; -webkit-touch-callout: none; }
+  .month-label { font-size: 11px; font-weight: 600; fill: var(--muted); }
+  .day-tick { stroke: #d5dbe3; stroke-width: 1; }
+  .vote-bar { fill: #5cb985; cursor: pointer; }
+  .vote-bar:hover { fill: #3a9e68; }
+  body.mode-vetoed .vote-bar { fill: #d9896b; }
+  body.mode-vetoed .vote-bar:hover { fill: #c26b4a; }
+  body.mode-vetoed .vote-bar.selected { fill: var(--accent); }
+  body.mode-vetoed #meeting-date { background: #9a4a38; }
+  .seg { display: inline-flex; border: 1px solid #c9d1dc; border-radius: 8px; overflow: hidden; background: #fff; }
+  .seg button { border: 0; background: transparent; padding: 6px 14px; font: inherit; font-size: 13px; cursor: pointer; color: var(--ink); }
+  .seg button.active { background: var(--accent); color: #fff; font-weight: 600; }
+  body.mode-vetoed #mode button.active { background: #9a4a38; }
+  #voteset { margin: 6px 0 2px; display: flex; flex-wrap: wrap; }
+  #voteset button { font-size: 12px; padding: 6px 10px; }
+  .status-line { margin: 4px 0; font-size: 12px; color: var(--muted); }
+  .vote-bar.selected { fill: var(--accent); }
+  .focus-label { font-size: 11px; font-weight: 600; fill: var(--ink); text-anchor: middle; pointer-events: none; }
+
+  #meeting { margin: 12px 24px 0; }
+  #meeting-nav { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  #meeting-nav button { border: 1px solid #c9d1dc; background: #fff; border-radius: 8px; min-width: 44px; height: 36px; font-size: 20px; line-height: 1; cursor: pointer; }
+  .hint-touch { display: none; }
+  @media (hover: none) { .hint-desktop { display: none; } .hint-touch { display: inline; } }
+  #meeting-date { display: inline-block; background: var(--accent); color: #fff; font-weight: 600; padding: 6px 14px; border-radius: 8px; font-size: 14px; }
+  #chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; max-height: 128px; overflow-y: auto; }
+  .chip { border: 1px solid #c9d1dc; background: #fff; border-radius: 8px; padding: 6px 12px; font-size: 13px; cursor: pointer; max-width: 440px; text-align: left; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-family: inherit; }
+  .chip b { font-family: ui-monospace, Menlo, monospace; margin-right: 6px; }
+  .chip.selected { background: #1f7a4a; color: #fff; border-color: #1f7a4a; }
+  #tally { margin-top: 10px; display: flex; gap: 8px; }
+  .pill { padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 14px; border: 1px solid; }
+  .pill.yes { background: #e6f6ec; color: var(--yes-ink); border-color: var(--yes-edge); }
+  .pill.no { background: #fdeaea; color: var(--no-ink); border-color: var(--no-edge); }
+  .pill.other { background: #faf4dc; color: #7a6420; border-color: var(--other-edge); }
+
+  /* Main layout */
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 16px; margin: 14px 24px 24px; }
+  @media (max-width: 960px) { main { grid-template-columns: 1fr; } }
+  #map-card { position: relative; background: #dfe7ef; border-radius: 12px; overflow: hidden; min-height: 560px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+  #map { width: 100%; height: 100%; min-height: 560px; display: block; }
+  .district { fill: var(--idle); stroke: #fff; stroke-width: .8; vector-effect: non-scaling-stroke; transition: fill .25s; cursor: pointer; }
+  .district.yes { fill: var(--yes); }
+  .district.no { fill: var(--no); }
+  .district.other { fill: var(--other); }
+  .district:hover, .district.hl { stroke: var(--ink); stroke-width: 2; }
+  .dlabel { font-size: 11px; font-weight: 700; fill: #3b4658; text-anchor: middle; pointer-events: none; paint-order: stroke; stroke: rgba(255,255,255,.7); stroke-width: 2.5px; }
+  #bill-card { position: absolute; top: 14px; left: 14px; width: 300px; background: rgba(255,255,255,.95); border-radius: 12px; padding: 12px 14px; box-shadow: 0 2px 8px rgba(0,0,0,.12); font-size: 13px; pointer-events: none; }
+  #bill-card .tag { font-size: 11px; font-weight: 700; letter-spacing: .04em; color: var(--yes-ink); text-transform: uppercase; }
+  #bill-card h3 { margin: 4px 0 6px; font-size: 15px; line-height: 1.25; }
+  #bill-bar { display: flex; height: 8px; border-radius: 4px; overflow: hidden; background: #e3e8ee; margin-top: 8px; }
+  #bill-bar i { display: block; height: 100%; }
+  #bill-counts { display: flex; justify-content: space-between; margin-top: 4px; font-weight: 700; font-size: 12px; }
+  #controls { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); background: rgba(255,255,255,.95); border-radius: 999px; padding: 6px 10px; display: flex; gap: 4px; align-items: center; box-shadow: 0 2px 8px rgba(0,0,0,.12); font-size: 13px; flex-wrap: wrap; justify-content: center; max-width: 94%; }
+  #controls button { border: 0; background: transparent; padding: 6px 12px; border-radius: 999px; cursor: pointer; font: inherit; }
+  #controls button.active { background: #dce7f7; color: var(--accent); font-weight: 600; }
+  #zoom { position: absolute; top: 14px; right: 14px; display: flex; flex-direction: column; background: #fff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.12); }
+  #zoom button { border: 0; background: transparent; width: 36px; height: 36px; font-size: 20px; cursor: pointer; }
+  #tooltip { position: fixed; pointer-events: none; background: #1c2433; color: #fff; padding: 6px 10px; border-radius: 6px; font-size: 12px; line-height: 1.35; opacity: 0; transition: opacity .1s; z-index: 10; max-width: 240px; }
+  #tooltip b { font-size: 13px; }
+
+  /* Inspector */
+  #inspector { background: var(--panel); border-radius: 12px; box-shadow: 0 1px 3px rgba(0,0,0,.08); display: flex; flex-direction: column; max-height: 720px; }
+  #inspector h2 { margin: 0; padding: 14px 16px 8px; font-size: 13px; letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+  #insp-summary { padding: 0 16px 8px; font-size: 13px; }
+  #insp-summary a { color: var(--accent); }
+  #search { margin: 4px 16px 8px; padding: 8px 10px; border: 1px solid #cdd5df; border-radius: 8px; font: inherit; }
+  #roster { overflow-y: auto; padding: 0 10px 10px; flex: 1; }
+  .row { display: flex; align-items: center; gap: 10px; padding: 8px 8px; border-radius: 8px; font-size: 13px; }
+  .row:hover, .row.hl { background: #eef2f8; }
+  .row .d { font-weight: 700; color: var(--accent); width: 82px; flex: none; }
+  .row .d small { display: block; font-weight: 400; color: var(--muted); font-size: 11px; }
+  .row .n { flex: 1; }
+  .badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 999px; border: 1px solid var(--idle-edge); color: var(--muted); }
+  .badge.yes { background: #e6f6ec; color: var(--yes-ink); border-color: var(--yes-edge); }
+  .badge.no { background: #fdeaea; color: var(--no-ink); border-color: var(--no-edge); }
+  .badge.other { background: #faf4dc; color: #7a6420; border-color: var(--other-edge); }
+  .empty { color: var(--muted); padding: 16px; font-size: 13px; }
+  .row { cursor: pointer; }
+  .row:focus-visible, .district:focus-visible { outline: 2px solid var(--accent); }
+
+  /* Member profile card */
+  #profile { position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; }
+  #profile[hidden] { display: none; }
+  #pf-backdrop { position: absolute; inset: 0; background: rgba(20, 28, 44, .45); }
+  #pf-card { position: relative; width: min(440px, 94vw); max-height: 88vh; overflow-y: auto; background: #fff; border-radius: 16px; box-shadow: 0 12px 40px rgba(0,0,0,.28); padding: 20px 20px 16px; }
+  #pf-close { position: absolute; top: 8px; right: 8px; width: 40px; height: 40px; border: 0; background: transparent; font-size: 26px; line-height: 1; cursor: pointer; color: var(--muted); border-radius: 50%; }
+  #pf-close:hover { background: #eef2f8; }
+  .pf-head { display: flex; gap: 16px; align-items: center; padding-right: 28px; }
+  .pf-photo { width: 104px; height: 104px; border-radius: 14px; object-fit: cover; object-position: top; background: #dfe7ef; flex: none; }
+  .pf-initials { width: 104px; height: 104px; border-radius: 14px; background: #dce7f7; color: var(--accent); font-size: 34px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex: none; }
+  .pf-head h2 { margin: 0 0 2px; font-size: 20px; line-height: 1.2; }
+  .pf-sub { color: var(--muted); font-size: 13px; }
+  .pf-role { display: inline-block; margin-top: 6px; background: #fff4d6; color: #7a5a00; border: 1px solid #e3c870; border-radius: 999px; padding: 2px 10px; font-size: 12px; font-weight: 600; margin-right: 4px; }
+  .pf-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 16px 0 6px; }
+  .pf-facts div { background: var(--bg); border-radius: 10px; padding: 8px 10px; }
+  .pf-facts small { display: block; color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .04em; }
+  .pf-facts b { font-size: 15px; }
+  .pf-vote { margin: 10px 0 0; font-size: 13px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  #pf-card h3 { margin: 16px 0 6px; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+  .pf-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .pf-chips span { background: #eef2f8; border-radius: 999px; padding: 4px 10px; font-size: 12px; }
+  #pf-card ul { margin: 0; padding: 0; list-style: none; font-size: 13px; }
+  #pf-card li { padding: 5px 0; border-bottom: 1px solid #eef1f5; display: flex; justify-content: space-between; gap: 10px; }
+  #pf-card li em { font-style: normal; font-size: 11px; font-weight: 700; color: #7a5a00; background: #fff4d6; border-radius: 999px; padding: 1px 8px; white-space: nowrap; align-self: center; }
+  .pf-none { color: var(--muted); font-size: 13px; }
+  .pf-foot { margin-top: 14px; font-size: 11px; color: var(--muted); line-height: 1.5; }
+  .pf-foot a { color: var(--accent); }
+
+  /* Mobile */
+  @media (max-width: 700px) {
+    header { padding: 12px 12px 2px; gap: 8px 12px; }
+    h1 { font-size: 18px; }
+    select { font-size: 16px; padding: 4px 8px; }
+    .seg button { min-height: 40px; }
+    #voteset button { min-height: 40px; }
+    #timeline-wrap { margin: 8px 8px 0; padding: 8px 10px 6px; }
+    #timeline { height: 104px; }
+    #meeting { margin: 10px 8px 0; }
+    #meeting-date { font-size: 13px; padding: 8px 12px; }
+    #meeting-nav button { height: 40px; min-width: 48px; }
+    #chips { max-height: 160px; }
+    .chip { max-width: 100%; min-height: 44px; padding: 8px 12px; }
+    .pill { font-size: 13px; }
+    main { margin: 10px 8px 16px; gap: 10px; }
+    #map-card { min-height: 0; display: flex; flex-direction: column; }
+    #map { min-height: 0; height: 112vw; max-height: 560px; }
+    #bill-card { position: static; width: auto; margin: 10px 10px 0; pointer-events: auto; order: -1; }
+    #controls { position: static; transform: none; order: 2; border-radius: 0; box-shadow: none; max-width: none; justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 6px 8px; }
+    #controls button { flex: none; min-height: 44px; white-space: nowrap; }
+    #zoom { top: auto; bottom: 62px; right: 10px; }
+    #zoom button { width: 44px; height: 44px; }
+    #inspector { max-height: 70vh; }
+    #search { font-size: 16px; padding: 10px; }
+    .row { padding: 10px 6px; font-size: 14px; }
+    .row .d { width: 76px; }
+    #tooltip { max-width: 200px; }
+    #profile { align-items: flex-end; }
+    #pf-card { width: 100%; max-height: 86vh; border-radius: 18px 18px 0 0; padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+    .pf-photo, .pf-initials { width: 84px; height: 84px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="switch" aria-label="Legislative body"><a href="./">NYC Council</a><a href="state.html" class="active" aria-current="page">NY State Legislature</a></nav>
+  <h1>NY State Senate Vote Mapper</h1>
+  <span id="status">Loading votes…</span>
+  <div class="seg" id="mode" role="group" aria-label="Bills shown"><button data-mode="approved" class="active">Approved</button><button data-mode="vetoed">Vetoed</button></div>
+  <label style="font-size:13px">Year <select id="year"></select></label>
+  <a href="how-a-bill-becomes-law.html" class="howlink">How a bill becomes law (NYC) &rarr;</a>
+</header>
+
+<div id="timeline-wrap">
+  <div id="timeline-hint"><span id="timeline-count"></span><span><span class="hint-desktop">Move cursor over the timeline to magnify dates · click a highlighted bar to load its votes</span><span class="hint-touch">Touch and drag along the timeline to magnify · lift your finger to pick a day · or use ‹ ›</span></span></div>
+  <svg id="timeline"></svg>
+</div>
+
+<div id="meeting">
+  <div id="meeting-nav"><button id="prev" aria-label="Previous meeting day">‹</button><button id="next" aria-label="Next meeting day">›</button><span id="meeting-date" hidden></span></div>
+  <div id="chips"></div>
+  <div id="tally"></div>
+</div>
+
+<main>
+  <div id="map-card">
+    <svg id="map" viewBox="0 0 800 700" preserveAspectRatio="xMidYMid meet"></svg>
+    <div id="bill-card" hidden></div>
+    <div id="zoom"><button id="zin" title="Zoom in">+</button><button id="zout" title="Zoom out">−</button></div>
+    <div id="controls"><span style="color:#5d6b7e;padding:0 6px">View:</span></div>
+  </div>
+  <aside id="inspector">
+    <h2>Legislative roll-call inspector</h2>
+    <div id="insp-summary"><span class="empty" style="padding:0">Select a session day and bill to see how each district voted.</span></div>
+    <input id="search" placeholder="Search district #, senator, or region…">
+    <div id="roster"></div>
+  </aside>
+</main>
+<div id="tooltip"></div>
+<div id="profile" hidden role="dialog" aria-modal="true" aria-labelledby="pf-name">
+  <div id="pf-backdrop"></div>
+  <div id="pf-card"><button id="pf-close" aria-label="Close">×</button><div id="pf-body"></div></div>
+</div>
+
+<script>
+  const APPROVED_BILLS = [];   // filled from data/votes.json (see loadLiveLegistarVotes)
+  const VETOED_BILLS = [];     // filled from data/vetoed.json
+  const BILLS_BY_DATE = {};    // index of the bills for the active mode (approved or vetoed)
+  let MEMBERS = {};            // district -> {name, party} (data/members.json)
+  let PROFILES = {};           // district -> profile (data/profiles.json)
+  let GEO = null;              // district boundaries (data/districts.geojson)
+
+  let REGION_OF = {};          // district -> {region, label} (data/state/regions.json)
+  const REGIONS = {};          // region name -> [districts], built after load
+  const memberLabel = d => MEMBERS[d] ? `${MEMBERS[d].name} - ${MEMBERS[d].party}` : "";
+  const boroughOf = d => REGION_OF[d]?.label || "";
+  const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const $ = id => document.getElementById(id);
+  const MONTHS = ["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"];
+
+  const state = { year: null, date: null, bill: null, mode: "approved", override: false };
+  const isVeto = () => state.mode === "vetoed";
+  const modeLabel = () => isVeto() ? "vetoed" : "approved";
+  // Votes shown for a bill: the Council vote (before any veto) or, if present and chosen, the override vote
+  const votesOf = b => (state.override && b.overrideVotes) ? b.overrideVotes : b.votes;
+
+  /* ------------------------------ Timeline ------------------------------ */
+  const tl = d3.select("#timeline");
+  const FISHEYE_K = 9;
+  let tlW = 0, tlFocus = null;
+
+  const dayOfYear = (iso) => {
+    const [y, m, d] = iso.split("-").map(Number);
+    return Math.round((Date.UTC(y, m - 1, d) - Date.UTC(y, 0, 1)) / 864e5);
+  };
+  const daysIn = y => (y % 4 === 0 && (y % 100 !== 0 || y % 400 === 0)) ? 366 : 365;
+  const fmtDate = iso => new Date(iso + "T12:00:00").toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" });
+
+  // 1-D fisheye (Sarkar & Brown): ends stay fixed, area near the cursor expands
+  function fisheye(x) {
+    if (tlFocus == null) return x;
+    const left = x < tlFocus, range = left ? tlFocus : tlW - tlFocus;
+    if (range <= 0) return x;
+    const dn = Math.abs(x - tlFocus) / range;
+    const dp = (FISHEYE_K + 1) * dn / (FISHEYE_K * dn + 1);
+    return tlFocus + (left ? -1 : 1) * dp * range;
+  }
+
+  function drawTimeline() {
+    const el = $("timeline");
+    tlW = el.clientWidth;
+    tl.selectAll("*").remove();
+    const y = state.year, n = daysIn(y);
+    const monthStarts = MONTHS.map((_, m) => dayOfYear(`${y}-${String(m + 1).padStart(2, "0")}-01`));
+    tl.append("g").attr("class", "ticks").selectAll("line").data(d3.range(n)).join("line")
+      .attr("class", "day-tick").attr("y1", d => monthStarts.includes(d) ? 22 : 62).attr("y2", 74);
+    tl.append("g").attr("class", "months").selectAll("text").data(monthStarts).join("text")
+      .attr("class", "month-label").attr("y", 16).text((_, i) => MONTHS[i]);
+    const voteDays = Object.keys(BILLS_BY_DATE).filter(d => d.startsWith(y + "-")).sort();
+    tl.append("g").attr("class", "bars").selectAll("rect").data(voteDays).join("rect")
+      .attr("class", "vote-bar").attr("y", 30).attr("height", 44).attr("rx", 3)
+      .classed("selected", d => d === state.date);
+    tl.append("g").attr("class", "focus");
+    $("timeline-count").textContent = `${voteDays.length} ${isVeto() ? "veto days" : "session days"} · ${voteDays.reduce((s, d) => s + BILLS_BY_DATE[d].length, 0)} ${modeLabel()} bills in ${y}`;
+    layoutTimeline();
+  }
+
+  function layoutTimeline() {
+    const n = daysIn(state.year), dayW = tlW / n;
+    const X = d => fisheye(d * dayW), Xc = d => fisheye((d + .5) * dayW);
+    tl.selectAll(".day-tick").attr("x1", d => Xc(d)).attr("x2", d => Xc(d));
+    tl.selectAll(".month-label").attr("x", d => X(d) + 3);
+    tl.selectAll(".vote-bar")
+      .attr("x", d => X(dayOfYear(d)) + 0.5)
+      .attr("width", d => { const i = dayOfYear(d); return Math.max(5, X(i + 1) - X(i) - 1); });
+    const near = tlFocus == null ? [] : tl.selectAll(".vote-bar").data().filter(d => Math.abs(Xc(dayOfYear(d)) - tlFocus) < 70);
+    tl.select(".focus").selectAll("text").data(near).join("text").attr("class", "focus-label").attr("y", 88)
+      .attr("x", d => Xc(dayOfYear(d))).text(d => { const [, m, dd] = d.split("-"); return `${MONTHS[+m - 1]} ${+dd}`; });
+  }
+
+  // Unified mouse/touch handling. Touch: press and drag to magnify, lift to select the nearest bar.
+  const tlEl = $("timeline");
+  const tlX = e => e.clientX - tlEl.getBoundingClientRect().left;
+  const reach = e => e.pointerType === "mouse" ? 8 : 24;
+  let pressed = false;
+
+  function nearestBar(x, maxPx) {
+    const dayW = tlW / daysIn(state.year);
+    let best = null, bd = maxPx;
+    tl.selectAll(".vote-bar").each(d => {
+      const dist = Math.abs(fisheye((dayOfYear(d) + .5) * dayW) - x);
+      if (dist <= bd) { bd = dist; best = d; }
+    });
+    return best;
+  }
+  function tlHover(e) {
+    const d = nearestBar(tlX(e), reach(e));
+    if (!d) return hideTip();
+    const html = `<b>${fmtDate(d)}</b><br>${BILLS_BY_DATE[d].length} ${modeLabel()} bills`;
+    showTip(e.pointerType === "mouse" ? e : { clientX: e.clientX - 60, clientY: e.clientY - 90 }, html);
+  }
+  tlEl.addEventListener("pointerdown", e => { pressed = true; tlFocus = tlX(e); layoutTimeline(); tlHover(e); });
+  tlEl.addEventListener("pointermove", e => {
+    if (e.pointerType !== "mouse" && !pressed) return;
+    tlFocus = tlX(e); layoutTimeline(); tlHover(e);
+  });
+  tlEl.addEventListener("pointerup", e => {
+    pressed = false;
+    const d = nearestBar(tlX(e), reach(e));
+    hideTip();
+    if (e.pointerType !== "mouse") tlFocus = null;
+    if (d) selectDate(d);
+    layoutTimeline();
+  });
+  tlEl.addEventListener("pointerleave", e => { if (e.pointerType === "mouse") { tlFocus = null; layoutTimeline(); hideTip(); } });
+  tlEl.addEventListener("pointercancel", () => { pressed = false; tlFocus = null; layoutTimeline(); hideTip(); });
+  window.addEventListener("resize", () => { if (state.year) drawTimeline(); });
+
+  /* -------------------------------- Map --------------------------------- */
+  const svg = d3.select("#map");
+  let gMap, pathGen, projection, zoomBehavior, districtSel;
+
+  function drawMap() {
+    projection = d3.geoMercator().fitExtent([[20, 20], [780, 680]], GEO);
+    pathGen = d3.geoPath(projection);
+    svg.selectAll("*").remove();
+    gMap = svg.append("g");
+    districtSel = gMap.selectAll("path").data(GEO.features).join("path")
+      .attr("class", "district")
+      .attr("d", pathGen)
+      .on("mousemove", (ev, f) => showTip(ev, tipFor(f.properties.district)))
+      .on("mouseleave", () => { hideTip(); highlightRow(null); })
+      .on("mouseenter", (_, f) => highlightRow(f.properties.district))
+      .on("click", (_, f) => { hideTip(); openProfile(f.properties.district); });
+    gMap.selectAll("text").data(GEO.features).join("text").attr("class", "dlabel")
+      .attr("transform", f => `translate(${pathGen.centroid(f)})`).attr("dy", "0.35em").text(f => f.properties.district);
+    zoomBehavior = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
+      gMap.attr("transform", e.transform);
+      gMap.selectAll(".dlabel").style("font-size", (11 / Math.sqrt(e.transform.k)) + "px");
+    });
+    svg.call(zoomBehavior).style("touch-action", "pan-y");  // vertical swipe scrolls the page; pinch/drag-sideways handled by d3
+    paintMap();
+  }
+
+  function zoomTo(districts) {
+    if (!districts) return svg.transition().duration(600).call(zoomBehavior.transform, d3.zoomIdentity);
+    const feats = GEO.features.filter(f => districts.includes(f.properties.district));
+    const [[x0, y0], [x1, y1]] = pathGen.bounds({ type: "FeatureCollection", features: feats });
+    const k = Math.min(14, 0.9 / Math.max((x1 - x0) / 800, (y1 - y0) / 700));
+    const t = d3.zoomIdentity.translate(400 - k * (x0 + x1) / 2, 350 - k * (y0 + y1) / 2).scale(k);
+    svg.transition().duration(600).call(zoomBehavior.transform, t);
+  }
+
+  const voteOf = d => state.bill ? (votesOf(state.bill)[String(d)] ?? null) : null;
+  const voteClass = v => v === "yes" ? "yes" : v === "no" ? "no" : v ? "other" : "";
+
+  function paintMap() {
+    if (districtSel) districtSel.attr("class", f => "district " + voteClass(voteOf(f.properties.district)));
+  }
+
+  function tipFor(d) {
+    const v = voteOf(d);
+    const label = v === "yes" ? "Voted YES" : v === "no" ? "Voted NO" : v ? "Excused / abstained" : "";
+    return `<b>${esc(memberLabel(d) || "Senator")}</b><br>District ${d} · ${boroughOf(d)}${label ? `<br>${label}` : ""}`;
+  }
+
+  const tip = $("tooltip");
+  function showTip(ev, html) {
+    tip.innerHTML = html; tip.style.opacity = 1;
+    tip.style.left = Math.max(4, Math.min(ev.clientX + 14, innerWidth - 210)) + "px"; tip.style.top = Math.max(4, ev.clientY + 14) + "px";
+  }
+  function hideTip() { tip.style.opacity = 0; }
+
+  document.addEventListener("pointerdown", e => { if (!e.target.closest(".district, #timeline")) hideTip(); });
+
+  $("zin").onclick = () => svg.transition().duration(250).call(zoomBehavior.scaleBy, 1.6);
+  $("zout").onclick = () => svg.transition().duration(250).call(zoomBehavior.scaleBy, 1 / 1.6);
+
+  function buildRegions() {
+    Object.keys(REGIONS).forEach(k => delete REGIONS[k]);
+    const order = ["New York City", "Long Island", "Hudson Valley & Capital", "Central New York", "Western New York"];
+    order.forEach(r => { REGIONS[r] = Object.keys(REGION_OF).filter(d => REGION_OF[d].region === r).map(Number); });
+  }
+  const controls = $("controls");
+  buildRegions();
+  [["All NY", null], ...Object.entries(REGIONS)].forEach(([label, ds], i) => {
+    const b = document.createElement("button");
+    b.textContent = label; if (i === 0) b.classList.add("active");
+    b.onclick = () => { controls.querySelectorAll("button").forEach(x => x.classList.remove("active")); b.classList.add("active"); zoomTo(ds); };
+    controls.appendChild(b);
+  });
+
+  /* ------------------------ Selection & inspector ----------------------- */
+  function selectDate(date) {
+    state.date = date;
+    const bills = BILLS_BY_DATE[date] || [];
+    $("meeting-date").hidden = false;
+    $("meeting-date").textContent = (isVeto() ? "Vetoed by Governor: " : "Senate session: ") + fmtDate(date);
+    $("chips").innerHTML = bills.map((b, i) =>
+      `<button class="chip" data-i="${i}" title="${esc(b.title)}"><b>${esc(b.id)}</b>${esc(b.title)}${b.status === "Overridden" ? " · overridden" : ""}</button>`).join("");
+    $("chips").querySelectorAll(".chip").forEach(c => c.onclick = () => selectBill(bills[+c.dataset.i]));
+    tl.selectAll(".vote-bar").classed("selected", d => d === date);
+    selectBill(bills[0]);
+  }
+
+  function goToDate(date) {
+    const y = +date.slice(0, 4);
+    if (y !== state.year) { state.year = y; $("year").value = y; drawTimeline(); }
+    selectDate(date);
+  }
+  function stepMeeting(dir) {
+    const dates = Object.keys(BILLS_BY_DATE).sort();
+    if (!dates.length) return;
+    const i = state.date ? dates.indexOf(state.date) : (dir > 0 ? -1 : dates.length);
+    const j = Math.min(dates.length - 1, Math.max(0, i + dir));
+    goToDate(dates[j]);
+  }
+  $("prev").onclick = () => stepMeeting(-1);
+  $("next").onclick = () => stepMeeting(1);
+
+  function selectBill(b) {
+    state.bill = b || null;
+    state.override = false;
+    document.querySelectorAll(".chip").forEach(c => c.classList.toggle("selected", !!b && c.querySelector("b").textContent === b.id));
+    paintMap(); renderTally(); renderCard(); renderRoster();
+  }
+
+  const counts = b => {
+    const c = { yes: 0, no: 0, other: 0 };
+    Object.values(votesOf(b)).forEach(v => c[v === "yes" ? "yes" : v === "no" ? "no" : "other"]++);
+    return c;
+  };
+
+  function renderTally() {
+    const b = state.bill; if (!b) { $("tally").innerHTML = ""; return; }
+    const c = counts(b);
+    $("tally").innerHTML = `<span class="pill yes">${c.yes} YES</span><span class="pill no">${c.no} NO</span>` +
+      (c.other ? `<span class="pill other">${c.other} EXCUSED/ABSTAIN</span>` : "");
+  }
+
+  function renderCard() {
+    const b = state.bill, el = $("bill-card");
+    if (!b) { el.hidden = true; return; }
+    const c = counts(b), tot = c.yes + c.no + c.other;
+    el.hidden = false;
+    el.innerHTML = `<div class="tag">${isVeto() ? (state.override ? "Override vote · " + fmtDate(b.overrideDate) : "Senate vote before veto · " + fmtDate(b.date)) : "Vote visualization · " + fmtDate(b.date)}</div>
+      <h3>${esc(b.id)}: ${esc(b.title)}</h3>
+      <div id="bill-bar"><i style="width:${c.yes / tot * 100}%;background:#5cb985"></i><i style="width:${c.other / tot * 100}%;background:#e0b94a"></i><i style="width:${c.no / tot * 100}%;background:#d96b6b"></i></div>
+      <div id="bill-counts"><span style="color:var(--yes-ink)">YES: ${c.yes}</span><span style="color:#7a6420">${c.other ? c.other + " excused/abstain" : ""}</span><span style="color:var(--no-ink)">NO: ${c.no}</span></div>`;
+  }
+
+  function renderRoster() {
+    const b = state.bill, q = $("search").value.trim().toLowerCase();
+    const sum = $("insp-summary");
+    if (!b) sum.innerHTML = `<span class="empty" style="padding:0">Select a session day and bill to see how each district voted.</span>`;
+    else {
+      const veto = isVeto() ? `<div class="status-line">Vetoed by the Governor ${fmtDate(b.date)}${b.status === "Overridden" ? ` · veto overridden by the Council ${fmtDate(b.overrideDate || b.date)}` : " · veto not overridden"}</div>` : "";
+      const sw = (isVeto() && b.overrideVotes) ? `<div class="seg" id="voteset"><button data-o="0" class="${state.override ? "" : "active"}">Senate vote before veto</button><button data-o="1" class="${state.override ? "active" : ""}">Override vote</button></div>` : "";
+      sum.innerHTML = `<b>${esc(b.id)}</b> · ${fmtDate(b.date)}<br>${esc(b.summary || b.title)}${veto}${sw}<a href="${esc(b.legistarUrl)}" target="_blank" rel="noopener">View on NY Senate ↗</a>`;
+      sum.querySelectorAll("#voteset button").forEach(btn => btn.onclick = () => {
+        state.override = btn.dataset.o === "1"; paintMap(); renderTally(); renderCard(); renderRoster();
+      });
+    }
+    const rows = d3.range(1, 64).filter(d => {
+      const hay = `district ${d} ${MEMBERS[d]?.name || ""} ${boroughOf(d)}`.toLowerCase();
+      return !q || hay.includes(q) || String(d) === q;
+    }).map(d => {
+      const v = voteOf(d);
+      const badge = v ? `<span class="badge ${voteClass(v)}">${v === "yes" ? "YES" : v === "no" ? "NO" : "EXCUSED"}</span>` : "";
+      return `<div class="row" data-d="${d}" tabindex="0" role="button" aria-label="Show profile for District ${d}"><div class="d">District ${d}<small>${boroughOf(d)}</small></div><div class="n">${esc(memberLabel(d) || "—")}</div>${badge}</div>`;
+    });
+    $("roster").innerHTML = rows.join("") || `<div class="empty">No matches.</div>`;
+    $("roster").querySelectorAll(".row").forEach(r => {
+      r.onmouseenter = () => { const d = +r.dataset.d; if (districtSel) districtSel.classed("hl", f => f.properties.district === d); };
+      r.onmouseleave = () => { if (districtSel) districtSel.classed("hl", false); };
+      r.onclick = () => openProfile(+r.dataset.d);
+      r.onkeydown = e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); openProfile(+r.dataset.d); } };
+    });
+  }
+  $("search").addEventListener("input", renderRoster);
+
+  function highlightRow(d) {
+    document.querySelectorAll("#roster .row").forEach(r => r.classList.toggle("hl", d != null && +r.dataset.d === d));
+    const r = d != null && document.querySelector(`#roster .row[data-d="${d}"]`);
+    if (r) r.scrollIntoView({ block: "nearest" });
+  }
+
+  /* ----------------------------- Member profile ------------------------- */
+  const PARTY_NAMES = { D: "Democrat", R: "Republican", I: "Independent" };
+  function ageText(birth) {
+    if (!birth) return "Not available";
+    const [y, m, d] = birth.date.split("-").map(Number), now = new Date();
+    if (birth.precision < 11) return "~" + (now.getFullYear() - y);   // only the year is known
+    let age = now.getFullYear() - y;
+    if (now.getMonth() + 1 < m || (now.getMonth() + 1 === m && now.getDate() < d)) age--;
+    return String(age);
+  }
+  function openProfile(d) {
+    const p = PROFILES[d] || {}, mem = MEMBERS[d] || {};
+    const name = p.name || mem.name || "Senator", party = p.party || mem.party || "";
+    const initials = name.replace(/[^A-Za-z\u00C0-\u024F ]/g, "").split(" ").filter(Boolean);
+    const ini = ((initials[0] || "")[0] || "") + ((initials[initials.length - 1] || "")[0] || "");
+    const photo = p.photo
+      ? `<img class="pf-photo" src="${esc(p.photo)}" alt="Photo of ${esc(name)}" referrerpolicy="no-referrer" onerror="this.outerHTML='<div class=&quot;pf-initials&quot;>${esc(ini)}</div>'">`
+      : `<div class="pf-initials">${esc(ini)}</div>`;
+    const v = state.bill ? voteOf(d) : null;
+    const vote = state.bill && v ? `<div class="pf-vote"><span class="badge ${voteClass(v)}">${v === "yes" ? "YES" : v === "no" ? "NO" : "EXCUSED"}</span> on ${esc(state.bill.id)}</div>` : "";
+    const chips = a => a && a.length ? `<div class="pf-chips">${a.map(x => `<span>${esc(x)}</span>`).join("")}</div>` : `<div class="pf-none">None listed</div>`;
+    const committees = p.committees && p.committees.length
+      ? `<ul>${p.committees.map(c => `<li><span>${esc(c.name)}</span>${c.role ? `<em>${esc(c.role)}</em>` : ""}</li>`).join("")}</ul>`
+      : `<div class="pf-none">None listed</div>`;
+    const credit = [];
+    if (p.photoPage) credit.push(`Photo: <a href="${esc(p.photoPage)}" target="_blank" rel="noopener">Wikimedia Commons</a>`);
+    if (p.birth) credit.push("Birth date: Wikidata");
+    credit.push(`Committees and first session served: <a href="https://legislation.nysenate.gov/" target="_blank" rel="noopener">NY Senate Open Legislation</a>`);
+    $("pf-body").innerHTML = `
+      <div class="pf-head">${photo}<div>
+        <h2 id="pf-name">${esc(name)}${party ? " - " + esc(party) : ""}</h2>
+        <div class="pf-sub">Senate District ${d} · ${esc(boroughOf(d))}</div>
+        ${(p.roles || []).map(r => `<span class="pf-role">${esc(r.replace(/^The /, ""))}</span>`).join("")}
+      </div></div>
+      <div class="pf-facts">
+        <div><small>Age</small><b>${ageText(p.birth)}</b></div>
+        <div><small>Took office</small><b>${p.tookOffice || "Not available"}</b></div>
+        <div><small>Party</small><b>${esc(PARTY_NAMES[party] || party || "—")}</b></div>
+      </div>${vote}
+      <h3>Caucuses</h3>${chips(p.caucuses)}
+      <h3>Committees</h3>${committees}
+      <div class="pf-foot">${credit.join(" · ")}. Party is from Wikipedia’s current-members table; “Not available” means these sources have no entry.</div>`;
+    $("profile").hidden = false;
+    document.body.style.overflow = "hidden";
+    $("pf-card").scrollTop = 0;
+    $("pf-close").focus();
+  }
+  function closeProfile() { $("profile").hidden = true; document.body.style.overflow = ""; }
+  $("pf-close").onclick = closeProfile;
+  $("pf-backdrop").onclick = closeProfile;
+  document.addEventListener("keydown", e => { if (e.key === "Escape" && !$("profile").hidden) closeProfile(); });
+
+  /* ------------------------------ Bootstrap ----------------------------- */
+  function initYears() {
+    const list = isVeto() ? VETOED_BILLS : APPROVED_BILLS;
+    const years = [...new Set(list.map(b => +b.date.slice(0, 4)))].sort();
+    if (!years.length) years.push(new Date().getFullYear());
+    $("year").innerHTML = years.map(y => `<option>${y}</option>`).join("");
+    state.year = years[years.length - 1];
+    $("year").value = state.year;
+    $("year").onchange = e => { state.year = +e.target.value; state.date = null; selectBill(null); drawTimeline(); };
+  }
+
+  function setMode(mode) {
+    state.mode = mode; state.date = null;
+    const list = isVeto() ? VETOED_BILLS : APPROVED_BILLS;
+    Object.keys(BILLS_BY_DATE).forEach(k => delete BILLS_BY_DATE[k]);
+    list.forEach(b => (BILLS_BY_DATE[b.date] = BILLS_BY_DATE[b.date] || []).push(b));
+    document.body.classList.toggle("mode-vetoed", isVeto());
+    document.querySelectorAll("#mode button").forEach(btn => btn.classList.toggle("active", btn.dataset.mode === mode));
+    $("meeting-date").hidden = true; $("chips").innerHTML = "";
+    $("status").textContent = list.length
+      ? `${list.length} ${modeLabel()} bills across ${Object.keys(BILLS_BY_DATE).length} ${isVeto() ? "veto days" : "meeting days"}`
+      : `No ${modeLabel()} bills loaded yet.`;
+    initYears();
+    selectBill(null);
+    drawTimeline();
+  }
+
+  function initApp() {
+    document.querySelectorAll("#mode button").forEach(btn => btn.onclick = () => setMode(btn.dataset.mode));
+    setMode(state.mode);
+    if (GEO) drawMap();
+    renderRoster();
+  }
+
+  async function loadLiveLegistarVotes() {
+    try {
+      const [res, mem, geo, vet, pro, reg] = await Promise.all([
+        fetch('./data/state/votes.json', { cache: 'no-store' }),
+        fetch('./data/state/members.json', { cache: 'no-store' }),
+        fetch('./data/state/districts.geojson'),
+        fetch('./data/state/vetoed.json', { cache: 'no-store' }),
+        fetch('./data/state/profiles.json', { cache: 'no-store' }),
+        fetch('./data/state/regions.json')
+      ]);
+      if (mem.ok) MEMBERS = await mem.json();
+      if (geo.ok) GEO = await geo.json();
+      if (pro.ok) PROFILES = await pro.json();
+      if (reg.ok) REGION_OF = await reg.json();
+      if (vet.ok) { const v = await vet.json(); if (Array.isArray(v)) VETOED_BILLS.push(...v); }
+      if (res.ok) {
+        const liveBills = await res.json();
+        if (Array.isArray(liveBills) && liveBills.length > 0) {
+          APPROVED_BILLS.length = 0;
+          APPROVED_BILLS.push(...liveBills);
+          // Rebuild the date index map
+          Object.keys(BILLS_BY_DATE).forEach(k => delete BILLS_BY_DATE[k]);
+          APPROVED_BILLS.forEach(b => {
+            if (!BILLS_BY_DATE[b.date]) BILLS_BY_DATE[b.date] = [];
+            BILLS_BY_DATE[b.date].push(b);
+          });
+        }
+      }
+    } catch (err) {
+      console.warn('Using built-in dataset (data files not found yet):', err);
+    }
+    initApp();
+  }
+
+  loadLiveLegistarVotes();
+</script>
+</body>
+</html>

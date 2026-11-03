@@ -34,7 +34,7 @@ def name_key(name):
     return (toks[0], toks[-1]) if toks else ("", "")
 
 
-def wikidata_people(names):
+def wikidata_people(names, position="New York City Council"):
     """Search Wikidata by name, then keep only candidates verified as NYC Council members:
     either a council position statement, or an English Wikipedia intro that mentions the
     New York City Council. This guards against namesakes (wrong photo/age is worse than none)."""
@@ -52,7 +52,7 @@ def wikidata_people(names):
       OPTIONAL {{ ?p p:P569/psv:P569 [ wikibase:timeValue ?dob ; wikibase:timePrecision ?prec ] }}
       OPTIONAL {{ ?p wdt:P18 ?img }}
       OPTIONAL {{ ?a schema:about ?p ; schema:isPartOf <https://en.wikipedia.org/> ; schema:name ?title }}
-      OPTIONAL {{ ?p p:P39/ps:P39 ?pos . ?pos rdfs:label ?pl . FILTER(LANG(?pl) = "en" && CONTAINS(?pl, "New York City Council")) BIND(true AS ?councilPos) }}
+      OPTIONAL {{ ?p p:P39/ps:P39 ?pos . ?pos rdfs:label ?pl . FILTER(LANG(?pl) = "en" && CONTAINS(?pl, "{position}")) BIND(true AS ?councilPos) }}
       SERVICE wikibase:label {{ bd:serviceParam wikibase:language "en". }} }}"""
     r = requests.post("https://query.wikidata.org/sparql", data={"query": q, "format": "json"}, headers=headers, timeout=120)
     r.raise_for_status()
@@ -79,7 +79,7 @@ def wikidata_people(names):
         for red in r.json()["query"].get("redirects", []):
             intro[red["from"]] = intro.get(red["to"], "")
     for e in people.values():
-        if not e.get("verified") and "new york city council" in intro.get(e.get("title"), ""):
+        if not e.get("verified") and position.lower() in intro.get(e.get("title"), ""):
             e["verified"] = True
     return [e for e in people.values() if e.get("verified")]
 

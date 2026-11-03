@@ -20,6 +20,10 @@
   h1 { margin: 0; font-size: 22px; }
   #status { color: var(--muted); font-size: 13px; }
   select { font: inherit; padding: 2px 6px; }
+  .switch { display: inline-flex; border: 1px solid #c9d1dc; border-radius: 10px; overflow: hidden; background: #fff; }
+  .switch a { padding: 6px 14px; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--accent); }
+  .switch a.active { background: var(--accent); color: #fff; }
+  .switch a:not(.active):hover { background: #eef2f8; }
   .howlink { margin-left: auto; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--accent); background: #fff; border: 1px solid #c9d1dc; border-radius: 8px; padding: 5px 12px; }
   .howlink:hover { background: #eef2f8; }
 
@@ -170,6 +174,7 @@
 </head>
 <body>
 <header>
+  <nav class="switch" aria-label="Legislative body"><a href="./" class="active" aria-current="page">NYC Council</a><a href="state.html">NY State Legislature</a></nav>
   <h1>NYC Council Vote Mapper</h1>
   <span id="status">Loading votes…</span>
   <div class="seg" id="mode" role="group" aria-label="Bills shown"><button data-mode="approved" class="active">Approved</button><button data-mode="vetoed">Vetoed</button></div>

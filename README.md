@@ -4,6 +4,10 @@
 
 An interactive map of New York City's 51 City Council districts that shows how each Council Member voted on legislation approved by the Council. It covers only bills that passed at Stated Council Meetings.
 
+## Two views: NYC Council and NY State Senate
+
+A switch at the top of every page toggles between the **NYC Council** map (`index.html`) and the **NY State Legislature** map (`state.html`). The state page has the same features: calendar timeline, Passed | Vetoed toggle, district map, roll-call inspector and member profile cards. See [NY State Senate view](#ny-state-senate-view) for its data sources and limits.
+
 ## How to use it
 
 - **Approved / Vetoed toggle (top):** switches the whole page between bills the Council approved and bills the Mayor vetoed. For a vetoed bill that the Council later overrode, a second switch flips the map between the original Council vote and the override vote.
@@ -57,6 +61,26 @@ A GitHub Actions workflow (`.github/workflows/update-votes.yml`) runs this every
    ```
 
    To preview the site, serve the folder (for example `python -m http.server`) and open `http://localhost:8000`. Opening `index.html` directly won't load the data files.
+
+## NY State Senate view
+
+`state.html` shows how each of the 63 State Senators voted on bills the Senate passed in the current two-year session, with the same controls as the NYC page. "Vetoed" lists bills the Governor vetoed (the date shown is the veto date; the votes are the Senate's last floor vote on the bill).
+
+| File | Contents | Source |
+|---|---|---|
+| `data/state/votes.json` | Bills passed on a Senate floor roll call (latest floor vote per bill) | [NY Senate Open Legislation API](https://legislation.nysenate.gov/) (needs a free key, repo secret `NYS_LEGISLATION_KEY`) |
+| `data/state/vetoed.json` | Bills with a Governor's veto | Same API (bill milestones) |
+| `data/state/members.json`, `profiles.json` | Senator per district, committees (with chairs), first session served | Same API (members, committees); party and leadership roles from Wikipedia's *New York State Senate* article; birth date and photo from Wikidata and Wikimedia Commons, with the same verified-match rule as NYC |
+| `data/state/districts.geojson` | Senate district boundaries | US Census Bureau TIGERweb, 2026 State Legislative Districts (Upper), simplified |
+| `data/state/regions.json` | District to region (NYC, Long Island, Hudson Valley & Capital, Central, Western) | Derived from the boundaries; approximate |
+
+`scripts/fetch_nys.py` builds these nightly in the same workflow. Limits:
+
+- **Senate only.** The API has no Assembly roll calls, so the Assembly (150 districts) is not covered.
+- **"Took office"** is the first session year the API lists for the member, so it can be earlier than the year they were elected to their current seat.
+- **Excused** includes absent and abstaining senators. A vacant seat (currently District 12) has no senator listed.
+- **Region labels** are approximate; New York City is shown as one region.
+- The "How a bill becomes law" page describes the NYC process.
 
 ## Known limitations
 

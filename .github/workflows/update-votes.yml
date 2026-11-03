@@ -36,9 +36,15 @@ jobs:
           LEGISTAR_TOKEN: ${{ secrets.LEGISTAR_TOKEN }}
         run: python scripts/fetch_profiles.py
 
+      - name: Fetch NY State Senate votes, members and profiles
+        continue-on-error: true   # a state-side failure must not block the NYC update
+        env:
+          NYS_LEGISLATION_KEY: ${{ secrets.NYS_LEGISLATION_KEY }}
+        run: python scripts/fetch_nys.py
+
       - name: Commit and Push updated votes.json
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/votes.json data/members.json data/vetoed.json data/profiles.json
+          git add data/votes.json data/members.json data/vetoed.json data/profiles.json data/state
           git diff --staged --quiet || (git commit -m "chore(data): update NYC Council roll-call votes" && git push)

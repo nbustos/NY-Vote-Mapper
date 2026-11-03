@@ -1,0 +1,2472 @@
+{
+ "1": {
+  "name": "Anthony H. Palumbo",
+  "party": "R",
+  "tookOffice": 2021,
+  "roles": [
+   "Minority Deputy Floor Leader"
+  ],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Ethics And Internal Governance",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Mental Health",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1970-09-14",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2803-17-21%29%20NYS%20Senator%20Anthony%20H.%20Palumbo%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2803-17-21%29%20NYS%20Senator%20Anthony%20H.%20Palumbo%20%28cropped%29.jpg"
+ },
+ "2": {
+  "name": "Mario Mattera",
+  "party": "R",
+  "tookOffice": 2021,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Civil Service And Pensions",
+    "role": ""
+   },
+   {
+    "name": "Corporations, Authorities And Commissions",
+    "role": ""
+   },
+   {
+    "name": "Energy And Telecommunications",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1963-08-18",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Mario%20Mattera.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Mario%20Mattera.jpg"
+ },
+ "3": {
+  "name": "Dean Murray",
+  "party": "R",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": ""
+   },
+   {
+    "name": "Crime Victims, Crime And Correction",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Libraries",
+    "role": ""
+   },
+   {
+    "name": "Social Services",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1964-07-22",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/NY%20Assemblyman%20Dean%20Murray%20%286359035853%29%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:NY%20Assemblyman%20Dean%20Murray%20%286359035853%29%20%28cropped%29.jpg"
+ },
+ "4": {
+  "name": "Monica Martinez",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [
+   "Liaison to the Executive Branch"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Local Government",
+    "role": "Chair"
+   },
+   {
+    "name": "Aging",
+    "role": ""
+   },
+   {
+    "name": "Alcoholism And Substance Use Disorders",
+    "role": ""
+   },
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": ""
+   },
+   {
+    "name": "Disabilities",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1977-08-13",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Senator%20Monica%20Martinez.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Senator%20Monica%20Martinez.jpg"
+ },
+ "5": {
+  "name": "Steve Rhoads",
+  "party": "R",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Budget And Revenue",
+    "role": ""
+   },
+   {
+    "name": "Ethics And Internal Governance",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Procurement And Contracts",
+    "role": ""
+   }
+  ]
+ },
+ "6": {
+  "name": "Siela Bynoe",
+  "party": "D",
+  "tookOffice": 2025,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Libraries",
+    "role": "Chair"
+   },
+   {
+    "name": "Consumer Protection",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Investigations And Government Operations",
+    "role": ""
+   },
+   {
+    "name": "Mental Health",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2801-08-25%29%20NYS%20Senator%20Siela%20Bynoe%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2801-08-25%29%20NYS%20Senator%20Siela%20Bynoe%20%28cropped%29.jpg"
+ },
+ "7": {
+  "name": "Jack M. Martins",
+  "party": "R",
+  "tookOffice": 2011,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Corporations, Authorities And Commissions",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Procurement And Contracts",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1967-06-19",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/NYS%20Senator%20Jack%20Martins%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:NYS%20Senator%20Jack%20Martins%20%28cropped%29.jpg"
+ },
+ "8": {
+  "name": "Alexis Weik",
+  "party": "R",
+  "tookOffice": 2021,
+  "roles": [
+   "Minority Conference Secretary"
+  ],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Civil Service And Pensions",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Local Government",
+    "role": ""
+   },
+   {
+    "name": "Social Services",
+    "role": ""
+   },
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": ""
+   },
+   {
+    "name": "Women's Issues",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1972-09-17",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2803-02-21%29%20NYS%20Senator%20Alexis%20Weik%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2803-02-21%29%20NYS%20Senator%20Alexis%20Weik%20%28cropped%29.jpg"
+ },
+ "9": {
+  "name": "Patricia Canzoneri-Fitzpatrick",
+  "party": "R",
+  "tookOffice": 2023,
+  "roles": [
+   "Minority Conference Vice-Chair"
+  ],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Consumer Protection",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Mental Health",
+    "role": ""
+   },
+   {
+    "name": "Women's Issues",
+    "role": ""
+   }
+  ],
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/PatriciaCanzoneriFitzpatrick1.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:PatriciaCanzoneriFitzpatrick1.jpg"
+ },
+ "10": {
+  "name": "James Sanders Jr.",
+  "party": "D",
+  "tookOffice": 2013,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Banks",
+    "role": "Chair"
+   },
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Racing, Gaming And Wagering",
+    "role": ""
+   },
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": ""
+   }
+  ]
+ },
+ "11": {
+  "name": "Toby Ann Stavisky",
+  "party": "D",
+  "tookOffice": 2009,
+  "roles": [
+   "Vice President Pro Tempore"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Higher Education",
+    "role": "Chair"
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Ethics And Internal Governance",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Racing, Gaming And Wagering",
+    "role": ""
+   },
+   {
+    "name": "Women's Issues",
+    "role": ""
+   }
+  ]
+ },
+ "13": {
+  "name": "Jessica Ramos",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Labor",
+    "role": "Chair"
+   },
+   {
+    "name": "Budget And Revenue",
+    "role": ""
+   },
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": ""
+   },
+   {
+    "name": "Corporations, Authorities And Commissions",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1985-06-27",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Jessica%20Ramos.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Jessica%20Ramos.jpg"
+ },
+ "14": {
+  "name": "Leroy Comrie",
+  "party": "D",
+  "tookOffice": 2015,
+  "roles": [
+   "Majority Whip"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Corporations, Authorities And Commissions",
+    "role": "Chair"
+   },
+   {
+    "name": "Budget And Revenue",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Procurement And Contracts",
+    "role": ""
+   },
+   {
+    "name": "Racing, Gaming And Wagering",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1958-08-10",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Leroy%20Comrie.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Leroy%20Comrie.jpg"
+ },
+ "15": {
+  "name": "Joseph P. Addabbo Jr.",
+  "party": "D",
+  "tookOffice": 2009,
+  "roles": [
+   "Majority Deputy Whip"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Racing, Gaming And Wagering",
+    "role": "Chair"
+   },
+   {
+    "name": "Budget And Revenue",
+    "role": ""
+   },
+   {
+    "name": "Cities 1",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   },
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": ""
+   }
+  ]
+ },
+ "16": {
+  "name": "John Liu",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [
+   "Majority Conference Vice-Chair"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "New York City Education",
+    "role": "Chair"
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1967-01-08",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/John%20Liu%20at%20the%202009%20West%20Indian%20Day%20Parade%20by%20DS.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:John%20Liu%20at%20the%202009%20West%20Indian%20Day%20Parade%20by%20DS.jpg"
+ },
+ "17": {
+  "name": "Stephen T. Chan",
+  "party": "R",
+  "tookOffice": 2025,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Cities 1",
+    "role": ""
+   },
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Investigations And Government Operations",
+    "role": ""
+   },
+   {
+    "name": "New York City Education",
+    "role": ""
+   }
+  ]
+ },
+ "18": {
+  "name": "Julia Salazar",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [
+   "Deputy Majority Leader for Senate and Assembly Relations"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Crime Victims, Crime And Correction",
+    "role": "Chair"
+   },
+   {
+    "name": "Banks",
+    "role": ""
+   },
+   {
+    "name": "Cities 1",
+    "role": ""
+   },
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   }
+  ]
+ },
+ "19": {
+  "name": "Roxanne J. Persaud",
+  "party": "D",
+  "tookOffice": 2015,
+  "roles": [
+   "Majority Conference Secretary"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Social Services",
+    "role": "Chair"
+   },
+   {
+    "name": "Children And Families",
+    "role": ""
+   },
+   {
+    "name": "Cities 1",
+    "role": ""
+   },
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Disabilities",
+    "role": ""
+   },
+   {
+    "name": "New York City Education",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ]
+ },
+ "20": {
+  "name": "Zellnor Myrie",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Codes",
+    "role": "Chair"
+   },
+   {
+    "name": "Children And Families",
+    "role": ""
+   },
+   {
+    "name": "Consumer Protection",
+    "role": ""
+   },
+   {
+    "name": "Elections",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1986-11-03",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Zellnor%20Myrie.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Zellnor%20Myrie.jpg"
+ },
+ "21": {
+  "name": "Kevin S. Parker",
+  "party": "D",
+  "tookOffice": 2009,
+  "roles": [
+   "Senior Assistant Majority Leader"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Energy And Telecommunications",
+    "role": "Chair"
+   },
+   {
+    "name": "Banks",
+    "role": ""
+   },
+   {
+    "name": "Civil Service And Pensions",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Internet And Technology",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ]
+ },
+ "22": {
+  "name": "Sam Sutton",
+  "party": "D",
+  "tookOffice": 2025,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Aging",
+    "role": ""
+   },
+   {
+    "name": "Disabilities",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "New York City Education",
+    "role": ""
+   },
+   {
+    "name": "Social Services",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1949-08-14",
+   "precision": 11
+  }
+ },
+ "23": {
+  "name": "Jessica Scarcella-Spanton",
+  "party": "D",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": "Chair"
+   },
+   {
+    "name": "Civil Service And Pensions",
+    "role": ""
+   },
+   {
+    "name": "Cultural Affairs, Tourism, Parks And Recreation",
+    "role": ""
+   },
+   {
+    "name": "Disabilities",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Women's Issues",
+    "role": ""
+   }
+  ],
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2803-08-23%29%20NYS%20Senator%20Jessica%20Scarcella-Spanton%20%2852736712310%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2803-08-23%29%20NYS%20Senator%20Jessica%20Scarcella-Spanton%20%2852736712310%29.jpg"
+ },
+ "24": {
+  "name": "Andrew J. Lanza",
+  "party": "R",
+  "tookOffice": 2009,
+  "roles": [
+   "Deputy Minority Leader and Floor Leader"
+  ],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Cities 1",
+    "role": ""
+   },
+   {
+    "name": "Ethics And Internal Governance",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1964-03-12",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Andrew%20Lanza%20%282005%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Andrew%20Lanza%20%282005%29.jpg"
+ },
+ "25": {
+  "name": "Jabari Brisport",
+  "party": "D",
+  "tookOffice": 2021,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Children And Families",
+    "role": "Chair"
+   },
+   {
+    "name": "Banks",
+    "role": ""
+   },
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Libraries",
+    "role": ""
+   },
+   {
+    "name": "Procurement And Contracts",
+    "role": ""
+   }
+  ]
+ },
+ "26": {
+  "name": "Andrew Gounardes",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Budget And Revenue",
+    "role": "Chair"
+   },
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Ethics And Internal Governance",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Internet And Technology",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1983-07-08",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Andrew%20Gounardes.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Andrew%20Gounardes.jpg"
+ },
+ "27": {
+  "name": "Brian Kavanagh",
+  "party": "D",
+  "tookOffice": 2017,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": "Chair"
+   },
+   {
+    "name": "Aging",
+    "role": ""
+   },
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Elections",
+    "role": ""
+   },
+   {
+    "name": "Energy And Telecommunications",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Social Services",
+    "role": ""
+   }
+  ]
+ },
+ "28": {
+  "name": "Liz Krueger",
+  "party": "D",
+  "tookOffice": 2009,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Finance",
+    "role": "Chair"
+   },
+   {
+    "name": "Budget And Revenue",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1957-11-20",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2803-04-19%29%20NY%20State%20Senator%20Liz%20Krueger%20during%20Senate%20Session%20at%20the%20NY%20State%20Capitol%2C%20Albany%20NY%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2803-04-19%29%20NY%20State%20Senator%20Liz%20Krueger%20during%20Senate%20Session%20at%20the%20NY%20State%20Capitol%2C%20Albany%20NY%20%28cropped%29.jpg"
+ },
+ "29": {
+  "name": "Jos\u00e9 M. Serrano",
+  "party": "D",
+  "tookOffice": 2009,
+  "roles": [
+   "Majority Conference Chair"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Cultural Affairs, Tourism, Parks And Recreation",
+    "role": "Chair"
+   },
+   {
+    "name": "Aging",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Libraries",
+    "role": ""
+   },
+   {
+    "name": "Social Services",
+    "role": ""
+   },
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": ""
+   },
+   {
+    "name": "Women's Issues",
+    "role": ""
+   }
+  ]
+ },
+ "30": {
+  "name": "Cordell Cleare",
+  "party": "D",
+  "tookOffice": 2021,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Aging",
+    "role": "Chair"
+   },
+   {
+    "name": "Cities 1",
+    "role": ""
+   },
+   {
+    "name": "Corporations, Authorities And Commissions",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Investigations And Government Operations",
+    "role": ""
+   },
+   {
+    "name": "Social Services",
+    "role": ""
+   }
+  ]
+ },
+ "31": {
+  "name": "Robert Jackson",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Civil Service And Pensions",
+    "role": "Chair"
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "New York City Education",
+    "role": ""
+   }
+  ]
+ },
+ "32": {
+  "name": "Luis R. Sep\u00falveda",
+  "party": "D",
+  "tookOffice": 2017,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Judiciary",
+    "role": "Chair"
+   },
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Crime Victims, Crime And Correction",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "New York City Education",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ]
+ },
+ "33": {
+  "name": "Gustavo Rivera",
+  "party": "D",
+  "tookOffice": 2011,
+  "roles": [
+   "Assistant Majority Leader on Conference Operations"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Health",
+    "role": "Chair"
+   },
+   {
+    "name": "Alcoholism And Substance Use Disorders",
+    "role": ""
+   },
+   {
+    "name": "Crime Victims, Crime And Correction",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Mental Health",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1975-11-19",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2803-31-19%29%20NY%20State%20Senator%20Gustavo%20Rivera%20during%20Senate%20Session%20at%20the%20NY%20State%20Capitol%2C%20Albany%20NY.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2803-31-19%29%20NY%20State%20Senator%20Gustavo%20Rivera%20during%20Senate%20Session%20at%20the%20NY%20State%20Capitol%2C%20Albany%20NY.jpg"
+ },
+ "34": {
+  "name": "Nathalia Fernandez",
+  "party": "D",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Alcoholism And Substance Use Disorders",
+    "role": "Chair"
+   },
+   {
+    "name": "Agriculture",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Mental Health",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1988-05-06",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Nathalia%20Fernandez%20IMG%205003a%20HLG.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Nathalia%20Fernandez%20IMG%205003a%20HLG.jpg"
+ },
+ "35": {
+  "name": "Andrea Stewart-Cousins",
+  "party": "D",
+  "tookOffice": 2009,
+  "roles": [
+   "scope=row | Temporary President/Majority Leader"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Rules",
+    "role": "Chair"
+   }
+  ],
+  "birth": {
+   "date": "1950-09-02",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2801-28-20%29NYS%20Senate%20Majority%20Leader%20Andrea%20Stewart%20-Cousins%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2801-28-20%29NYS%20Senate%20Majority%20Leader%20Andrea%20Stewart%20-Cousins%20%28cropped%29.jpg"
+ },
+ "36": {
+  "name": "Jamaal Bailey",
+  "party": "D",
+  "tookOffice": 2017,
+  "roles": [
+   "Assistant Majority Leader on House Operations"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Insurance",
+    "role": "Chair"
+   },
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Crime Victims, Crime And Correction",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1982-08-26",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Jamaal%20Bailey.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Jamaal%20Bailey.jpg"
+ },
+ "37": {
+  "name": "Shelley Mayer",
+  "party": "D",
+  "tookOffice": 2017,
+  "roles": [
+   "Majority Assistant Whip"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Education",
+    "role": "Chair"
+   },
+   {
+    "name": "Ethics And Internal Governance",
+    "role": "Chair"
+   },
+   {
+    "name": "Elections",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1952-03-06",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2802-11-20%29NYS%20Senator%20Shelley%20Mayer%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2802-11-20%29NYS%20Senator%20Shelley%20Mayer%20%28cropped%29.jpg"
+ },
+ "38": {
+  "name": "William Weber",
+  "party": "R",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Budget And Revenue",
+    "role": ""
+   },
+   {
+    "name": "Children And Families",
+    "role": ""
+   },
+   {
+    "name": "Consumer Protection",
+    "role": ""
+   },
+   {
+    "name": "Disabilities",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   }
+  ]
+ },
+ "39": {
+  "name": "Robert Rolison",
+  "party": "R",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Aging",
+    "role": ""
+   },
+   {
+    "name": "Alcoholism And Substance Use Disorders",
+    "role": ""
+   },
+   {
+    "name": "Children And Families",
+    "role": ""
+   },
+   {
+    "name": "Crime Victims, Crime And Correction",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Local Government",
+    "role": ""
+   }
+  ],
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Robert%20Rolison%202024%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Robert%20Rolison%202024%20%28cropped%29.jpg"
+ },
+ "40": {
+  "name": "Pete Harckham",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Environmental Conservation",
+    "role": "Chair"
+   },
+   {
+    "name": "Alcoholism And Substance Use Disorders",
+    "role": ""
+   },
+   {
+    "name": "Crime Victims, Crime And Correction",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   },
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": ""
+   }
+  ]
+ },
+ "41": {
+  "name": "Michelle Hinchey",
+  "party": "D",
+  "tookOffice": 2021,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Agriculture",
+    "role": "Chair"
+   },
+   {
+    "name": "Cultural Affairs, Tourism, Parks And Recreation",
+    "role": ""
+   },
+   {
+    "name": "Energy And Telecommunications",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Internet And Technology",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1987-11-03",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Michelle%20Hinchey.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Michelle%20Hinchey.jpg"
+ },
+ "42": {
+  "name": "James Skoufis",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [
+   "Deputy Majority Leader for State Federal Relations"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Investigations And Government Operations",
+    "role": "Chair"
+   },
+   {
+    "name": "Corporations, Authorities And Commissions",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Local Government",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1987-10-18",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/James%20Skoufis.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:James%20Skoufis.jpg"
+ },
+ "43": {
+  "name": "Jake Ashby",
+  "party": "R",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Aging",
+    "role": ""
+   },
+   {
+    "name": "Disabilities",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": ""
+   }
+  ]
+ },
+ "44": {
+  "name": "James Tedisco",
+  "party": "R",
+  "tookOffice": 2017,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Cultural Affairs, Tourism, Parks And Recreation",
+    "role": ""
+   },
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Libraries",
+    "role": ""
+   },
+   {
+    "name": "New York City Education",
+    "role": ""
+   },
+   {
+    "name": "Racing, Gaming And Wagering",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ]
+ },
+ "45": {
+  "name": "Dan Stec",
+  "party": "R",
+  "tookOffice": 2021,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Education",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Internet And Technology",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   },
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1970-01-01",
+   "precision": 9
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2804-06-21%29%20NYS%20Senator%20Daniel%20G.%20Stec%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2804-06-21%29%20NYS%20Senator%20Daniel%20G.%20Stec%20%28cropped%29.jpg"
+ },
+ "46": {
+  "name": "Patricia Fahy",
+  "party": "D",
+  "tookOffice": 2025,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Disabilities",
+    "role": "Chair"
+   },
+   {
+    "name": "Agriculture",
+    "role": ""
+   },
+   {
+    "name": "Cities 2",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Local Government",
+    "role": ""
+   },
+   {
+    "name": "Racing, Gaming And Wagering",
+    "role": ""
+   }
+  ],
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Patricia%20Fahy%20on%2011%20December%202023%20-%208%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Patricia%20Fahy%20on%2011%20December%202023%20-%208%20%28cropped%29.jpg"
+ },
+ "47": {
+  "name": "Erik Bottcher",
+  "party": "D",
+  "tookOffice": 2025,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Cities 1",
+    "role": "Chair"
+   },
+   {
+    "name": "Alcoholism And Substance Use Disorders",
+    "role": ""
+   },
+   {
+    "name": "Civil Service And Pensions",
+    "role": ""
+   },
+   {
+    "name": "Corporations, Authorities And Commissions",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Investigations And Government Operations",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Libraries",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1979-05-09",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Erik%20Bottcher%20MTA%202024%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Erik%20Bottcher%20MTA%202024%20%28cropped%29.jpg"
+ },
+ "48": {
+  "name": "Rachel May",
+  "party": "D",
+  "tookOffice": 2019,
+  "roles": [
+   "Chair of the Majority Steering Committee"
+  ],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Consumer Protection",
+    "role": "Chair"
+   },
+   {
+    "name": "Cities 2",
+    "role": ""
+   },
+   {
+    "name": "Energy And Telecommunications",
+    "role": ""
+   },
+   {
+    "name": "Environmental Conservation",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Investigations And Government Operations",
+    "role": ""
+   }
+  ],
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Official%20NYS%20Senate%20portrait%20of%20Senator%20May.png?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Official%20NYS%20Senate%20portrait%20of%20Senator%20May.png"
+ },
+ "49": {
+  "name": "Mark Walczyk",
+  "party": "R",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Banks",
+    "role": ""
+   },
+   {
+    "name": "Cities 2",
+    "role": ""
+   },
+   {
+    "name": "Elections",
+    "role": ""
+   },
+   {
+    "name": "Energy And Telecommunications",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Internet And Technology",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1985-03-07",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/NYS%20Senator%20Mark%20Walczyk%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:NYS%20Senator%20Mark%20Walczyk%20%28cropped%29.jpg"
+ },
+ "50": {
+  "name": "Christopher Ryan",
+  "party": "D",
+  "tookOffice": 2025,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Cities 2",
+    "role": "Chair"
+   },
+   {
+    "name": "Agriculture",
+    "role": ""
+   },
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": ""
+   },
+   {
+    "name": "Consumer Protection",
+    "role": ""
+   },
+   {
+    "name": "Energy And Telecommunications",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   }
+  ]
+ },
+ "51": {
+  "name": "Peter Oberacker",
+  "party": "R",
+  "tookOffice": 2021,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Agriculture",
+    "role": ""
+   },
+   {
+    "name": "Alcoholism And Substance Use Disorders",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1963-05-13",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2805-12-25%29%20NYS%20Senator%20Peter%20Oberacker%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2805-12-25%29%20NYS%20Senator%20Peter%20Oberacker%20%28cropped%29.jpg"
+ },
+ "52": {
+  "name": "Lea Webb",
+  "party": "D",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Women's Issues",
+    "role": "Chair"
+   },
+   {
+    "name": "Agriculture",
+    "role": ""
+   },
+   {
+    "name": "Cities 2",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Mental Health",
+    "role": ""
+   },
+   {
+    "name": "Procurement And Contracts",
+    "role": ""
+   }
+  ],
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2801-04-23%29%20NYS%20Senator%20Lea%20Webb%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2801-04-23%29%20NYS%20Senator%20Lea%20Webb%20%28cropped%29.jpg"
+ },
+ "53": {
+  "name": "Joseph A. Griffo",
+  "party": "R",
+  "tookOffice": 2009,
+  "roles": [
+   "Assistant Minority Leader"
+  ],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Cities 2",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Higher Education",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ]
+ },
+ "54": {
+  "name": "Pamela Helming",
+  "party": "R",
+  "tookOffice": 2017,
+  "roles": [
+   "Minority Conference Chair"
+  ],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Agriculture",
+    "role": ""
+   },
+   {
+    "name": "Cultural Affairs, Tourism, Parks And Recreation",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Racing, Gaming And Wagering",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ]
+ },
+ "55": {
+  "name": "Samra Brouk",
+  "party": "D",
+  "tookOffice": 2021,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Mental Health",
+    "role": "Chair"
+   },
+   {
+    "name": "Agriculture",
+    "role": ""
+   },
+   {
+    "name": "Children And Families",
+    "role": ""
+   },
+   {
+    "name": "Elections",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Local Government",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1986-05-20",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Senator%20Samra%20Brouk.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Senator%20Samra%20Brouk.jpg"
+ },
+ "56": {
+  "name": "Jeremy Cooney",
+  "party": "D",
+  "tookOffice": 2021,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Transportation",
+    "role": "Chair"
+   },
+   {
+    "name": "Civil Service And Pensions",
+    "role": ""
+   },
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Cultural Affairs, Tourism, Parks And Recreation",
+    "role": ""
+   },
+   {
+    "name": "Ethics And Internal Governance",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1981-01-01",
+   "precision": 9
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Jeremy%20Cooney.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Jeremy%20Cooney.jpg"
+ },
+ "57": {
+  "name": "George Borrello",
+  "party": "R",
+  "tookOffice": 2019,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Agriculture",
+    "role": ""
+   },
+   {
+    "name": "Banks",
+    "role": ""
+   },
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": ""
+   },
+   {
+    "name": "Elections",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1967-01-01",
+   "precision": 9
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Georgeb033120.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Georgeb033120.jpg"
+ },
+ "58": {
+  "name": "Thomas F. O'Mara",
+  "party": "R",
+  "tookOffice": 2011,
+  "roles": [],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Energy And Telecommunications",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Insurance",
+    "role": ""
+   },
+   {
+    "name": "Investigations And Government Operations",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   }
+  ]
+ },
+ "59": {
+  "name": "Kristen Gonzalez",
+  "party": "D",
+  "tookOffice": 2023,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Elections",
+    "role": "Chair"
+   },
+   {
+    "name": "Internet And Technology",
+    "role": "Chair"
+   },
+   {
+    "name": "Children And Families",
+    "role": ""
+   },
+   {
+    "name": "Consumer Protection",
+    "role": ""
+   },
+   {
+    "name": "Energy And Telecommunications",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1995-08-06",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2802-07-23%29%20NYS%20Senator%20Kristen%20Gonzalez.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2802-07-23%29%20NYS%20Senator%20Kristen%20Gonzalez.jpg"
+ },
+ "60": {
+  "name": "Patrick M. Gallivan",
+  "party": "R",
+  "tookOffice": 2011,
+  "roles": [
+   "Minority Whip"
+  ],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Codes",
+    "role": ""
+   },
+   {
+    "name": "Finance",
+    "role": ""
+   },
+   {
+    "name": "Health",
+    "role": ""
+   },
+   {
+    "name": "Rules",
+    "role": ""
+   },
+   {
+    "name": "Transportation",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1960-11-18",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2810-20-21%29%20NYS%20Senator%20Patrick%20Gallivan%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2810-20-21%29%20NYS%20Senator%20Patrick%20Gallivan%20%28cropped%29.jpg"
+ },
+ "61": {
+  "name": "Jeremy Zellner",
+  "party": "D",
+  "tookOffice": 2025,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Procurement And Contracts",
+    "role": "Chair"
+   },
+   {
+    "name": "Banks",
+    "role": ""
+   },
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": ""
+   },
+   {
+    "name": "Housing, Construction And Community Development",
+    "role": ""
+   },
+   {
+    "name": "Internet And Technology",
+    "role": ""
+   },
+   {
+    "name": "Judiciary",
+    "role": ""
+   },
+   {
+    "name": "Labor",
+    "role": ""
+   },
+   {
+    "name": "Libraries",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1978-03-01",
+   "precision": 10
+  }
+ },
+ "62": {
+  "name": "Robert Ortt",
+  "party": "R",
+  "tookOffice": 2015,
+  "roles": [
+   "Minority Leader"
+  ],
+  "caucuses": [
+   "Republican Conference"
+  ],
+  "committees": [
+   {
+    "name": "Rules",
+    "role": ""
+   }
+  ],
+  "birth": {
+   "date": "1979-01-01",
+   "precision": 9
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Rob%20Ortt%20and%20Mike%20Martucci%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:Rob%20Ortt%20and%20Mike%20Martucci%20%28cropped%29.jpg"
+ },
+ "63": {
+  "name": "April Baskin",
+  "party": "D",
+  "tookOffice": 2025,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [
+   {
+    "name": "Commerce, Economic Development And Small Business",
+    "role": "Chair"
+   },
+   {
+    "name": "Cities 2",
+    "role": ""
+   },
+   {
+    "name": "Cultural Affairs, Tourism, Parks And Recreation",
+    "role": ""
+   },
+   {
+    "name": "Local Government",
+    "role": ""
+   },
+   {
+    "name": "Procurement And Contracts",
+    "role": ""
+   },
+   {
+    "name": "Veterans, Homeland Security And Military Affairs",
+    "role": ""
+   },
+   {
+    "name": "Women's Issues",
+    "role": ""
+   }
+  ]
+ }
+}
