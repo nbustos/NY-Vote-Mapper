@@ -844,7 +844,13 @@
         "name": "Committee on Sanitation and Solid Waste Management",
         "role": ""
       }
-    ]
+    ],
+    "birth": {
+      "date": "1974-01-01",
+      "precision": 9
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Sandra%20Ung%20MTA%20%28cropped%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Sandra%20Ung%20MTA%20%28cropped%29.jpg"
   },
   "21": {
     "name": "Shanel Thomas-Henry",
@@ -1327,9 +1333,7 @@
         "name": "Committee on Transportation and Infrastructure",
         "role": ""
       }
-    ],
-    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Selvena%20Brooks-Powers%202023.jpg?width=360",
-    "photoPage": "https://commons.wikimedia.org/wiki/File:Selvena%20Brooks-Powers%202023.jpg"
+    ]
   },
   "32": {
     "name": "Joann Ariola",
@@ -1493,13 +1497,7 @@
         "name": "Committee on Housing and Buildings",
         "role": ""
       }
-    ],
-    "birth": {
-      "date": "1983-04-14",
-      "precision": 11
-    },
-    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Crystal%20Hudson%20at%20Classon%20Av%20Accessibility%20Groundbreaking.jpg?width=360",
-    "photoPage": "https://commons.wikimedia.org/wiki/File:Crystal%20Hudson%20at%20Classon%20Av%20Accessibility%20Groundbreaking.jpg"
+    ]
   },
   "36": {
     "name": "Chi A. Ossé",
@@ -1714,7 +1712,9 @@
         "name": "Subcommittee on Early Childhood Education",
         "role": ""
       }
-    ]
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Rita%20Joseph%2C%202022.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Rita%20Joseph%2C%202022.jpg"
   },
   "41": {
     "name": "Darlene Mealy",
@@ -1833,7 +1833,9 @@
         "name": "Committee on Sanitation and Solid Waste Management",
         "role": ""
       }
-    ]
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Interborough%20Express%20Advancing%20from%20Planning%20to%20Active%20Phase%20%2854693464068%29%20%28Susan%20Zhuang%29.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Interborough%20Express%20Advancing%20from%20Planning%20to%20Active%20Phase%20%2854693464068%29%20%28Susan%20Zhuang%29.jpg"
   },
   "44": {
     "name": "Simcha Felder",
