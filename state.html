@@ -343,14 +343,43 @@
       .on("mouseleave", () => { hideTip(); highlightRow(null); })
       .on("mouseenter", (_, f) => highlightRow(f.properties.district))
       .on("click", (_, f) => { hideTip(); openProfile(f.properties.district); });
+    const LP = {};   // district -> {x, y, w, h}: label spot (point deepest inside the largest part) and part size
+    GEO.features.forEach(f => { LP[f.properties.district] = labelSpot(f); });
     gMap.selectAll("text").data(GEO.features).join("text").attr("class", "dlabel")
-      .attr("transform", f => `translate(${pathGen.centroid(f)})`).attr("dy", "0.35em").text(f => f.properties.district);
+      .attr("transform", f => `translate(${LP[f.properties.district].x},${LP[f.properties.district].y})`).attr("dy", "0.35em").text(f => f.properties.district);
     zoomBehavior = d3.zoom().scaleExtent([1, 14]).on("zoom", e => {
       gMap.attr("transform", e.transform);
-      gMap.selectAll(".dlabel").style("font-size", (11 / Math.sqrt(e.transform.k)) + "px");
+      sizeLabels(e.transform.k);
     });
+    window.sizeLabels = k => {   // labels keep a constant on-screen size; tiny districts hide their number until zoomed in
+      gMap.selectAll(".dlabel").style("font-size", (11 / k) + "px").style("stroke-width", (2.5 / k) + "px")
+        .style("display", f => { const p = LP[f.properties.district], n = String(f.properties.district).length; return !HIDE_SMALL_LABELS || (p.w * k >= 7 * n + 4 && p.h * k >= 12) ? null : "none"; });
+    };
     svg.call(zoomBehavior).style("touch-action", "pan-y");  // vertical swipe scrolls the page; pinch/drag-sideways handled by d3
+    sizeLabels(1);
     paintMap();
+  }
+
+  const HIDE_SMALL_LABELS = true;
+  // Label position: the point deepest inside the district's largest polygon (a cheap "pole of inaccessibility"),
+  // so numbers sit in the middle of odd shapes instead of at the area centroid.
+  function labelSpot(f) {
+    const polys = f.geometry.type === "MultiPolygon" ? f.geometry.coordinates : [f.geometry.coordinates];
+    let best = null, bestA = -1;
+    polys.forEach(p => { const ring = p[0].map(projection); const a = Math.abs(d3.polygonArea(ring)); if (a > bestA) { bestA = a; best = ring; } });
+    const xs = best.map(p => p[0]), ys = best.map(p => p[1]);
+    const x0 = Math.min(...xs), x1 = Math.max(...xs), y0 = Math.min(...ys), y1 = Math.max(...ys);
+    const step = Math.max(1, Math.floor(best.length / 160)), edge = best.filter((_, i) => i % step === 0);
+    let spot = d3.polygonCentroid(best), bestD = -1;
+    const N = 22;
+    for (let i = 1; i < N; i++) for (let j = 1; j < N; j++) {
+      const pt = [x0 + (x1 - x0) * i / N, y0 + (y1 - y0) * j / N];
+      if (!d3.polygonContains(best, pt)) continue;
+      let d = Infinity;
+      for (const q of edge) { const dd = (q[0] - pt[0]) ** 2 + (q[1] - pt[1]) ** 2; if (dd < d) d = dd; }
+      if (d > bestD) { bestD = d; spot = pt; }
+    }
+    return { x: spot[0], y: spot[1], w: 2 * Math.sqrt(Math.max(bestD, 0)), h: 2 * Math.sqrt(Math.max(bestD, 0)) };
   }
 
   function zoomTo(districts) {
