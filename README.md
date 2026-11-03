@@ -80,7 +80,7 @@ A GitHub Actions workflow (`.github/workflows/update-votes.yml`) runs this every
 - **"Took office"** is the first session year the API lists for the member, so it can be earlier than the year they were elected to their current seat.
 - **Excused** includes absent and abstaining senators. A vacant seat (currently District 12) has no senator listed.
 - **Region labels** are approximate; New York City is shown as one region.
-- The "How a bill becomes law" page describes the NYC process.
+- The state page links to its own illustrated explainer, `how-a-bill-becomes-law-ny-state.html` (Senate, Assembly, Governor, vote thresholds and the Senate committees). The NYC page links to the NYC version.
 
 ## Known limitations
 

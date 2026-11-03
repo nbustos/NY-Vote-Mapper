@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How a Bill Becomes Law in New York State · NY Vote Mapper</title>
+<style>
+  :root {
+    --ink: #1c2433; --muted: #5d6b7e; --bg: #f3f5f8; --panel: #fff; --accent: #2a4d8f;
+    --yes: #4da875; --yes-soft: #9bd8b0; --no: #cf5c5c; --no-soft: #f3a9a9; --gold: #d9a441;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; }
+  a { color: var(--accent); }
+
+  nav.top { padding: 12px 24px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  nav.top a.back { text-decoration: none; font-weight: 600; font-size: 14px; background: #fff; border: 1px solid #c9d1dc; border-radius: 8px; padding: 6px 12px; }
+  nav.top a.back:hover { background: #eef2f8; }
+
+  .hero { text-align: center; padding: 28px 20px 56px; color: #fff; background: linear-gradient(135deg, #1f3a6e 0%, #2a4d8f 55%, #3b6bb5 100%); position: relative; overflow: hidden; }
+  .hero h1 { margin: 0 0 10px; font-size: clamp(26px, 5vw, 44px); letter-spacing: -.5px; }
+  .hero p { margin: 0 auto; max-width: 640px; font-size: clamp(15px, 2.4vw, 18px); opacity: .92; }
+  .hero svg.skyline { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 70px; opacity: .22; }
+  .pill-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px; position: relative; }
+  .pill { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 4px 14px; font-size: 13px; }
+
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
+
+  /* Path */
+  .path { position: relative; padding: 8px 0; }
+  .path::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; transform: translateX(-50%); border-radius: 2px;
+    background: repeating-linear-gradient(to bottom, #b7c4da 0 10px, transparent 10px 20px); }
+  .step { position: relative; display: grid; grid-template-columns: 1fr 72px 1fr; align-items: center; margin: 0 0 36px; opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .step.in { opacity: 1; transform: none; }
+  .step .card { background: var(--panel); border-radius: 16px; padding: 18px 20px; box-shadow: 0 2px 10px rgba(30,50,90,.10); border-top: 5px solid var(--c, var(--accent)); }
+  .step:nth-child(odd) .card { grid-column: 1; }
+  .step:nth-child(odd) .art { grid-column: 3; }
+  .step:nth-child(even) .card { grid-column: 3; grid-row: 1; }
+  .step:nth-child(even) .art { grid-column: 1; grid-row: 1; }
+  .node { grid-column: 2; grid-row: 1; justify-self: center; width: 52px; height: 52px; border-radius: 50%; background: var(--c, var(--accent)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 22px; border: 4px solid var(--bg); box-shadow: 0 2px 6px rgba(0,0,0,.2); z-index: 1; }
+  .card h2 { margin: 0 0 2px; font-size: 20px; }
+  .card .who { font-size: 12px; text-transform: uppercase; letter-spacing: .8px; color: var(--c, var(--accent)); font-weight: 700; margin-bottom: 8px; }
+  .card p { margin: 0 0 8px; font-size: 14.5px; }
+  .card ul { margin: 0; padding-left: 18px; font-size: 14px; color: #34415a; }
+  .card .time { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; background: #eef2f8; border-radius: 6px; padding: 2px 8px; color: var(--muted); }
+  .art { display: flex; justify-content: center; }
+  .art svg { width: 100%; max-width: 250px; height: auto; filter: drop-shadow(0 4px 8px rgba(30,50,90,.12)); }
+
+  /* Votes */
+  .votes { margin: 0 0 40px; background: var(--panel); border-radius: 18px; padding: 22px 20px; box-shadow: 0 2px 10px rgba(30,50,90,.10); }
+  .votes h2 { margin: 0 0 4px; text-align: center; }
+  .votes > p { text-align: center; color: var(--muted); margin: 0 0 18px; font-size: 14px; }
+  .seats { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; max-width: 620px; margin: 0 auto 14px; }
+  .seat { width: 28px; height: 28px; border-radius: 50%; background: #dfe5ee; transition: background .35s; }
+  .seats.maj .seat.on { background: var(--yes); }
+  .seats.two .seat.on { background: var(--gold); }
+  .seat.edge { outline: 3px solid var(--ink); outline-offset: 1px; }
+  .seg { display: flex; justify-content: center; gap: 8px; margin: 12px 0 4px; flex-wrap: wrap; }
+  .seg button { font: inherit; font-size: 14px; border: 1px solid #c9d1dc; background: #fff; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+  .seg button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .seat-note { text-align: center; font-size: 14px; min-height: 42px; }
+  .seat-note b { font-size: 18px; }
+
+  /* Fork */
+  .fork { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 14px 0 0; }
+  .branch { background: #fff; border-radius: 14px; padding: 14px 16px; box-shadow: 0 2px 8px rgba(30,50,90,.09); border-top: 5px solid var(--c); font-size: 14px; }
+  .branch h3 { margin: 0 0 4px; font-size: 16px; color: var(--c); }
+  .branch p { margin: 0; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .box { background: var(--panel); border-radius: 14px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(30,50,90,.09); font-size: 14px; }
+  .box h3 { margin: 0 0 6px; font-size: 17px; }
+
+
+  /* Committees */
+  .committees { margin: 44px 0 0; }
+  .committees > h2 { text-align: center; margin: 0 0 4px; font-size: 26px; }
+  .committees > p.sub { text-align: center; color: var(--muted); margin: 0 auto 22px; max-width: 640px; font-size: 14px; }
+  .hub { display: flex; justify-content: center; margin-bottom: 8px; }
+  .hub svg { width: 100%; max-width: 560px; height: auto; }
+  .cat { margin: 0 0 26px; }
+  .cat h3 { margin: 0 0 10px; font-size: 15px; display: flex; align-items: center; gap: 8px; color: var(--c); }
+  .cat h3::after { content: ""; flex: 1; height: 3px; border-radius: 2px; background: var(--c); opacity: .25; }
+  .cgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
+  .ctile { background: var(--panel); border-radius: 14px; padding: 12px 14px; box-shadow: 0 2px 8px rgba(30,50,90,.09); border-left: 6px solid var(--c); cursor: pointer; text-align: left; font: inherit; color: inherit; border-top: 0; border-right: 0; border-bottom: 0; transition: transform .15s, box-shadow .15s; }
+  .ctile:hover, .ctile:focus-visible { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(30,50,90,.16); outline: none; }
+  .ctile .top { display: flex; gap: 10px; align-items: flex-start; }
+  .ctile .ic { font-size: 28px; line-height: 1; flex: none; }
+  .ctile .nm { font-weight: 700; font-size: 14px; line-height: 1.25; }
+  .ctile .ch { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .dots { display: flex; flex-wrap: wrap; gap: 3px; margin-top: 9px; align-items: center; }
+  .dots i { width: 11px; height: 11px; border-radius: 50%; background: var(--c); opacity: .55; }
+  .dots i.chair { background: var(--gold); opacity: 1; box-shadow: 0 0 0 2px #fff, 0 0 0 3.5px var(--gold); margin-right: 3px; }
+  .dots span { font-size: 11px; color: var(--muted); margin-left: 6px; }
+  .ctile .roster { display: none; margin: 10px 0 0; padding: 8px 0 0; border-top: 1px solid #e6eaf0; font-size: 12.5px; list-style: none; }
+  .ctile.open .roster { display: block; }
+  .roster li { padding: 1px 0; }
+  .roster li.chair { font-weight: 700; }
+  .roster .d { display: inline-block; min-width: 26px; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .cnote { text-align: center; font-size: 12px; color: var(--muted); margin-top: 6px; }
+
+  .finish { text-align: center; margin-top: 36px; }
+  .finish a.btn { display: inline-block; text-decoration: none; background: var(--accent); color: #fff; font-weight: 700; padding: 12px 24px; border-radius: 10px; }
+  .finish a.btn:hover { background: #1f3a6e; }
+  footer { text-align: center; font-size: 12px; color: var(--muted); padding: 0 16px 28px; }
+
+  @media (max-width: 760px) {
+    .path::before { left: 26px; }
+    .step { grid-template-columns: 52px 1fr; column-gap: 12px; }
+    .node { grid-column: 1 !important; grid-row: 1; align-self: start; }
+    .step .card, .step:nth-child(even) .card { grid-column: 2 !important; grid-row: 1; }
+    .step .art, .step:nth-child(even) .art { grid-column: 2 !important; grid-row: 2; margin-top: 10px; }
+    .art svg { max-width: 190px; }
+    .fork, .two-col { grid-template-columns: 1fr; }
+    .seat { width: 22px; height: 22px; }
+    nav.top { padding: 10px 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .step { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav class="top"><a class="back" href="state.html">&larr; Back to the State Senate vote map</a></nav>
+
+<section class="hero">
+  <h1>How a Bill Becomes Law in New York State</h1>
+  <p>From an idea to a signed law: how a bill moves through the Senate, the Assembly and the Governor's desk, and how many votes it takes at each step.</p>
+  <div class="pill-row">
+    <span class="pill">63 Senators · 150 Assembly Members</span>
+    <span class="pill">Majority of each house to pass</span>
+    <span class="pill">Two-thirds of each to override a veto</span>
+  </div>
+  <svg class="skyline" viewBox="0 0 800 70" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff" d="M0 70V45h30V30h20v15h20V20h25v25h25V35h20V10h12V0h6v10h12v25h25V25h30v20h20V32h25v13h30V28h20v17h25V38h30V15h14V5h4v10h14v23h30V30h25v15h30V35h20v10h30V22h25v23h30V40h30v30z"/></svg>
+</section>
+
+<main>
+  <div class="path">
+
+    <div class="step" style="--c:#2a4d8f">
+      <div class="card">
+        <h2>An idea becomes a bill</h2>
+        <div class="who">Senator or Assembly Member</div>
+        <p>Any member of the Legislature can sponsor a bill, often after hearing from constituents, advocates, agencies or the Governor.</p>
+        <ul>
+          <li>Staff in each house turn the idea into legal text.</li>
+          <li>Members usually file a matching “same-as” bill in the other house, so both can move together.</li>
+          <li>Other members can co-sponsor to show support.</li>
+        </ul>
+      </div>
+      <div class="node">1</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#dbe6f7"/>
+          <path d="M120 38a34 34 0 0 0-20 61c4 3 6 7 6 11v6h28v-6c0-4 2-8 6-11a34 34 0 0 0-20-61z" fill="#ffd45c" stroke="#e0a800" stroke-width="3"/>
+          <rect x="106" y="120" width="28" height="8" rx="3" fill="#8a97ab"/><rect x="110" y="130" width="20" height="7" rx="3" fill="#8a97ab"/>
+          <g stroke="#e0a800" stroke-width="4" stroke-linecap="round"><path d="M120 14v10M72 34l7 7M168 34l-7 7M52 80h10M178 80h10"/></g>
+          <rect x="22" y="112" width="58" height="50" rx="6" fill="#fff" stroke="#2a4d8f" stroke-width="3"/>
+          <path d="M32 126h38M32 136h38M32 146h24" stroke="#9fb3d6" stroke-width="4" stroke-linecap="round"/>
+          <path d="M184 150l26-26 8 8-26 26-12 4z" fill="#2a4d8f"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="step" style="--c:#6a4fb3">
+      <div class="card">
+        <h2>Introduction &amp; referral</h2>
+        <div class="who">Senate or Assembly · Session</div>
+        <p>The bill is formally introduced and given a number: <b>S</b> for a Senate bill, <b>A</b> for an Assembly bill.</p>
+        <ul>
+          <li>It is sent to the committee that covers the topic, like Health, Education or Housing.</li>
+          <li>The session runs January to early June, and a bill has two years (one session) to pass.</li>
+        </ul>
+      </div>
+      <div class="node">2</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#e6dff5"/>
+          <path d="M40 150h160V90L120 38 40 90z" fill="#fff" stroke="#6a4fb3" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M28 92L120 28l92 64z" fill="#c9bbe9" stroke="#6a4fb3" stroke-width="3" stroke-linejoin="round"/>
+          <g fill="#6a4fb3"><rect x="58" y="96" width="14" height="46" rx="2"/><rect x="88" y="96" width="14" height="46" rx="2"/><rect x="138" y="96" width="14" height="46" rx="2"/><rect x="168" y="96" width="14" height="46" rx="2"/></g>
+          <rect x="32" y="146" width="176" height="10" rx="3" fill="#6a4fb3"/>
+          <circle cx="120" cy="66" r="9" fill="#fff" stroke="#6a4fb3" stroke-width="3"/>
+          <path d="M120 60v7h5" stroke="#6a4fb3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="step" style="--c:#d9822b">
+      <div class="card">
+        <h2>Committee review</h2>
+        <div class="who">Standing committee · Public</div>
+        <p>The committee studies the bill. Some bills get public hearings, and members hear from agencies, advocates and experts.</p>
+        <ul>
+          <li>The sponsor and committee may amend the bill.</li>
+          <li>The committee chair largely decides whether a bill is taken up. Many never are.</li>
+        </ul>
+      </div>
+      <div class="node">3</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#fbe6cf"/>
+          <rect x="40" y="62" width="160" height="16" rx="8" fill="#a8672a"/>
+          <rect x="52" y="76" width="136" height="50" rx="6" fill="#d9822b"/>
+          <g>
+            <circle cx="70" cy="52" r="11" fill="#f0c9a0"/><rect x="58" y="62" width="24" height="12" rx="6" fill="#2a4d8f"/>
+            <circle cx="105" cy="52" r="11" fill="#e0b088"/><rect x="93" y="62" width="24" height="12" rx="6" fill="#6a4fb3"/>
+            <circle cx="140" cy="52" r="11" fill="#c98f66"/><rect x="128" y="62" width="24" height="12" rx="6" fill="#2a4d8f"/>
+            <circle cx="175" cy="52" r="11" fill="#f0c9a0"/><rect x="163" y="62" width="24" height="12" rx="6" fill="#6a4fb3"/>
+          </g>
+          <rect x="94" y="140" width="52" height="26" rx="5" fill="#fff" stroke="#d9822b" stroke-width="3"/>
+          <path d="M110 150h20M110 158h14" stroke="#d9822b" stroke-width="3" stroke-linecap="round"/>
+          <path d="M26 128c0-10 8-16 16-16s16 6 16 16v10H26z" fill="#4da875"/><circle cx="42" cy="104" r="10" fill="#e0b088"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="step" style="--c:#2c9a8a">
+      <div class="card">
+        <h2>Committee vote</h2>
+        <div class="who">Committee members</div>
+        <p>If a majority of the committee votes yes, the bill is reported out. Bills that cost money also go to the Finance (Senate) or Ways and Means (Assembly) committee, and many pass through the Rules Committee before reaching the floor.</p>
+      </div>
+      <div class="node">4</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#d5f0eb"/>
+          <rect x="62" y="50" width="116" height="84" rx="10" fill="#fff" stroke="#2c9a8a" stroke-width="3"/>
+          <rect x="94" y="40" width="52" height="16" rx="6" fill="#2c9a8a"/>
+          <path d="M80 92l14 14 28-30" stroke="#4da875" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M132 84h30M132 100h30M80 122h82" stroke="#b6cfcb" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="step" style="--c:#4da875">
+      <div class="card">
+        <h2>Floor vote in the first house</h2>
+        <div class="who">All senators or members</div>
+        <p>The bill is placed on the calendar and debated on the floor. Under the State Constitution it must sit in print for three days before a final vote, unless the Governor certifies an emergency.</p>
+        <ul>
+          <li>It passes with a majority of <b>all members elected</b>: <b>32 of 63</b> in the Senate, <b>76 of 150</b> in the Assembly.</li>
+          <li>Each Senate roll call is public. <a href="state.html">Explore them on the map.</a></li>
+        </ul>
+      </div>
+      <div class="node">5</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#dcf1e4"/>
+          <g>
+            <circle cx="60" cy="110" r="9" fill="#4da875"/><circle cx="82" cy="100" r="9" fill="#4da875"/><circle cx="104" cy="94" r="9" fill="#4da875"/>
+            <circle cx="126" cy="94" r="9" fill="#4da875"/><circle cx="148" cy="100" r="9" fill="#cf5c5c"/><circle cx="170" cy="110" r="9" fill="#4da875"/>
+            <circle cx="72" cy="132" r="9" fill="#4da875"/><circle cx="96" cy="124" r="9" fill="#4da875"/><circle cx="120" cy="120" r="9" fill="#cf5c5c"/>
+            <circle cx="144" cy="124" r="9" fill="#4da875"/><circle cx="168" cy="132" r="9" fill="#4da875"/>
+          </g>
+          <rect x="94" y="40" width="52" height="34" rx="6" fill="#fff" stroke="#4da875" stroke-width="3"/>
+          <path d="M107 57l9 9 17-19" stroke="#4da875" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="step" style="--c:#6a4fb3">
+      <div class="card">
+        <h2>The other house</h2>
+        <div class="who">Second chamber</div>
+        <p>The bill repeats the process in the other house: referral, committee and a floor vote. Often the second house takes up its own member's matching bill instead.</p>
+        <ul>
+          <li>Both houses must pass the <b>same text</b>.</li>
+          <li>If one house amends it, the other must agree before it moves on.</li>
+        </ul>
+      </div>
+      <div class="node">6</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#e6dff5"/>
+          <path d="M40 150h160V90L120 38 40 90z" fill="#fff" stroke="#6a4fb3" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M28 92L120 28l92 64z" fill="#c9bbe9" stroke="#6a4fb3" stroke-width="3" stroke-linejoin="round"/>
+          <g fill="#6a4fb3"><rect x="58" y="96" width="14" height="46" rx="2"/><rect x="88" y="96" width="14" height="46" rx="2"/><rect x="138" y="96" width="14" height="46" rx="2"/><rect x="168" y="96" width="14" height="46" rx="2"/></g>
+          <rect x="32" y="146" width="176" height="10" rx="3" fill="#6a4fb3"/>
+          <circle cx="120" cy="66" r="9" fill="#fff" stroke="#6a4fb3" stroke-width="3"/>
+          <path d="M120 60v7h5" stroke="#6a4fb3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="step" style="--c:#c9483f">
+      <div class="card">
+        <h2>The Governor decides</h2>
+        <div class="who">Governor</div>
+        <p>Bills do not go to the Governor automatically. The Legislature sends them over, often in batches through the end of the year, and the clock starts at delivery.</p>
+        <ul>
+          <li><b>10 days</b> to act (not counting Sundays) while the Legislature is in session.</li>
+          <li><b>30 days</b> after delivery if the Legislature has adjourned for the year. A bill left unsigned then dies (a “pocket veto”).</li>
+        </ul>
+      </div>
+      <div class="node">7</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#f8dcd9"/>
+          <rect x="60" y="48" width="96" height="86" rx="6" fill="#fff" stroke="#c9483f" stroke-width="3"/>
+          <path d="M74 70h68M74 84h68M74 98h40" stroke="#d3b3b0" stroke-width="5" stroke-linecap="round"/>
+          <path d="M76 122c10-14 16 8 26-4s12 6 22-2" stroke="#c9483f" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M150 140l30-60 12 6-30 60-16 4z" fill="#c9483f"/><path d="M150 140l-4 16 16-4z" fill="#f3c6c2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="fork">
+    <div class="branch" style="--c:#4da875"><h3>Signs it</h3><p>The bill becomes law and is given a chapter number. Track these on the <a href="state.html">Signed</a> view of the map.</p></div>
+    <div class="branch" style="--c:#8a97ab"><h3>Does nothing</h3><p>While the Legislature is in session, a bill the Governor ignores for 10 days becomes law. After adjournment it dies.</p></div>
+    <div class="branch" style="--c:#c9483f"><h3>Vetoes it</h3><p>It returns to the house that passed it. Overriding takes two-thirds of <b>both</b> houses: <b>42 of 63</b> senators and <b>100 of 150</b> Assembly Members. See the <a href="state.html">Vetoed</a> view.</p></div>
+  </div>
+
+  <div class="path" style="margin-top:36px">
+    <div class="step" style="--c:#d9a441">
+      <div class="card">
+        <h2>It's a Chapter of the Laws</h2>
+        <div class="who">Secretary of State · Public record</div>
+        <p>A signed bill becomes a numbered “Chapter” of that year's Laws of New York. It takes effect on the date written into it, which is often months later.</p>
+      </div>
+      <div class="node">8</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#f8ecd0"/>
+          <rect x="116" y="44" width="8" height="82" rx="3" fill="#8a6a1f"/>
+          <rect x="62" y="48" width="116" height="8" rx="4" fill="#d9a441"/>
+          <path d="M70 56l-18 36h36zM170 56l-18 36h36z" fill="none" stroke="#8a6a1f" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M48 92h44a22 12 0 0 1-44 0zM148 92h44a22 12 0 0 1-44 0z" fill="#d9a441"/>
+          <rect x="88" y="126" width="64" height="14" rx="4" fill="#8a6a1f"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <section class="votes">
+    <h2>How many votes does it take?</h2>
+    <p>The Senate has 63 seats and the Assembly has 150. Pick a threshold to see what it looks like.</p>
+    <div class="seats maj" id="seats" aria-hidden="true"></div>
+    <div class="seg" id="thresh" role="group" aria-label="Vote threshold">
+      <button data-t="63:32" class="active">Senate: pass</button>
+      <button data-t="63:42">Senate: override</button>
+      <button data-t="150:76">Assembly: pass</button>
+      <button data-t="150:100">Assembly: override</button>
+    </div>
+    <div class="seat-note" id="seat-note"></div>
+  </section>
+
+  <div class="two-col">
+    <div class="box">
+      <h3>Two houses, one bill</h3>
+      <p style="margin:0">The Senate and Assembly are equals: nothing becomes law unless both pass identical text. A Senate bill (S) and its Assembly twin (A) are tracked separately until one house takes up the other's version.</p>
+    </div>
+    <div class="box">
+      <h3>The budget is different</h3>
+      <p style="margin:0">The Governor proposes the state budget each winter and the Legislature negotiates and passes it, usually by April. Budget bills move on their own track and carry most of the year's money decisions.</p>
+    </div>
+  </div>
+
+  <section class="committees" id="committees">
+    <h2>The Senate committees</h2>
+    <p class="sub">Every bill starts its journey in one of these. It is referred to the committee that covers the topic. The Assembly has its own committees; this shows the Senate's. Tap a committee to see who sits on it.</p>
+    <div class="hub">
+      <svg viewBox="0 0 560 120" aria-hidden="true">
+        <g stroke="#b7c4da" stroke-width="3" stroke-dasharray="6 6" fill="none"><path d="M280 60H110M280 60H450M280 60L190 18M280 60L370 18M280 60L190 102M280 60L370 102"/></g>
+        <circle cx="280" cy="60" r="38" fill="#2a4d8f"/>
+        <text x="280" y="56" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Senate</text>
+        <text x="280" y="72" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Leadership</text>
+        <g font-size="22" text-anchor="middle"><circle cx="90" cy="60" r="22" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="90" y="68">&#127970;</text>
+        <circle cx="470" cy="60" r="22" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="470" y="68">&#127973;</text>
+        <circle cx="170" cy="16" r="20" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="170" y="24">&#128214;</text>
+        <circle cx="390" cy="16" r="20" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="390" y="24">&#128658;</text>
+        <circle cx="170" cy="104" r="20" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="170" y="112">&#127795;</text>
+        <circle cx="390" cy="104" r="20" fill="#fff" stroke="#b7c4da" stroke-width="2"/><text x="390" y="112">&#128188;</text></g>
+      </svg>
+    </div>
+    <div id="cat-list"><p class="cnote">Loading committees&hellip;</p></div>
+    <p class="cnote">Gold dot = Chair. Membership is as listed by the NY Senate and can change.</p>
+  </section>
+
+  <div class="finish"><a class="btn" href="./">See how your State Senator voted &rarr;</a></div>
+</main>
+
+<footer>Simplified overview for general understanding. See the <a href="https://www.nysenate.gov/">NY State Senate</a> and <a href="https://legislation.nysenate.gov/">Open Legislation</a> sites, and the State Constitution (Article IV and Article III), for the official rules.</footer>
+
+<script>
+  // Scroll-reveal for steps
+  const steps = document.querySelectorAll('.step');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.15 });
+    steps.forEach(s => io.observe(s));
+  } else steps.forEach(s => s.classList.add('in'));
+
+  // Seat chart
+  const seatsEl = document.getElementById('seats'), note = document.getElementById('seat-note');
+  function setThreshold(total, n) {
+    seatsEl.innerHTML = '';
+    const size = total > 100 ? 14 : 28;
+    for (let i = 0; i < total; i++) { const d = document.createElement('div'); d.className = 'seat' + (i < n ? ' on' : '') + (i === n - 1 ? ' edge' : ''); d.style.width = d.style.height = size + 'px'; seatsEl.appendChild(d); }
+    seatsEl.className = 'seats ' + (n === Math.floor(total / 2) + 1 ? 'maj' : 'two');
+    const house = total === 63 ? 'Senate' : 'Assembly';
+    note.innerHTML = n === Math.floor(total / 2) + 1
+      ? '<b>' + n + ' votes</b>: a majority of all ' + total + ' ' + house + ' members, not just those present.'
+      : '<b>' + n + ' votes</b>: two-thirds of the ' + house + ', needed in <i>each</i> house to override a veto.';
+  }
+  document.getElementById('thresh').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    document.querySelectorAll('#thresh button').forEach(x => x.classList.toggle('active', x === b));
+    const [t, n] = b.dataset.t.split(':').map(Number); setThreshold(t, n);
+  });
+  setThreshold(63, 32);
+
+  // Committees (from data/profiles.json)
+  (function () {
+    const CATS = [
+      { t: 'Money & government', c: '#2a4d8f', re: /finance|budget|rules|ethics|investigations|corporations|procurement|banks|insurance|local government|civil service|elections|internet|commerce|consumer/i },
+      { t: 'Safety & justice', c: '#c9483f', re: /codes|judiciary|crime|veterans|racing/i },
+      { t: 'Health & people', c: '#2c9a8a', re: /health|mental|aging|disabilit|alcohol|social services|children|women/i },
+      { t: 'Housing, cities & transport', c: '#d9822b', re: /housing|cities|transportation/i },
+      { t: 'Environment & energy', c: '#4da875', re: /agriculture|environmental|energy/i },
+      { t: 'Education, culture & labor', c: '#6a4fb3', re: /./ }
+    ];
+    const ICONS = [
+      [/finance/i, '\u{1F4B0}'], [/budget/i, '\u{1F4CA}'], [/rules/i, '\u{1F4DC}'], [/ethics/i, '\u2696\uFE0F'], [/investigations/i, '\u{1F50D}'], [/corporations/i, '\u{1F3E2}'], [/procurement/i, '\u{1F4DD}'], [/banks/i, '\u{1F3E6}'], [/insurance/i, '\u{1F6E1}\uFE0F'], [/local government/i, '\u{1F3DB}\uFE0F'], [/civil service/i, '\u{1F477}'], [/elections/i, '\u{1F5F3}\uFE0F'], [/internet|technology/i, '\u{1F4BB}'], [/commerce/i, '\u{1F4C8}'], [/consumer/i, '\u{1F6D2}'],
+      [/codes/i, '\u{1F4D5}'], [/judiciary/i, '\u2696\uFE0F'], [/crime/i, '\u{1F512}'], [/veterans/i, '\u{1F396}\uFE0F'], [/racing/i, '\u{1F3C7}'],
+      [/mental/i, '\u{1F9E0}'], [/health/i, '\u2695\uFE0F'], [/aging/i, '\u{1F9D3}'], [/disabilit/i, '\u267F'], [/alcohol/i, '\u{1F37A}'], [/social services/i, '\u{1F91D}'], [/children/i, '\u{1F9D2}'], [/women/i, '\u{1F469}'],
+      [/housing/i, '\u{1F3D8}\uFE0F'], [/cities/i, '\u{1F306}'], [/transportation/i, '\u{1F687}'],
+      [/agriculture/i, '\u{1F33E}'], [/environmental/i, '\u{1F333}'], [/energy/i, '\u26A1'],
+      [/higher/i, '\u{1F3EB}'], [/education/i, '\u{1F393}'], [/cultural/i, '\u{1F3AD}'], [/libraries/i, '\u{1F4DA}'], [/labor/i, '\u{1F6E0}\uFE0F']
+    ];
+    const clean = n => n.replace(/ And /g, ' and ');
+    const esc = t => String(t).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    fetch('data/state/profiles.json').then(r => r.json()).then(P => {
+      const by = {};
+      Object.entries(P).forEach(([d, m]) => (m.committees || []).forEach(c => {
+        const key = clean(c.name), isSub = /^Subcommittee/.test(c.name), isTF = /^Task Force/.test(c.name);
+        const e = by[key] || (by[key] = { name: key, kind: isTF ? 'Task force' : isSub ? 'Subcommittee' : 'Committee', full: c.name, m: {} });
+        e.m[d] = Object.assign({}, m, { chair: e.m[d] && e.m[d].chair || c.role === 'Chair' });
+      }));
+      const list = Object.values(by);
+      const host = document.getElementById('cat-list'); host.innerHTML = '';
+      CATS.forEach(cat => {
+        const mine = list.filter(e => !e.cat && cat.re.test(e.name) && (e.cat = cat.t)).sort((a, b) => a.name.localeCompare(b.name));
+        if (!mine.length) return;
+        const sec = document.createElement('div'); sec.className = 'cat'; sec.style.setProperty('--c', cat.c);
+        sec.innerHTML = '<h3>' + esc(cat.t) + '</h3><div class="cgrid"></div>';
+        const grid = sec.querySelector('.cgrid');
+        mine.forEach(e => {
+          const ms = Object.entries(e.m).sort((a, b) => (b[1].chair - a[1].chair) || (a[0] - b[0]));
+          const chair = ms.find(x => x[1].chair), ic = (ICONS.find(i => i[0].test(e.name)) || [0, '\u{1F4CB}'])[1];
+          const b = document.createElement('button'); b.className = 'ctile'; b.type = 'button';
+          b.innerHTML = '<div class="top"><span class="ic">' + ic + '</span><div><div class="nm">' + esc(e.name) + (e.kind !== 'Committee' ? ' <small style="font-weight:400;color:var(--muted)">(' + e.kind.toLowerCase() + ')</small>' : '') + '</div><div class="ch">' + (chair ? 'Chair: ' + esc(chair[1].name) + ' (SD' + chair[0] + ')' : 'No chair listed') + '</div></div></div>' +
+            '<div class="dots">' + ms.map(x => '<i' + (x[1].chair ? ' class="chair"' : '') + '></i>').join('') + '<span>' + ms.length + ' members</span></div>' +
+            '<ul class="roster">' + ms.map(x => '<li' + (x[1].chair ? ' class="chair"' : '') + '><span class="d">' + x[0] + '</span>' + esc(x[1].name) + (x[1].party ? ' - ' + esc(x[1].party) : '') + (x[1].chair ? ' (Chair)' : '') + '</li>').join('') + '</ul>';
+          b.addEventListener('click', () => b.classList.toggle('open'));
+          grid.appendChild(b);
+        });
+        host.appendChild(sec);
+      });
+    }).catch(() => { document.getElementById('cat-list').innerHTML = '<p class="cnote">Committee data could not be loaded.</p>'; });
+  })();
+</script>
+</body>
+</html>
