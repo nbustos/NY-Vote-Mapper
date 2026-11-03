@@ -20,6 +20,8 @@
   h1 { margin: 0; font-size: 22px; }
   #status { color: var(--muted); font-size: 13px; }
   select { font: inherit; padding: 2px 6px; }
+  .howlink { margin-left: auto; font-size: 13px; font-weight: 600; text-decoration: none; color: var(--accent); background: #fff; border: 1px solid #c9d1dc; border-radius: 8px; padding: 5px 12px; }
+  .howlink:hover { background: #eef2f8; }
 
   /* Timeline */
   #timeline-wrap { margin: 8px 24px 0; background: var(--panel); border-radius: 12px; padding: 10px 14px 8px; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
@@ -172,6 +174,7 @@
   <span id="status">Loading votes…</span>
   <div class="seg" id="mode" role="group" aria-label="Bills shown"><button data-mode="approved" class="active">Approved</button><button data-mode="vetoed">Vetoed</button></div>
   <label style="font-size:13px">Year <select id="year"></select></label>
+  <a href="how-a-bill-becomes-law.html" class="howlink">How a bill becomes law &rarr;</a>
 </header>
 
 <div id="timeline-wrap">

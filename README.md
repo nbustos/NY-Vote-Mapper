@@ -13,6 +13,8 @@ An interactive map of New York City's 51 City Council districts that shows how e
 - **Member profile card:** click a district on the map, or a row in the roster, to open that Council Member's card: photo, age, year they took office, party, leadership role, caucuses, committees (with chair roles) and, if a bill is selected, how they voted on it.
 - **Roll-call inspector (right/below):** a searchable list of all 51 districts with each member's vote and a link to the bill on Legistar.
 
+- **How a bill becomes law (link, top right):** a separate illustrated page, `how-a-bill-becomes-law.html`, walking through the path from idea to Local Law, including the 26-vote and 34-vote thresholds.
+
 The page is static: plain HTML, CSS and JavaScript with [D3](https://d3js.org/) (loaded from the jsDelivr CDN). It works on desktop and mobile.
 
 ## Where the data comes from

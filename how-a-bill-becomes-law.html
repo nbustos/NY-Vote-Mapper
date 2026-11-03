@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How a Bill Becomes Law in NYC · NYC Council Vote Mapper</title>
+<style>
+  :root {
+    --ink: #1c2433; --muted: #5d6b7e; --bg: #f3f5f8; --panel: #fff; --accent: #2a4d8f;
+    --yes: #4da875; --yes-soft: #9bd8b0; --no: #cf5c5c; --no-soft: #f3a9a9; --gold: #d9a441;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.5; }
+  a { color: var(--accent); }
+
+  nav.top { padding: 12px 24px; display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+  nav.top a.back { text-decoration: none; font-weight: 600; font-size: 14px; background: #fff; border: 1px solid #c9d1dc; border-radius: 8px; padding: 6px 12px; }
+  nav.top a.back:hover { background: #eef2f8; }
+
+  .hero { text-align: center; padding: 28px 20px 56px; color: #fff; background: linear-gradient(135deg, #1f3a6e 0%, #2a4d8f 55%, #3b6bb5 100%); position: relative; overflow: hidden; }
+  .hero h1 { margin: 0 0 10px; font-size: clamp(26px, 5vw, 44px); letter-spacing: -.5px; }
+  .hero p { margin: 0 auto; max-width: 640px; font-size: clamp(15px, 2.4vw, 18px); opacity: .92; }
+  .hero svg.skyline { position: absolute; left: 0; right: 0; bottom: 0; width: 100%; height: 70px; opacity: .22; }
+  .pill-row { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px; position: relative; }
+  .pill { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 4px 14px; font-size: 13px; }
+
+  main { max-width: 980px; margin: 0 auto; padding: 24px 16px 48px; }
+
+  /* Path */
+  .path { position: relative; padding: 8px 0; }
+  .path::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px; transform: translateX(-50%); border-radius: 2px;
+    background: repeating-linear-gradient(to bottom, #b7c4da 0 10px, transparent 10px 20px); }
+  .step { position: relative; display: grid; grid-template-columns: 1fr 72px 1fr; align-items: center; margin: 0 0 36px; opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+  .step.in { opacity: 1; transform: none; }
+  .step .card { background: var(--panel); border-radius: 16px; padding: 18px 20px; box-shadow: 0 2px 10px rgba(30,50,90,.10); border-top: 5px solid var(--c, var(--accent)); }
+  .step:nth-child(odd) .card { grid-column: 1; }
+  .step:nth-child(odd) .art { grid-column: 3; }
+  .step:nth-child(even) .card { grid-column: 3; grid-row: 1; }
+  .step:nth-child(even) .art { grid-column: 1; grid-row: 1; }
+  .node { grid-column: 2; grid-row: 1; justify-self: center; width: 52px; height: 52px; border-radius: 50%; background: var(--c, var(--accent)); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 22px; border: 4px solid var(--bg); box-shadow: 0 2px 6px rgba(0,0,0,.2); z-index: 1; }
+  .card h2 { margin: 0 0 2px; font-size: 20px; }
+  .card .who { font-size: 12px; text-transform: uppercase; letter-spacing: .8px; color: var(--c, var(--accent)); font-weight: 700; margin-bottom: 8px; }
+  .card p { margin: 0 0 8px; font-size: 14.5px; }
+  .card ul { margin: 0; padding-left: 18px; font-size: 14px; color: #34415a; }
+  .card .time { display: inline-block; margin-top: 8px; font-size: 12px; font-weight: 600; background: #eef2f8; border-radius: 6px; padding: 2px 8px; color: var(--muted); }
+  .art { display: flex; justify-content: center; }
+  .art svg { width: 100%; max-width: 250px; height: auto; filter: drop-shadow(0 4px 8px rgba(30,50,90,.12)); }
+
+  /* Votes */
+  .votes { margin: 0 0 40px; background: var(--panel); border-radius: 18px; padding: 22px 20px; box-shadow: 0 2px 10px rgba(30,50,90,.10); }
+  .votes h2 { margin: 0 0 4px; text-align: center; }
+  .votes > p { text-align: center; color: var(--muted); margin: 0 0 18px; font-size: 14px; }
+  .seats { display: flex; flex-wrap: wrap; gap: 5px; justify-content: center; max-width: 620px; margin: 0 auto 14px; }
+  .seat { width: 28px; height: 28px; border-radius: 50%; background: #dfe5ee; transition: background .35s; }
+  .seats.maj .seat.on { background: var(--yes); }
+  .seats.two .seat.on { background: var(--gold); }
+  .seat.edge { outline: 3px solid var(--ink); outline-offset: 1px; }
+  .seg { display: flex; justify-content: center; gap: 8px; margin: 12px 0 4px; flex-wrap: wrap; }
+  .seg button { font: inherit; font-size: 14px; border: 1px solid #c9d1dc; background: #fff; border-radius: 8px; padding: 6px 14px; cursor: pointer; }
+  .seg button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .seat-note { text-align: center; font-size: 14px; min-height: 42px; }
+  .seat-note b { font-size: 18px; }
+
+  /* Fork */
+  .fork { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin: 14px 0 0; }
+  .branch { background: #fff; border-radius: 14px; padding: 14px 16px; box-shadow: 0 2px 8px rgba(30,50,90,.09); border-top: 5px solid var(--c); font-size: 14px; }
+  .branch h3 { margin: 0 0 4px; font-size: 16px; color: var(--c); }
+  .branch p { margin: 0; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 36px; }
+  .box { background: var(--panel); border-radius: 14px; padding: 16px 18px; box-shadow: 0 2px 8px rgba(30,50,90,.09); font-size: 14px; }
+  .box h3 { margin: 0 0 6px; font-size: 17px; }
+
+  .finish { text-align: center; margin-top: 36px; }
+  .finish a.btn { display: inline-block; text-decoration: none; background: var(--accent); color: #fff; font-weight: 700; padding: 12px 24px; border-radius: 10px; }
+  .finish a.btn:hover { background: #1f3a6e; }
+  footer { text-align: center; font-size: 12px; color: var(--muted); padding: 0 16px 28px; }
+
+  @media (max-width: 760px) {
+    .path::before { left: 26px; }
+    .step { grid-template-columns: 52px 1fr; column-gap: 12px; }
+    .node { grid-column: 1 !important; grid-row: 1; align-self: start; }
+    .step .card, .step:nth-child(even) .card { grid-column: 2 !important; grid-row: 1; }
+    .step .art, .step:nth-child(even) .art { grid-column: 2 !important; grid-row: 2; margin-top: 10px; }
+    .art svg { max-width: 190px; }
+    .fork, .two-col { grid-template-columns: 1fr; }
+    .seat { width: 22px; height: 22px; }
+    nav.top { padding: 10px 14px; }
+  }
+  @media (prefers-reduced-motion: reduce) { .step { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<nav class="top"><a class="back" href="./">&larr; Back to the vote map</a></nav>
+
+<section class="hero">
+  <h1>How a Bill Becomes Law in New York City</h1>
+  <p>From an idea to a Local Law: who writes it, who debates it, and how many votes it takes at each step.</p>
+  <div class="pill-row">
+    <span class="pill">51 Council Members</span>
+    <span class="pill">26 votes to pass</span>
+    <span class="pill">34 votes to override a veto</span>
+  </div>
+  <svg class="skyline" viewBox="0 0 800 70" preserveAspectRatio="none" aria-hidden="true"><path fill="#fff" d="M0 70V45h30V30h20v15h20V20h25v25h25V35h20V10h12V0h6v10h12v25h25V25h30v20h20V32h25v13h30V28h20v17h25V38h30V15h14V5h4v10h14v23h30V30h25v15h30V35h20v10h30V22h25v23h30V40h30v30z"/></svg>
+</section>
+
+<main>
+  <div class="path">
+
+    <!-- 1 -->
+    <div class="step" style="--c:#2a4d8f">
+      <div class="card">
+        <h2>An idea becomes a draft</h2>
+        <div class="who">Council Member · Mayor · Public</div>
+        <p>Every bill starts with a problem. Council Members sponsor legislation, often after hearing from residents, advocates, agencies or the Mayor's office.</p>
+        <ul>
+          <li>The Council's legislative drafting staff turn the idea into precise legal text.</li>
+          <li>Other members can sign on as co-sponsors to show support.</li>
+        </ul>
+      </div>
+      <div class="node">1</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#dbe6f7"/>
+          <path d="M120 38a34 34 0 0 0-20 61c4 3 6 7 6 11v6h28v-6c0-4 2-8 6-11a34 34 0 0 0-20-61z" fill="#ffd45c" stroke="#e0a800" stroke-width="3"/>
+          <rect x="106" y="120" width="28" height="8" rx="3" fill="#8a97ab"/><rect x="110" y="130" width="20" height="7" rx="3" fill="#8a97ab"/>
+          <g stroke="#e0a800" stroke-width="4" stroke-linecap="round"><path d="M120 14v10M72 34l7 7M168 34l-7 7M52 80h10M178 80h10"/></g>
+          <rect x="22" y="112" width="58" height="50" rx="6" fill="#fff" stroke="#2a4d8f" stroke-width="3"/>
+          <path d="M32 126h38M32 136h38M32 146h24" stroke="#9fb3d6" stroke-width="4" stroke-linecap="round"/>
+          <path d="M184 150l26-26 8 8-26 26-12 4z" fill="#2a4d8f"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 2 -->
+    <div class="step" style="--c:#6a4fb3">
+      <div class="card">
+        <h2>Introduction &amp; referral</h2>
+        <div class="who">Stated Council Meeting · The Speaker</div>
+        <p>The bill is formally introduced at a Stated Meeting, the full Council's regular session, and gets a file number (an “Int.” for a bill, “Res.” for a resolution).</p>
+        <ul>
+          <li>The Speaker refers it to the committee that covers the topic, like Health, Housing or Public Safety.</li>
+          <li>Anyone can look it up on Legistar by its number.</li>
+        </ul>
+        <span class="time">Council meets in full about twice a month</span>
+      </div>
+      <div class="node">2</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#e6dff5"/>
+          <path d="M40 150h160V90L120 38 40 90z" fill="#fff" stroke="#6a4fb3" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M28 92L120 28l92 64z" fill="#c9bbe9" stroke="#6a4fb3" stroke-width="3" stroke-linejoin="round"/>
+          <g fill="#6a4fb3"><rect x="58" y="96" width="14" height="46" rx="2"/><rect x="88" y="96" width="14" height="46" rx="2"/><rect x="138" y="96" width="14" height="46" rx="2"/><rect x="168" y="96" width="14" height="46" rx="2"/></g>
+          <rect x="32" y="146" width="176" height="10" rx="3" fill="#6a4fb3"/>
+          <circle cx="120" cy="66" r="9" fill="#fff" stroke="#6a4fb3" stroke-width="3"/>
+          <path d="M120 60v7h5" stroke="#6a4fb3" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 3 -->
+    <div class="step" style="--c:#d9822b">
+      <div class="card">
+        <h2>Committee hearing</h2>
+        <div class="who">Committee · Public · Administration</div>
+        <p>The committee holds a public hearing. City agencies explain their view, and advocates, experts and ordinary New Yorkers can testify.</p>
+        <ul>
+          <li>Members question witnesses and negotiate changes.</li>
+          <li>Many bills are amended here, or stay in committee for months.</li>
+          <li>Some bills never get a hearing and quietly expire at the end of the two-year session.</li>
+        </ul>
+      </div>
+      <div class="node">3</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#fbe6cf"/>
+          <rect x="40" y="62" width="160" height="16" rx="8" fill="#a8672a"/>
+          <rect x="52" y="76" width="136" height="50" rx="6" fill="#d9822b"/>
+          <g>
+            <circle cx="70" cy="52" r="11" fill="#f0c9a0"/><rect x="58" y="62" width="24" height="12" rx="6" fill="#2a4d8f"/>
+            <circle cx="105" cy="52" r="11" fill="#e0b088"/><rect x="93" y="62" width="24" height="12" rx="6" fill="#6a4fb3"/>
+            <circle cx="140" cy="52" r="11" fill="#c98f66"/><rect x="128" y="62" width="24" height="12" rx="6" fill="#2a4d8f"/>
+            <circle cx="175" cy="52" r="11" fill="#f0c9a0"/><rect x="163" y="62" width="24" height="12" rx="6" fill="#6a4fb3"/>
+          </g>
+          <rect x="94" y="140" width="52" height="26" rx="5" fill="#fff" stroke="#d9822b" stroke-width="3"/>
+          <path d="M110 150h20M110 158h14" stroke="#d9822b" stroke-width="3" stroke-linecap="round"/>
+          <path d="M26 128c0-10 8-16 16-16s16 6 16 16v10H26z" fill="#4da875"/><circle cx="42" cy="104" r="10" fill="#e0b088"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 4 -->
+    <div class="step" style="--c:#2c9a8a">
+      <div class="card">
+        <h2>Committee vote</h2>
+        <div class="who">Committee members</div>
+        <p>When the language is settled, the committee votes. A majority of the committee sends the bill to the full Council.</p>
+        <ul>
+          <li>Bills that involve city money may also need the Finance Committee.</li>
+          <li>Land-use items follow a separate review through the Land Use Committee.</li>
+        </ul>
+      </div>
+      <div class="node">4</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#d5f0eb"/>
+          <rect x="62" y="50" width="116" height="84" rx="10" fill="#fff" stroke="#2c9a8a" stroke-width="3"/>
+          <rect x="94" y="40" width="52" height="16" rx="6" fill="#2c9a8a"/>
+          <path d="M80 92l14 14 28-30" stroke="#4da875" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M132 84h30M132 100h30M80 122h82" stroke="#b6cfcb" stroke-width="5" stroke-linecap="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 5 -->
+    <div class="step" style="--c:#4da875">
+      <div class="card">
+        <h2>Full Council vote</h2>
+        <div class="who">All 51 Council Members · Stated Meeting</div>
+        <p>This is the vote you see on the map. Each member votes Yes, No or abstains, and the roll call is public.</p>
+        <ul>
+          <li>A local law needs a majority of the whole Council: <b>26 of 51</b>.</li>
+          <li>The vote is recorded by name, so you can see exactly how your district's member voted.</li>
+        </ul>
+        <span class="time"><a href="./">Explore these votes on the map</a></span>
+      </div>
+      <div class="node">5</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#dcf1e4"/>
+          <g>
+            <circle cx="60" cy="110" r="9" fill="#4da875"/><circle cx="82" cy="100" r="9" fill="#4da875"/><circle cx="104" cy="94" r="9" fill="#4da875"/>
+            <circle cx="126" cy="94" r="9" fill="#4da875"/><circle cx="148" cy="100" r="9" fill="#cf5c5c"/><circle cx="170" cy="110" r="9" fill="#4da875"/>
+            <circle cx="72" cy="132" r="9" fill="#4da875"/><circle cx="96" cy="124" r="9" fill="#4da875"/><circle cx="120" cy="120" r="9" fill="#cf5c5c"/>
+            <circle cx="144" cy="124" r="9" fill="#4da875"/><circle cx="168" cy="132" r="9" fill="#4da875"/>
+          </g>
+          <rect x="94" y="40" width="52" height="34" rx="6" fill="#fff" stroke="#4da875" stroke-width="3"/>
+          <path d="M107 57l9 9 17-19" stroke="#4da875" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 6 -->
+    <div class="step" style="--c:#c9483f">
+      <div class="card">
+        <h2>The Mayor decides</h2>
+        <div class="who">Mayor · 30 days</div>
+        <p>Once the Council passes a bill, it goes to the Mayor, who has 30 days to act. There are three outcomes (see below).</p>
+        <p style="margin:0">Resolutions are the Council's statements or requests. They don't go to the Mayor and don't create law.</p>
+      </div>
+      <div class="node">6</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#f8dcd9"/>
+          <rect x="60" y="48" width="96" height="86" rx="6" fill="#fff" stroke="#c9483f" stroke-width="3"/>
+          <path d="M74 70h68M74 84h68M74 98h40" stroke="#d3b3b0" stroke-width="5" stroke-linecap="round"/>
+          <path d="M76 122c10-14 16 8 26-4s12 6 22-2" stroke="#c9483f" stroke-width="3" fill="none" stroke-linecap="round"/>
+          <path d="M150 140l30-60 12 6-30 60-16 4z" fill="#c9483f"/><path d="M150 140l-4 16 16-4z" fill="#f3c6c2"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="fork">
+    <div class="branch" style="--c:#4da875"><h3>Signs it</h3><p>The bill becomes law right away, or on the date written into it.</p></div>
+    <div class="branch" style="--c:#8a97ab"><h3>Does nothing</h3><p>If the Mayor takes no action within 30 days, the bill becomes law automatically.</p></div>
+    <div class="branch" style="--c:#c9483f"><h3>Vetoes it</h3><p>The bill goes back to the Council. It has 30 days to override with <b>34 of 51</b> votes (two-thirds). Track these on the <a href="./">Vetoed</a> view of the map.</p></div>
+  </div>
+
+  <div class="path" style="margin-top:36px">
+    <div class="step" style="--c:#d9a441">
+      <div class="card">
+        <h2>It's a Local Law</h2>
+        <div class="who">City Clerk · Public record</div>
+        <p>The bill is given a Local Law number and added to the City's official record. Agencies then put it into practice on the effective date, which is often months after passage.</p>
+      </div>
+      <div class="node">7</div>
+      <div class="art">
+        <svg viewBox="0 0 240 180" aria-hidden="true">
+          <circle cx="120" cy="90" r="76" fill="#f8ecd0"/>
+          <rect x="116" y="44" width="8" height="82" rx="3" fill="#8a6a1f"/>
+          <rect x="62" y="48" width="116" height="8" rx="4" fill="#d9a441"/>
+          <path d="M70 56l-18 36h36zM170 56l-18 36h36z" fill="none" stroke="#8a6a1f" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M48 92h44a22 12 0 0 1-44 0zM148 92h44a22 12 0 0 1-44 0z" fill="#d9a441"/>
+          <rect x="88" y="126" width="64" height="14" rx="4" fill="#8a6a1f"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <section class="votes">
+    <h2>How many votes does it take?</h2>
+    <p>51 seats in the Council. Pick a threshold to see what it looks like.</p>
+    <div class="seats maj" id="seats" aria-hidden="true"></div>
+    <div class="seg" id="thresh" role="group" aria-label="Vote threshold">
+      <button data-n="26" class="active">Pass a bill</button>
+      <button data-n="34">Override a veto</button>
+    </div>
+    <div class="seat-note" id="seat-note"></div>
+  </section>
+
+  <div class="two-col">
+    <div class="box">
+      <h3>Bills vs. resolutions</h3>
+      <p style="margin:0"><b>Introductions (Int.)</b> are proposed laws. If they pass and survive the Mayor, they change the City Code.<br><b>Resolutions (Res.)</b> express the Council's position, such as calling on Albany to act. They aren't laws and aren't sent to the Mayor.</p>
+    </div>
+    <div class="box">
+      <h3>Why a bill can stall</h3>
+      <p style="margin:0">Nothing forces a hearing or a vote. The Speaker controls which bills get referred and scheduled, and bills not passed by the end of the two-year session are dropped and must be reintroduced.</p>
+    </div>
+  </div>
+
+  <div class="finish"><a class="btn" href="./">See how your Council Member voted &rarr;</a></div>
+</main>
+
+<footer>Simplified overview for general understanding. See the <a href="https://council.nyc.gov/legislation/">NYC Council's legislation page</a> and the <a href="https://www.nyc.gov/site/charter/index.page">City Charter</a> for the official rules.</footer>
+
+<script>
+  // Scroll-reveal for steps
+  const steps = document.querySelectorAll('.step');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.15 });
+    steps.forEach(s => io.observe(s));
+  } else steps.forEach(s => s.classList.add('in'));
+
+  // Seat chart
+  const seatsEl = document.getElementById('seats'), note = document.getElementById('seat-note');
+  for (let i = 1; i <= 51; i++) { const d = document.createElement('div'); d.className = 'seat'; seatsEl.appendChild(d); }
+  function setThreshold(n) {
+    seatsEl.className = 'seats ' + (n === 26 ? 'maj' : 'two');
+    [...seatsEl.children].forEach((s, i) => { s.classList.toggle('on', i < n); s.classList.toggle('edge', i === n - 1); });
+    note.innerHTML = n === 26
+      ? '<b>26 votes</b>: a majority of all 51 members, not just those present.'
+      : '<b>34 votes</b>: two-thirds of the Council, needed to override a Mayoral veto.';
+    document.querySelectorAll('#thresh button').forEach(b => b.classList.toggle('active', +b.dataset.n === n));
+  }
+  document.getElementById('thresh').addEventListener('click', e => { const b = e.target.closest('button'); if (b) setThreshold(+b.dataset.n); });
+  setThreshold(26);
+</script>
+</body>
+</html>
