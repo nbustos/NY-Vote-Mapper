@@ -19,7 +19,7 @@ import requests
 from fetch_legistar import api_get, REPUBLICAN_CONFERENCE_BODY_ID
 
 ROOT = Path(__file__).resolve().parent.parent
-WD_UA = "NYC-CVM/1.0 (https://github.com/nbustos/NYC-CVM)"
+WD_UA = "NYC-Vote-Mapper/1.0 (https://github.com/nbustos/NYC-Vote-Mapper)"
 NYC_COUNCIL_MEMBER_QID = "Q58620996"  # "member of the New York City Council"
 
 
