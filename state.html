@@ -587,7 +587,7 @@
       const [res, mem, geo, vet, pro, reg] = await Promise.all([
         fetch('./data/state/votes.json', { cache: 'no-store' }),
         fetch('./data/state/members.json', { cache: 'no-store' }),
-        fetch('./data/state/districts.geojson'),
+        fetch('./data/state/districts.geojson?v=2'),
         fetch('./data/state/vetoed.json', { cache: 'no-store' }),
         fetch('./data/state/profiles.json', { cache: 'no-store' }),
         fetch('./data/state/regions.json')
