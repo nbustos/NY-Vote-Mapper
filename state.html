@@ -583,7 +583,9 @@
     const years = [...new Set(list.map(b => +b.date.slice(0, 4)))].sort();
     if (!years.length) years.push(new Date().getFullYear());
     $("year").innerHTML = years.map(y => `<option>${y}</option>`).join("");
-    state.year = years[years.length - 1];
+    // default to the year holding most of the bills (a two-year session splits vetoes across years)
+    const count = y => list.filter(b => +b.date.slice(0, 4) === y).length;
+    state.year = years.reduce((best, y) => count(y) >= count(best) ? y : best, years[0]);
     $("year").value = state.year;
     $("year").onchange = e => { state.year = +e.target.value; state.date = null; selectBill(null); drawTimeline(); };
   }
