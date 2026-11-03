@@ -177,7 +177,7 @@
   <nav class="switch" aria-label="Legislative body"><a href="./">NYC Council</a><a href="state.html" class="active" aria-current="page">NY State Legislature</a></nav>
   <h1>NY State Senate Vote Mapper</h1>
   <span id="status">Loading votes…</span>
-  <div class="seg" id="mode" role="group" aria-label="Bills shown"><button data-mode="approved" class="active">Approved</button><button data-mode="vetoed">Vetoed</button></div>
+  <div class="seg" id="mode" role="group" aria-label="Bills shown"><button data-mode="approved" class="active">Approved</button><button data-mode="signed">Signed</button><button data-mode="vetoed">Vetoed</button></div>
   <label style="font-size:13px">Year <select id="year"></select></label>
   <a href="how-a-bill-becomes-law.html" class="howlink">How a bill becomes law (NYC) &rarr;</a>
 </header>
@@ -231,7 +231,16 @@
 
   const state = { year: null, date: null, bill: null, mode: "approved", override: false };
   const isVeto = () => state.mode === "vetoed";
-  const modeLabel = () => isVeto() ? "vetoed" : "approved";
+  const modeLabel = () => state.mode;
+  const SIGNED_BILLS = [];   // derived from APPROVED_BILLS: signed into law; calendar date = signing date
+  const activeList = () => {
+    if (state.mode === "vetoed") return VETOED_BILLS;
+    if (state.mode === "signed") {
+      if (!SIGNED_BILLS.length) APPROVED_BILLS.filter(b => b.signedDate).forEach(b => SIGNED_BILLS.push({ ...b, date: b.signedDate, voteDate: b.date }));
+      return SIGNED_BILLS;
+    }
+    return APPROVED_BILLS;
+  };
   // Votes shown for a bill: the Council vote (before any veto) or, if present and chosen, the override vote
   const votesOf = b => (state.override && b.overrideVotes) ? b.overrideVotes : b.votes;
 
@@ -272,7 +281,7 @@
       .attr("class", "vote-bar").attr("y", 30).attr("height", 44).attr("rx", 3)
       .classed("selected", d => d === state.date);
     tl.append("g").attr("class", "focus");
-    $("timeline-count").textContent = `${voteDays.length} ${isVeto() ? "veto days" : "session days"} · ${voteDays.reduce((s, d) => s + BILLS_BY_DATE[d].length, 0)} ${modeLabel()} bills in ${y}`;
+    $("timeline-count").textContent = `${voteDays.length} ${isVeto() ? "veto days" : state.mode === "signed" ? "signing days" : "session days"} · ${voteDays.reduce((s, d) => s + BILLS_BY_DATE[d].length, 0)} ${modeLabel()} bills in ${y}`;
     layoutTimeline();
   }
 
@@ -435,7 +444,7 @@
     state.date = date;
     const bills = BILLS_BY_DATE[date] || [];
     $("meeting-date").hidden = false;
-    $("meeting-date").textContent = (isVeto() ? "Vetoed by Governor: " : "Senate session: ") + fmtDate(date);
+    $("meeting-date").textContent = (isVeto() ? "Vetoed by Governor: " : state.mode === "signed" ? "Signed by Governor: " : "Senate session: ") + fmtDate(date);
     $("chips").innerHTML = bills.map((b, i) =>
       `<button class="chip" data-i="${i}" title="${esc(b.title)}"><b>${esc(b.id)}</b>${esc(b.title)}${b.status === "Overridden" ? " · overridden" : ""}</button>`).join("");
     $("chips").querySelectorAll(".chip").forEach(c => c.onclick = () => selectBill(bills[+c.dataset.i]));
@@ -483,7 +492,7 @@
     if (!b) { el.hidden = true; return; }
     const c = counts(b), tot = c.yes + c.no + c.other;
     el.hidden = false;
-    el.innerHTML = `<div class="tag">${isVeto() ? (state.override ? "Override vote · " + fmtDate(b.overrideDate) : "Senate vote before veto · " + fmtDate(b.date)) : "Vote visualization · " + fmtDate(b.date)}</div>
+    el.innerHTML = `<div class="tag">${isVeto() ? (state.override ? "Override vote · " + fmtDate(b.overrideDate) : "Senate vote before veto · " + fmtDate(b.date)) : (state.mode === "signed" ? "Senate vote · " + fmtDate(b.voteDate) + " · signed " + fmtDate(b.date) : "Vote visualization · " + fmtDate(b.date))}</div>
       <h3>${esc(b.id)}: ${esc(b.title)}</h3>
       <div id="bill-bar"><i style="width:${c.yes / tot * 100}%;background:#5cb985"></i><i style="width:${c.other / tot * 100}%;background:#e0b94a"></i><i style="width:${c.no / tot * 100}%;background:#d96b6b"></i></div>
       <div id="bill-counts"><span style="color:var(--yes-ink)">YES: ${c.yes}</span><span style="color:#7a6420">${c.other ? c.other + " excused/abstain" : ""}</span><span style="color:var(--no-ink)">NO: ${c.no}</span></div>`;
@@ -494,9 +503,10 @@
     const sum = $("insp-summary");
     if (!b) sum.innerHTML = `<span class="empty" style="padding:0">Select a session day and bill to see how each district voted.</span>`;
     else {
+      const signedLine = state.mode === "signed" ? `<div class="status-line">Signed into law by the Governor ${fmtDate(b.date)} · Senate vote ${fmtDate(b.voteDate)}</div>` : "";
       const veto = isVeto() ? `<div class="status-line">Vetoed by the Governor ${fmtDate(b.date)}${b.status === "Overridden" ? ` · veto overridden by the Council ${fmtDate(b.overrideDate || b.date)}` : " · veto not overridden"}</div>` : "";
       const sw = (isVeto() && b.overrideVotes) ? `<div class="seg" id="voteset"><button data-o="0" class="${state.override ? "" : "active"}">Senate vote before veto</button><button data-o="1" class="${state.override ? "active" : ""}">Override vote</button></div>` : "";
-      sum.innerHTML = `<b>${esc(b.id)}</b> · ${fmtDate(b.date)}<br>${esc(b.summary || b.title)}${veto}${sw}<a href="${esc(b.legistarUrl)}" target="_blank" rel="noopener">View on NY Senate ↗</a>`;
+      sum.innerHTML = `<b>${esc(b.id)}</b> · ${fmtDate(b.date)}<br>${esc(b.summary || b.title)}${veto}${signedLine}${sw}<a href="${esc(b.legistarUrl)}" target="_blank" rel="noopener">View on NY Senate ↗</a>`;
       sum.querySelectorAll("#voteset button").forEach(btn => btn.onclick = () => {
         state.override = btn.dataset.o === "1"; paintMap(); renderTally(); renderCard(); renderRoster();
       });
@@ -579,7 +589,7 @@
 
   /* ------------------------------ Bootstrap ----------------------------- */
   function initYears() {
-    const list = isVeto() ? VETOED_BILLS : APPROVED_BILLS;
+    const list = activeList();
     const years = [...new Set(list.map(b => +b.date.slice(0, 4)))].sort();
     if (!years.length) years.push(new Date().getFullYear());
     $("year").innerHTML = years.map(y => `<option>${y}</option>`).join("");
@@ -592,14 +602,14 @@
 
   function setMode(mode) {
     state.mode = mode; state.date = null;
-    const list = isVeto() ? VETOED_BILLS : APPROVED_BILLS;
+    const list = activeList();
     Object.keys(BILLS_BY_DATE).forEach(k => delete BILLS_BY_DATE[k]);
     list.forEach(b => (BILLS_BY_DATE[b.date] = BILLS_BY_DATE[b.date] || []).push(b));
     document.body.classList.toggle("mode-vetoed", isVeto());
     document.querySelectorAll("#mode button").forEach(btn => btn.classList.toggle("active", btn.dataset.mode === mode));
     $("meeting-date").hidden = true; $("chips").innerHTML = "";
     $("status").textContent = list.length
-      ? `${list.length} ${modeLabel()} bills across ${Object.keys(BILLS_BY_DATE).length} ${isVeto() ? "veto days" : "meeting days"}`
+      ? `${list.length} ${modeLabel()} bills across ${Object.keys(BILLS_BY_DATE).length} ${isVeto() ? "veto days" : state.mode === "signed" ? "signing days" : "meeting days"}`
       : `No ${modeLabel()} bills loaded yet.`;
     initYears();
     selectBill(null);

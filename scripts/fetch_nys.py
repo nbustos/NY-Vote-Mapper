@@ -121,6 +121,9 @@ def build_bills():
                "summary": cut((b.get("summary") or b["title"]).strip()),
                "legistarUrl": f"https://www.nysenate.gov/legislation/bills/{b['session']}/{pn}",
                "votes": votes}
+        sm = [m for m in b["milestones"]["items"] if m["statusType"] == "SIGNED_BY_GOV"]
+        if sm:
+            rec["signedDate"] = sm[-1]["actionDate"]
         approved.append(rec)
         vm = [m for m in b["milestones"]["items"] if m["statusType"] == "VETOED"]
         if vm:

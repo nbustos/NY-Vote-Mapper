@@ -64,7 +64,7 @@ A GitHub Actions workflow (`.github/workflows/update-votes.yml`) runs this every
 
 ## NY State Senate view
 
-`state.html` shows how each of the 63 State Senators voted on bills the Senate passed in the current two-year session, with the same controls as the NYC page. "Vetoed" lists bills the Governor vetoed (the date shown is the veto date; the votes are the Senate's last floor vote on the bill).
+`state.html` shows how each of the 63 State Senators voted on bills the Senate passed in the current two-year session, with the same controls as the NYC page. "Signed" lists the bills the Governor signed into law, dated by the signing date (the card also shows the Senate vote date). "Vetoed" lists bills the Governor vetoed (the date shown is the veto date; the votes are the Senate's last floor vote on the bill).
 
 | File | Contents | Source |
 |---|---|---|
