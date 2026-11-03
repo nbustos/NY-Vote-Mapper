@@ -397,7 +397,7 @@
   [["All NY", null], ...Object.entries(REGIONS)].forEach(([label, ds], i) => {
     const b = document.createElement("button");
     b.textContent = label; if (i === 0) b.classList.add("active");
-    b.onclick = () => { controls.querySelectorAll("button").forEach(x => x.classList.remove("active")); b.classList.add("active"); zoomTo(ds); };
+    b.onclick = () => { controls.querySelectorAll("button").forEach(x => x.classList.remove("active")); b.classList.add("active"); buildRegions(); zoomTo(label === "All NY" ? null : REGIONS[label]); };
     controls.appendChild(b);
   });
 
