@@ -1333,7 +1333,9 @@
         "name": "Committee on Transportation and Infrastructure",
         "role": ""
       }
-    ]
+    ],
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Selvena%20Brooks-Powers%202023.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Selvena%20Brooks-Powers%202023.jpg"
   },
   "32": {
     "name": "Joann Ariola",
@@ -1497,7 +1499,13 @@
         "name": "Committee on Housing and Buildings",
         "role": ""
       }
-    ]
+    ],
+    "birth": {
+      "date": "1983-04-14",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Crystal%20Hudson%20at%20Classon%20Av%20Accessibility%20Groundbreaking.jpg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Crystal%20Hudson%20at%20Classon%20Av%20Accessibility%20Groundbreaking.jpg"
   },
   "36": {
     "name": "Chi A. Ossé",
