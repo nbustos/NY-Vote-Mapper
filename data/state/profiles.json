@@ -430,6 +430,22 @@
    }
   ]
  },
+ "12": {
+  "name": "Michael Gianaris",
+  "party": "D",
+  "tookOffice": 2011,
+  "roles": [],
+  "caucuses": [
+   "Democratic Conference"
+  ],
+  "committees": [],
+  "birth": {
+   "date": "1970-04-23",
+   "precision": 11
+  },
+  "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/%2805-22-24%29%20NY%20Senate%20Deputy%20Majority%20Leader%20Michael%20Gianaris%20%2853739992271%29%20%28cropped%29.jpg?width=360",
+  "photoPage": "https://commons.wikimedia.org/wiki/File:%2805-22-24%29%20NY%20Senate%20Deputy%20Majority%20Leader%20Michael%20Gianaris%20%2853739992271%29%20%28cropped%29.jpg"
+ },
  "13": {
   "name": "Jessica Ramos",
   "party": "D",
