@@ -1338,6 +1338,10 @@
         "role": ""
       }
     ],
+    "birth": {
+      "date": "1983-03-01",
+      "precision": 11
+    },
     "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Selvena%20Brooks-Powers%202023.jpg?width=360",
     "photoPage": "https://commons.wikimedia.org/wiki/File:Selvena%20Brooks-Powers%202023.jpg"
   },
