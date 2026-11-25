@@ -1119,13 +1119,7 @@
         "name": "Subcommittee on Early Childhood Education",
         "role": ""
       }
-    ],
-    "birth": {
-      "date": "1990-04-17",
-      "precision": 11
-    },
-    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Julie%20Won%20MTA%20%28cropped%29.jpg?width=360",
-    "photoPage": "https://commons.wikimedia.org/wiki/File:Julie%20Won%20MTA%20%28cropped%29.jpg"
+    ]
   },
   "27": {
     "name": "Nantasha M. Williams",
@@ -1382,13 +1376,7 @@
         "name": "Committee on Public Safety",
         "role": ""
       }
-    ],
-    "birth": {
-      "date": "1958-08-22",
-      "precision": 11
-    },
-    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/MTA%20Announces%20Opening%20of%20Fully%20Accessible%20Woodhaven%20Blvd%20JZ%20Station%20%2854285552374%29%20%28cropped%29.jpg?width=360",
-    "photoPage": "https://commons.wikimedia.org/wiki/File:MTA%20Announces%20Opening%20of%20Fully%20Accessible%20Woodhaven%20Blvd%20JZ%20Station%20%2854285552374%29%20%28cropped%29.jpg"
+    ]
   },
   "33": {
     "name": "Lincoln Restler",
@@ -1420,9 +1408,7 @@
         "name": "Committee on Public Housing",
         "role": ""
       }
-    ],
-    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Lincoln%20Restler%202023.jpg?width=360",
-    "photoPage": "https://commons.wikimedia.org/wiki/File:Lincoln%20Restler%202023.jpg"
+    ]
   },
   "34": {
     "name": "Jennifer Gutiérrez",
