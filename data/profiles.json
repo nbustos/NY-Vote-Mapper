@@ -1554,7 +1554,13 @@
         "name": "Subcommittee on Landmarks, Public Sitings, Resiliency and Dispositions",
         "role": ""
       }
-    ]
+    ],
+    "birth": {
+      "date": "1998-03-18",
+      "precision": 11
+    },
+    "photo": "https://commons.wikimedia.org/wiki/Special:FilePath/Chi%20osse%202026.jpeg?width=360",
+    "photoPage": "https://commons.wikimedia.org/wiki/File:Chi%20osse%202026.jpeg"
   },
   "37": {
     "name": "Sandy Nurse",
